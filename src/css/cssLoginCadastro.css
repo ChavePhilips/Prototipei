@@ -1,0 +1,129 @@
+/* ---- VARIÁVEIS GLOBAIS ---- */
+:root {
+    --azulClaro: #047EFF;
+    --azulMedio: #0352A8;
+    --azulEscuro: #011428;
+    --brancoAzulado: #F1F0EC;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.container {
+    display: flex;
+    width: 100%;
+    height: 100vh;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.2);
+}
+
+.divIcones {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    margin: 20px 0;
+}
+
+.divImagem {
+    width: 50%;
+}
+
+.divImagem img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.divIndicadores {
+    display: flex;
+    justify-content: center;
+    gap: 1vh;
+    margin-top: 20px;
+}
+
+.divLoginCadastroDireita {
+    width: 50%;
+    background-color: var(--azulMedio);
+    color: var(--brancoAzulado);
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+}
+
+.divLoginCadastroDireita label {
+    font-size: 15pt;
+    margin-bottom: 5px;
+    text-align: left;
+    width: 100%;
+    max-width: 300px;
+}
+
+.icone {
+    width: 30px;
+    height: 30px;
+}
+
+.inputLinha {
+    display: flex;
+    justify-content: start;
+    width: 100%;
+    max-width: 600px;
+  }
+
+.inputLoginCadastro {
+    width: 35vw;
+    height: 5vh;
+    border-radius: 20px;
+    border: none;
+    padding: 10px;
+    margin-bottom: 20px;
+    text-align: center;
+    font-size: 13pt;
+}
+
+.inputRadio {
+    display: flex;
+    margin-bottom: 10px;
+}
+  
+.inputRadio input[type="radio"] {
+    margin-right: 10px;
+}
+
+.formInputs{
+    display: flex;
+    flex-direction: column;
+}
+
+.secaoPrincipal {
+    font-family: 'Raleway', sans-serif;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: var(--azulMedio);
+}
+  
+.spanIndicador {
+    height: 3vh;
+    width: 3vh;
+    background-color: var(--brancoAzulado);
+    border-radius: 50%;
+    display: inline-block;
+}
+  
+.spanIndicador.active {
+    background-color: var(--azulClaro);
+}
+
+.divOrganizacaoInputs {
+    display: flex;
+    flex-direction: column;
+    width: 50%;
+  }
