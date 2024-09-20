@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Cadastro</title>
+        <link href="cssLoginCadastro.css" rel="stylesheet" type="text/css" />
+        <link href="estilizacaoPadrao.css" rel="stylesheet" type="text/css" />
+    </head>
+
+    <body>
+        <div class="secaoPrincipal">
+            <div class="container">
+                <!-- IMAGEM NA LATERAL ESQUERDA -->
+                <div class="divImagem">
+                    <img id="idArduino" src="Imagens/imagemArduinoLoginCadastro.png" alt="Imagem de um sistema embarcado da marca Arduíno.">
+                </div>
+
+                <!-- CADASTRO PF2 NA LATERAL DIREITA -->
+                <div class="divLoginCadastroDireita">
+                    <h1 class="tituloPadraoBranco">CADASTRO</h1>
+
+                    <br> <br>
+    
+                    <!-- FORMULÁRIO DE CADASTRO -->
+                    <form class="formInputs">
+                        <label class="textoPadraoBranco" for="email">E-MAIL:</label>
+                        <input class="inputLoginCadastro" type="email" id="email" name="email" required>
+            
+                        <label class="textoPadraoBranco" for="senha">SENHA:</label>
+                        <input class="inputLoginCadastro" type="password" id="senha" name="senha" required>
+            
+                        <label class="textoPadraoBranco" for="confirmarSenha">CONFIRMAR SENHA:</label>
+                        <input class="inputLoginCadastro" type="password" id="confirmarSenha" name="confirmarSenha" required>
+            
+                        <br>
+
+                        <a href="cadastroPF3.html">
+                            <button class="botaoBranco">CONTINUAR</button>
+                        </a>
+
+                        <br> 
+
+                        <!-- ÍCONES DAS APIS DE LOGIN -->
+                        <p class="textoPequeno" style="text-align: center;">OU:</p>
+                        <div class="divIcones">
+                            <img src="Imagens/iconeApple.png" alt="Apple" class="icone">
+                            <img src="Imagens/iconeGoogle.png" alt="Google" class="icone">
+                            <img src="Imagens/iconeFacebook.png" alt="Facebook" class="icone">
+                        </div>
+        
+                    </form>
+        
+                    <!-- INDICADORES DE QUAL PÁGINA VC TÁ -->
+                    <div class="divIndicadores">
+                        <span class="spanIndicador active"></span>
+                        <span class="spanIndicador"></span>
+                        <span class="spanIndicador"></span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </body>
+</html>

@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Prototipei</title>
+        <link href="cssLoginCadastro.css" rel="stylesheet" type="text/css">
+        <link href="estilizacaoPadrao.css" rel="stylesheet" type="text/css">
+    </head>
+
+    <body>
+        <section class="secaoPrincipal">
+            <div class="container">
+                <!-- IMAGEM NA LATERAL ESQUERDA -->
+                <div class="divImagem">
+                    <img src="Imagens/imagemArduinoLoginCadastro.png" alt="Imagem de um sistema embarcado da marca Arduíno.">
+                </div>
+    
+                <!-- LOGIN NA LATERAL DIREITA -->
+                <div class="divLoginCadastroDireita">
+                        <h1 class="tituloPadraoBranco">FAÇA LOGIN PARA CONTINUAR!</h1>
+
+                        <br> <br>
+
+                        <!-- FORMULÁRIO DE LOGIN -->
+                        <form class="formInputs">
+                            <label class="textoPadraoBranco" for="login">LOGIN:</label>
+                            <input class="inputLoginCadastro" type="email" id="login" name="login" required autocomplete="email">
+            
+                            <label class="textoPadraoBranco" for="senha">SENHA:</label>
+                            <input class="inputLoginCadastro" type="password" id="senha" name="senha" required>
+            
+                            <br>
+                            
+                            <a href="home.html">
+                                <button class="botaoBranco" type="submit">CONFIRMAR</button>
+                            </a>
+            
+                            <br>
+
+                            <p class="textoPequeno" style="text-align: center;">OU:</p>
+                        </form>
+                        
+                        <!-- ÍCONES DAS APIS DE LOGIN -->
+                        <div class="divIcones">
+                            <img src="Imagens/iconeApple.png" alt="Ícone para realizar o login pela conta da Apple." class="icone">
+                            <img src="Imagens/iconeGoogle.png" alt="Ícone para realizar o login pela conta da Google." class="icone">
+                            <img src="Imagens/iconeFacebook.png" alt="Ícone para realizar o login pela conta do Facebook." class="icone">
+                        </div>
+        
+                        <!-- LINK PARA O CADASTRO -->
+                        <p class="textoPadraoBranco">NÃO TEM UMA CONTA? 
+                            <a class="textoPadraoBranco" href="cadastroP1.html">CADASTRE-SE!</a>
+                        </p>
+
+                        <br> 
+                        <!-- LINK PARA O "ESQUECI A SENHA" -->
+                        <a class="textoPequeno" href="recuperarSenhaP1.html" class="forgot-password">ESQUECI A SENHA</a>
+                </div>
+            </div>
+        </section>
+    </body>
+</html>

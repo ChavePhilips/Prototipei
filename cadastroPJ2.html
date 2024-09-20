@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cadastro</title>
+    <link href="cssLoginCadastro.css" rel="stylesheet" type="text/css" />
+    <link href="estilizacaoPadrao.css" rel="stylesheet" type="text/css" />
+</head>
+
+<body>
+    <section class="secaoPrincipal">
+        <div class="container">
+            <!-- IMAGEM NA LATERAL ESQUERDA -->
+            <div class="divImagem">
+                <img id="idArduino" src="Imagens/imagemArduinoLoginCadastro.png" alt="Imagem de um sistema embarcado da marca Arduíno.">
+            </div>
+
+            <!-- CADASTRO PF3 NA LATERAL DIREITA -->
+            <div class="divLoginCadastroDireita">
+                <p class="tituloPadraoBranco">CADASTRO</p>
+    
+                <br> <br>
+
+                <!-- FORMULÁRIO DE CADASTRO -->
+                <form class="formInputs">
+                    <label class="textoPadraoBranco" for="email">RAZÃO SOCIAL DA EMPRESA:</label>
+                    <input class="inputLoginCadastro" type="email" id="nome" name="email" required>
+        
+                    <label class="textoPadraoBranco" for="senha">CEP:</label>
+                    <input class="inputLoginCadastro" id="cep" name="senha" required>
+        
+                    <label class="textoPadraoBranco" for="confirmarSenha">TELEFONE:</label>
+                    <input class="inputLoginCadastro" id="telefone" name="confirmarSenha" required>
+        
+                    <label class="textoPadraoBranco" for="confirmarSenha">CNPJ:</label>
+                    <input class="inputLoginCadastro" id="cnpj" name="confirmarSenha" required>
+        
+                    <a href="cadastroPJ3.html"><button class="botaoBranco">CONTINUAR</button></a>
+                </form>
+    
+                <!-- INDICADORES DE QUAL PÁGINA VC TÁ -->
+                <div class="divIndicadores">
+                    <span class="spanIndicador active"></span>
+                    <span class="spanIndicador"></span>
+                </div>
+            </div>
+        </div>
+    </section>
+</body>
+</html>
