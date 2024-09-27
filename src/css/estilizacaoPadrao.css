@@ -196,6 +196,19 @@ html{
   padding: 6% 15%;
   display: flex;
   flex-direction: row;
+  gap: 2vw;
+}
+
+.padroesSecaoFlexDirectionColumn{
+  display: flex;
+  flex-direction: column;
+}
+
+.secaoRotasFlexDirectionRow{
+  display: flex;
+  flex-direction: row;
+  gap: 2vw;
+  justify-content: space-between;
 }
 
 .imagensPadrao{
