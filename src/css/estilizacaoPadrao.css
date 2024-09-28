@@ -131,48 +131,21 @@ html{
 
 
   /* ---- ELEMENTOS PADRÕES ---- */
-  .divBanner {
-    align-items: left;
-    justify-content: left;
-    text-align: left;
-    padding: 6% 15%;
-    background: linear-gradient(to bottom, #095DB7, #042951);
-    color: var(--azulMedio);
-    height: 10vh;
-  }
-
-.logoBranca{
-  width: 38%;
-  height: 38%;
-}
-
-.tituloPadrao {
-    font-family: "Raleway";
-    font-size: 25pt;
-    color: var(--azulEscuro);
-}
-
-.tituloPadraoBranco {
-    font-family: "Raleway";
-    font-size: 23pt;
-    color: var(--brancoAzulado);
-}
-
 .botaoBranco {
-    background-color: var(--brancoAzulado);
-    color: var(--azulMedio);
-    width: 150px;
-    height: 50px;
-    border-radius: 25px;
-    border: none;
-    font-size: 18px;
-    cursor: pointer;
-    transition-duration: 0.4s;
+  background-color: var(--brancoAzulado);
+  color: var(--azulMedio);
+  width: 150px;
+  height: 50px;
+  border-radius: 25px;
+  border: none;
+  font-size: 18px;
+  cursor: pointer;
+  transition-duration: 0.4s;
 }
 
 .botaoBranco:hover {
-    background-color: var(--azulEscuro);
-    color: var(--brancoAzulado);
+  background-color: var(--azulEscuro);
+  color: var(--brancoAzulado);
 }
 
 .botaoAzul {
@@ -192,6 +165,92 @@ html{
   color: var(--brancoAzulado);
 }
 
+.divBanner {
+  align-items: left;
+  justify-content: left;
+  text-align: left;
+  padding: 6% 15%;
+  background: linear-gradient(to bottom, #095DB7, #042951);
+  color: var(--azulMedio);
+  height: 10vh;
+}
+
+.divBordaEscura{
+  border: solid;
+  border-color: var(--azulEscuro);
+  border-width: 2px;
+  border-radius: 10px;
+  margin: 6% 15% 0 15%; 
+}
+  
+.imagensPadrao{
+  width: 20%;
+  height: 20%;
+}
+
+.logoBranca{
+  width: 38%;
+  height: 38%;
+}
+
+.textoPadrao {
+  text-align: justify;
+  font-size: 14pt;
+  font-family: "Raleway";
+  color: var(--azulEscuro);
+}
+
+.textoPadraoBranco {
+  text-align: justify;
+  font-size: 14pt;
+  font-family: "Raleway";
+  color: var(--brancoAzulado);
+}
+
+.textoPequeno {
+  text-align: justify;
+  font-size: 12pt;
+  font-family: "Raleway";
+  color: var(--brancoAzulado);
+}
+
+.tituloPadrao {
+    font-family: "Raleway";
+    font-size: 25pt;
+    color: var(--azulEscuro);
+}
+
+.tituloPadraoBranco {
+    font-family: "Raleway";
+    font-size: 23pt;
+    color: var(--brancoAzulado);
+}
+  
+.padroesSecaoFlexDirectionColumn{
+  display: flex;
+  flex-direction: column;
+  row-gap: 8vh;
+}
+
+.padroesSecaoFlexDirectionRow{
+  padding: 5% 15%;
+  display: flex;
+  flex-direction: row;
+  gap: 2vw;
+}
+
+::-webkit-scrollbar-thumb {
+  border-radius: 8px;
+  background-color: var(--azulClaro);
+}
+
+::-webkit-scrollbar {
+  border-radius: 8px;
+}
+
+
+
+/* CSS DAS TABS */
 .divTab{
  justify-items: space-between;
 }
@@ -224,67 +283,14 @@ html{
   display: block;
 }
 
-.textoPadrao {
-    text-align: justify;
-    font-size: 14pt;
-    font-family: "Raleway";
-    color: var(--azulEscuro);
-}
 
-.textoPadraoBranco {
-    text-align: justify;
-    font-size: 14pt;
-    font-family: "Raleway";
-    color: var(--brancoAzulado);
-}
 
-.textoPequeno {
-    text-align: justify;
-    font-size: 12pt;
-    font-family: "Raleway";
-    color: var(--brancoAzulado);
-}
-
-.padroesSecaoFlexDirectionRow{
-  padding: 5% 15%;
-  display: flex;
-  flex-direction: row;
-  gap: 2vw;
-}
-
-.padroesSecaoFlexDirectionColumn{
-  display: flex;
-  flex-direction: column;
-  row-gap: 8vh;
-}
-
+/* SEÇÃO ESPECÍFICA DA PÁG. ROTAS */
 .secaoRotasFlexDirectionRow{
   display: flex;
   flex-direction: row;
   gap: 2vw;
   justify-content: space-between;
-}
-
-.divBordaEscura{
-  border: solid;
-  border-color: var(--azulEscuro);
-  border-width: 2px;
-  border-radius: 10px;
-  margin: 6% 15% 0 15%;
-}
-
-.imagensPadrao{
-  width: 20%;
-  height: 20%;
-}
-
-::-webkit-scrollbar-thumb {
-  border-radius: 8px;
-  background-color: var(--azulClaro);
-}
-
-::-webkit-scrollbar {
-  border-radius: 8px;
 }
 
 
