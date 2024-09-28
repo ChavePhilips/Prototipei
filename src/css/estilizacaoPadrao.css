@@ -25,7 +25,11 @@ html{
     display: flex;
     align-items: center;
     border-bottom: 1px solid var(--brancoAzulado);
-    padding: 4vh;
+    position: fixed;
+    z-index: 1;
+    top: 0px;
+    padding: 2%;
+    width: 98%;
   }
   
   .logoNavbar {
@@ -171,6 +175,55 @@ html{
     color: var(--brancoAzulado);
 }
 
+.botaoAzul {
+  background-color: var(--azulClaro);
+  color: var(--brancoAzulado);
+  width: 150px;
+  height: 50px;
+  border-radius: 25px;
+  border: none;
+  font-size: 18px;
+  cursor: pointer;
+  transition-duration: 0.4s;
+}
+
+.botaoAzul:hover {
+  background-color: var(--azulMedio);
+  color: var(--brancoAzulado);
+}
+
+.divTab{
+ justify-items: space-between;
+}
+
+.botaoTab{
+  border: none;
+  flex: 1;
+  text-align: right;
+  opacity: 50%;
+  background-color: var(--brancoAzulado);
+  width: 22.9vw;
+  padding-bottom: 1vh;
+}
+
+.botaoTab:hover {
+  opacity: 100%;
+  color: var(--azulClaro);
+}
+
+.botaoTab.active {
+  opacity: 100%;
+  border-bottom: 2px solid var(--azulClaro);
+}
+
+[data-tab-content] {
+  display: none;
+}
+
+.active[data-tab-content] {
+  display: block;
+}
+
 .textoPadrao {
     text-align: justify;
     font-size: 14pt;
@@ -193,7 +246,7 @@ html{
 }
 
 .padroesSecaoFlexDirectionRow{
-  padding: 6% 15%;
+  padding: 5% 15%;
   display: flex;
   flex-direction: row;
   gap: 2vw;
@@ -202,6 +255,7 @@ html{
 .padroesSecaoFlexDirectionColumn{
   display: flex;
   flex-direction: column;
+  row-gap: 8vh;
 }
 
 .secaoRotasFlexDirectionRow{
@@ -211,9 +265,26 @@ html{
   justify-content: space-between;
 }
 
+.divBordaEscura{
+  border: solid;
+  border-color: var(--azulEscuro);
+  border-width: 2px;
+  border-radius: 10px;
+  margin: 6% 15% 0 15%;
+}
+
 .imagensPadrao{
   width: 20%;
   height: 20%;
+}
+
+::-webkit-scrollbar-thumb {
+  border-radius: 8px;
+  background-color: var(--azulClaro);
+}
+
+::-webkit-scrollbar {
+  border-radius: 8px;
 }
 
 
@@ -221,61 +292,12 @@ html{
 /* ---- FOOTER ---- */
 
 footer {
-    background-color: #042951;
-    padding: 20px 60px;
-    display: flex;
-    justify-content: space-between;
-  }
-  
-  .footer-content {
-    display: flex;
-    justify-content: space-between;
-    width: 100%;
-  }
-  
-  .footer-left {
-    display: flex;
-    align-items: center;
-  }
-  
-  .footer-left .footer-logo {
-    margin-right: 30px;
-  }
-  
-  .footer-left ul {
-    list-style: none;
-    padding: 0;
-    margin: 0;
-  }
-  
-  .footer-left ul li {
-    margin-bottom: 10px;
-  }
-  
-  .footer-left ul li a {
-    text-decoration: none;
-    color: #F1F0ECFF;
-  }
-  
-  .footer-left ul li a:hover {
-    text-decoration: underline;
-  }
-  
-  .footer-right ul {
-    list-style: none;
-    padding: 0;
-    margin: 0;
-  }
-  
-  .footer-right ul li {
-    margin-bottom: 10px;
-  }
-  
-  .footer-right ul li a {
-    text-decoration: none;
-    color: #F1F0ECFF;
-  }
-  
-  .footer-right ul li a:hover {
-    text-decoration: underline;
-  }
+  margin-top: 8%;
+  background-color: var(--azulEscuro);
+  padding: 5% 15%;
+  text-align: center;
+}
+
+footer p{
+  margin-top: 3%;
+}
