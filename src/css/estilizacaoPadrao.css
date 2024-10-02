@@ -16,6 +16,7 @@
 
 html{
   background-color: var(--brancoAzulado);
+  scroll-behavior: smooth;
 }
 
 

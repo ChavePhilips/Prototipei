@@ -1,0 +1,15 @@
+.textareaBriefing {
+    resize: none;
+    width: 100%;
+    border-radius: 10px;
+    font-family: Raleway;
+    font-size: 15pt;
+    box-shadow: 0px 5px 5px #01142884;
+}
+
+.secaoFormulario{
+    background-color: var(--azulMedio);
+    margin: 6% 15%;
+    padding: 10%;
+    border-radius: 10px;
+}
