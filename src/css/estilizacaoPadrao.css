@@ -254,6 +254,13 @@ html{
   color: var(--brancoAzulado);
 }
 
+.textoPequenoEscuro {
+  text-align: justify;
+  font-size: 12pt;
+  font-family: "Raleway";
+  color: var(--azulEscuro);
+}
+
 .tituloPadrao {
     font-family: "Raleway";
     font-size: 25pt;
