@@ -167,6 +167,49 @@ html{
   color: var(--brancoAzulado);
 }
 
+.botaoPagamento {
+  width: 10vw; /* Definindo uma largura fixa para todos os botões */
+  height: 2.5vw; /* Definindo a altura fixa */
+  margin-right: 1vw;
+  border: 2px solid var(--azulMedio);
+  background-color: var(--brancoAzulado);
+  color: var(--azulEscuro);
+  cursor: pointer;
+  font-family: raleway;
+  font-size: 11pt;
+  text-align: center;
+  display: flex;
+  justify-content: center; /* Centraliza o texto horizontalmente */
+  align-items: center; /* Centraliza o texto verticalmente */
+  transition: background-color 0.3s ease;
+}
+
+/* Estilo de botões selecionados */
+.selecionado {
+  background-color: #0352A8FF !important;
+  color: #fff;
+  font-weight: bold;
+}
+
+.botaoMaisMenos{
+  width: 2vw;
+  height: 4vh;
+  font-size: 12pt;
+  cursor: pointer;
+  border: 2px solid var(--azulMedio);
+}
+
+.inputBotaoMaisMenos{
+  width: 2.5vw;
+  height: 4vh;
+  font-size: 13pt;
+  cursor: pointer;
+  font-family: raleway;
+  text-align: center;
+  background-color: var(--brancoAzulado);
+  border: 2px solid var(--azulMedio);
+}
+
 .divBanner {
   align-items: left;
   justify-content: left;
