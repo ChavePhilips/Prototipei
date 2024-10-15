@@ -87,15 +87,6 @@
     font-size: 13pt;
 }
 
-.inputRadio {
-    display: flex;
-    margin-bottom: 10px;
-}
-  
-.inputRadio input[type="radio"] {
-    margin-right: 10px;
-}
-
 .formInputs{
     display: flex;
     flex-direction: column;

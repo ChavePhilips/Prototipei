@@ -210,6 +210,36 @@ html{
   border: 2px solid var(--azulMedio);
 }
 
+.inputRadio {
+  display: flex;
+  margin-bottom: 10px;
+}
+
+.inputRadio input[type="radio"] {
+  margin-right: 10px;
+}
+
+.inputLoginCadastro {
+  width: 35vw;
+  height: 5vh;
+  border-radius: 20px;
+  border: none;
+  padding: 10px;
+  margin-bottom: 20px;
+  text-align: center;
+  font-size: 13pt;
+}
+
+.inputAlterarEndereço {
+  height: auto;
+  border-radius: 20px;
+  padding: 10px;
+  text-align: start;
+  font-size: 13pt;
+  border: 2px solid #0352A8;
+  margin-bottom: 1%;
+}
+
 .divBanner {
   align-items: left;
   justify-content: left;
