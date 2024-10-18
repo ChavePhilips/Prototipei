@@ -481,3 +481,13 @@ footer {
 footer p{
   margin-top: 3%;
 }
+
+/* ---- ICONS ----*/
+
+.material-symbols-outlined {
+  font-variation-settings:
+  'FILL' 0,
+  'wght' 400,
+  'GRAD' 0,
+  'opsz' 24
+}
