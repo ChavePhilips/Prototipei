@@ -4,11 +4,11 @@
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>Prototipei</title>
-        <link href="../src/css/estilizacaoPadrao.css" rel="stylesheet" type="text/css">
+        
     </head>
 
     <body>
-        <!-- NAVBAR -->
+       <!-- NAVBAR --> 
         <header>
             <div class="navbar">
                 <a href="home.html"><img class="logoNavbar" src="../src/Imagens/logoReduzidaAzul.png" alt="Logo"></a>
@@ -60,18 +60,60 @@
             </div>
         </header>
 
-        <!-- BANNER -->
-        <section id="primeiraSecao" style="margin-top: 11vh;">
-            <div class="divBanner">
-                <div id="divTextoBanner">
-                    <p class="tituloPadraoBranco">CARRINHO</p>
-                    <img src="../src/Imagens/logoBranca.png" class="logoBranca" alt="Logo da Prototipei.">
+        <main>
+            <!-- SEÇÃO DA COMPRA DO PRODUTO (PARTE AZUL) -->
+        <section id="secaoCompraProduto">
+
+            <section id="segundaSecao">
+            <div class="divProdutos-segundaSecao">
+                
+                <div class="container">
+                    <div class="produto">
+                        <!-- Imagem da estufa -->
+                        <a href="produtoEstufa.html"><img src="Imagens/EstufaSite.png" alt="Estufa Portátil Inteligente"></a>
+                        <!-- Informações do produto -->
+                        <div class="info">
+                        <h1 id="tituloEstufa">ESTUFA PORTÁTIL <br>INTELIGENTE</h1>
+                            <p id="frete">Frete: <br>R$12,00</p>
+                            <p id="endereço">Endereço: Rua Joaquim de Sales...</p>
+                            <br><br>
+                            <p class="price">R$400,00</p>
+                            <button class="comprar-btn">Comprar</button>
+                        </div>
+                    </div>
                 </div>
+                
+            </div>
+            </section>
+
+            <div class="separadorBaixo">
             </div>
         </section>
+        <br><br><br><br>
+        <div id="secaoDescricaoProduto2">
+        <!-- SEÇÃO DA DESCRIÇÃO DO PRODUTO + COMENTÁRIOS -->
+        <section id="secaoDescricaoProduto">
+            <!-- BOTÕES QUE TROCAM ENTRE O PRODUTO E OS TERMOS DE COMPRA -->
+            <section id="" class="margemLateral">
+                <div class="gridDoisEspacos">
 
-        <section>
-            
-        </section>
+                    <!-- Div vazia (tem só pra deixar a 2ª div na lateral direita) -->
+                    <div></div>
+
+                    <!-- Div com os dois botões -->
+                    <div class="gridDoisEspacos">
+
+                        <!-- Botão de produto -->
+                        <button class="button tab active" data-tab-target="#divGrid-secaoCompraProduto">
+                            <p class="textoPadrao" style="text-align: right;">PRODUTO</p>
+                        </button>
+                        <!-- Botão de termos de compra -->
+                        <button class="button tab" data-tab-target="#sesaoTermosDeCompra">
+                            <p class="textoPadrao" style="text-align: right;" data-tab-target="#sesaoTermosDeCompra">TERMOS DE COMPRA</p>
+                        </button>
+                    </div>
+                </div>
+            </section>
+        </main>
     </body>
 </html>
