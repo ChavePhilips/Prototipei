@@ -1,0 +1,483 @@
+@import url('https://fonts.googleapis.com/css2?family=Raleway:ital,wght@0,100..900;1,100..900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200');
+
+* {
+  padding: 0;
+  margin: 0;
+}
+
+/* ---- VARIÁVEIS GLOBAIS ---- */
+:root {
+    --azulClaro: #047EFF;
+    --azulMedio: #0352A8;
+    --azulEscuro: #011428;
+    --brancoAzulado: #F1F0EC;
+}
+
+html{
+  background-color: var(--brancoAzulado);
+  scroll-behavior: smooth;
+}
+
+
+
+/* ---- NAVBAR ---- */
+.navbar {
+    background-color: var(--brancoAzulado);
+    display: flex;
+    align-items: center;
+    border-bottom: 1px solid var(--brancoAzulado);
+    position: fixed;
+    z-index: 10;
+    top: 0px;
+    padding: 2%;
+    width: 98%;
+  }
+  
+  .logoNavbar {
+    width: 4vh;
+    height: 5vh;
+    margin-left: 3vw;
+  }
+  
+  .navbar img {
+    margin-right: 20px;
+  }
+  
+  .divLinks {
+    margin-left: auto;
+    display: flex;
+    align-items: center;
+  }
+
+  .navbar img {
+    margin-right: 20px;
+  }
+  
+  .navbar .divLinks {
+    margin-left: auto;
+    display: flex;
+    align-items: center;
+  }
+  
+  .navbar .divLinks a {
+    text-decoration: none;
+    color: var(--azulMedio);
+    margin-left: 2vw;
+  }
+  
+  .divLinks p {
+    text-decoration: none;
+    color: var(--azulMedio);
+    padding: 1vw;
+    margin-left: 2vw;
+    transition: 0.4s;
+  }
+  
+  .divLinks p:hover {
+    color: var(--azulClaro);
+    border-radius: 5px;
+  }
+  
+  .navbar .divPerfil {
+    border-radius: 50%;
+    width: 3vw;
+    height: 3vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-left: 2vw;
+    cursor: pointer;
+  }
+  
+  .navbar .divPerfil img {
+    width: 5vh;
+    height: 5vh;
+  }
+  
+  .navbar .divCarrinho {
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-right: 3vw;
+    cursor: pointer;
+  }
+  
+  .navbar .divCarrinho svg {
+    width: 5vh;
+    height: 5vh;
+  }
+
+  .navbar .divCarrinho path {
+    transition: 0.4s;
+  }
+
+  .navbar .divCarrinho path:hover{
+    stroke: var(--azulClaro);
+  }
+  
+  .navbar .divPerfil svg {
+    width: 6vh;
+    height: 5vh;
+  }
+
+  .navbar .divPerfil path {
+    transition: 0.4s;
+  }
+
+  .navbar .divPerfil path:hover{
+    fill: var(--azulClaro);
+  }
+
+
+
+  /* ---- ELEMENTOS PADRÕES ---- */
+.botaoBranco {
+  background-color: var(--brancoAzulado);
+  color: var(--azulMedio);
+  width: 150px;
+  height: 50px;
+  border-radius: 25px;
+  border: none;
+  font-size: 18px;
+  cursor: pointer;
+  transition-duration: 0.4s;
+}
+
+.botaoBranco:hover {
+  background-color: var(--azulEscuro);
+  color: var(--brancoAzulado);
+}
+
+.botaoAzul {
+  background-color: var(--azulClaro);
+  color: var(--brancoAzulado);
+  width: 150px;
+  height: 50px;
+  border-radius: 25px;
+  border: none;
+  font-size: 18px;
+  cursor: pointer;
+  transition-duration: 0.4s;
+}
+
+.botaoAzul:hover {
+  background-color: var(--azulMedio);
+  color: var(--brancoAzulado);
+}
+
+.botaoPagamento {
+  width: 10vw; /* Definindo uma largura fixa para todos os botões */
+  height: 2.5vw; /* Definindo a altura fixa */
+  margin-right: 1vw;
+  border: 2px solid var(--azulMedio);
+  background-color: var(--brancoAzulado);
+  color: var(--azulEscuro);
+  cursor: pointer;
+  font-family: raleway;
+  font-size: 11pt;
+  text-align: center;
+  display: flex;
+  justify-content: center; /* Centraliza o texto horizontalmente */
+  align-items: center; /* Centraliza o texto verticalmente */
+  transition: background-color 0.3s ease;
+}
+
+/* Estilo de botões selecionados */
+.selecionado {
+  background-color: #0352A8FF !important;
+  color: #fff;
+  font-weight: bold;
+}
+
+.botaoMaisMenos{
+  width: 2vw;
+  height: 4vh;
+  font-size: 12pt;
+  cursor: pointer;
+  border: 2px solid var(--azulMedio);
+}
+
+.inputBotaoMaisMenos{
+  width: 2.5vw;
+  height: 4vh;
+  font-size: 13pt;
+  cursor: pointer;
+  font-family: raleway;
+  text-align: center;
+  background-color: var(--brancoAzulado);
+  border: 2px solid var(--azulMedio);
+}
+
+.inputRadio {
+  display: flex;
+  margin-bottom: 10px;
+}
+
+.inputRadio input[type="radio"] {
+  margin-right: 10px;
+}
+
+.inputLoginCadastro {
+  width: 35vw;
+  height: 5vh;
+  border-radius: 20px;
+  border: none;
+  padding: 10px;
+  margin-bottom: 20px;
+  text-align: center;
+  font-size: 13pt;
+}
+
+.inputAlterarEndereço {
+  height: auto;
+  border-radius: 20px;
+  padding: 10px;
+  text-align: start;
+  font-size: 13pt;
+  border: 2px solid #0352A8;
+  margin-bottom: 1%;
+}
+
+.divBanner {
+  align-items: left;
+  justify-content: left;
+  text-align: left;
+  padding: 6% 15%;
+  background: linear-gradient(to bottom, var(--azulClaro), var(--azulEscuro));
+  height: 10vh;
+}
+
+.divBannerFundoBolinha {
+  align-items: left;
+  justify-content: left;
+  text-align: left;
+  padding: 6% 15%;
+  background-image: url('../Imagens/imagemFundoBolinhas.svg');
+  background-size: cover;
+  background-position: center;
+  height: 20vh;
+}
+
+.divBordaEscura{
+  border: solid;
+  border-color: var(--azulEscuro);
+  border-width: 2px;
+  border-radius: 10px;
+  margin: 6% 15% 0 15%; 
+}
+  
+.material-symbols-outlined {
+  font-variation-settings: 'FILL' 1, 'wght' 300, 'GRAD' 0, 'opsz' 24;
+}
+
+.imagensPadrao{
+  width: 20%;
+  height: 20%;
+}
+
+.imagensComHover{
+  transition: all 0.5s;
+  cursor: pointer;
+}
+
+.imagensComHover:hover{
+  -webkit-transform: scale(1.1);
+  transform: scale(1.1);
+}
+
+.cardQuadrado {
+  background-color: var(--azulMedio);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 8px;
+  height: 45vh;
+  width: 45vh;
+}
+
+.logoBranca{
+  width: 38%;
+  height: 38%;
+}
+
+.margemPadrao{
+  padding: 6% 15%;
+}
+
+.textoPadrao {
+  text-align: justify;
+  font-size: 14pt;
+  font-family: "Raleway";
+  color: var(--azulEscuro);
+}
+
+.textoPadraoBranco {
+  text-align: justify;
+  font-size: 14pt;
+  font-family: "Raleway";
+  color: var(--brancoAzulado);
+}
+
+.textoPequeno {
+  text-align: justify;
+  font-size: 12pt;
+  font-family: "Raleway";
+  color: var(--brancoAzulado);
+}
+
+.textoPequenoEscuro {
+  text-align: justify;
+  font-size: 12pt;
+  font-family: "Raleway";
+  color: var(--azulEscuro);
+}
+
+.tituloPadrao {
+    font-family: "Raleway";
+    font-size: 25pt;
+    color: var(--azulEscuro);
+}
+
+.tituloPadraoBranco {
+    font-family: "Raleway";
+    font-size: 23pt;
+    color: var(--brancoAzulado);
+}
+  
+.padroesSecaoFlexDirectionColumn{
+  display: flex;
+  flex-direction: column;
+  row-gap: 8vh;
+}
+
+.padroesSecaoFlexDirectionRow{
+  padding: 5% 15%;
+  display: flex;
+  flex-direction: row;
+  gap: 2vw;
+}
+
+::-webkit-scrollbar-thumb {
+  border-radius: 8px;
+  background-color: var(--azulClaro);
+}
+
+::-webkit-scrollbar {
+  border-radius: 8px;
+}
+
+.separadorBaixo {
+  width: 0;
+  height: 0;
+  border-right: 98.5vw solid transparent;
+  border-bottom: 13.9vw solid var(--azulClaro);
+  margin-top: -13.9vw;
+  transform: scaleY(-1);
+  margin-top: 0px;
+  background-image: url('../Imagens/imagemFundoBolinhas.svg');
+}
+
+
+
+/* CARROSSEL */
+.carrossel-container {
+  position: relative;
+  width: 100%;
+  margin: 0 auto;
+  overflow: hidden;
+  background-color: #0352A8;
+}
+
+.carrossel {
+  display: flex;
+  transition: transform 0.5s ease-in-out;
+}
+
+.item {
+  min-width: 100%;
+  box-sizing: border-box;
+  padding-top: 3vh;
+  padding-bottom: 3vh;
+}
+
+.nav-esquerda,
+.nav-direita {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background-color: var(--azulMedio);
+  border: none;
+  color: var(--brancoAzulado);
+  padding: 2vh;
+  cursor: pointer;
+  font-size: 20pt;
+}
+
+.nav-esquerda {
+  left: 4vw;
+}
+
+.nav-direita {
+  right: 4vw;
+}
+
+
+
+/* CSS DAS TABS */
+.divTab{
+ justify-items: space-between;
+}
+
+.botaoTab{
+  border: none;
+  flex: 1;
+  text-align: right;
+  opacity: 50%;
+  background-color: var(--brancoAzulado);
+  width: 22.9vw;
+  padding-bottom: 1vh;
+}
+
+.botaoTab:hover {
+  opacity: 100%;
+  color: var(--azulClaro);
+}
+
+.botaoTab.active {
+  opacity: 100%;
+  border-bottom: 2px solid var(--azulClaro);
+}
+
+[data-tab-content] {
+  display: none;
+}
+
+.active[data-tab-content] {
+  display: block;
+}
+
+
+
+/* SEÇÃO ESPECÍFICA DA PÁG. ROTAS */
+.secaoRotasFlexDirectionRow{
+  display: flex;
+  flex-direction: row;
+  gap: 2vw;
+  justify-content: space-between;
+}
+
+
+/* ---- FOOTER ---- */
+
+footer {
+  margin-top: 8%;
+  background-color: var(--azulEscuro);
+  padding: 5% 15%;
+  text-align: center;
+}
+
+footer p{
+  margin-top: 3%;
+}

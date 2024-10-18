@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Prototipei</title>
+        <link href="../src/css/cssLoginCadastro.css" rel="stylesheet" type="text/css" />
+        <link href="../src/css/estilizacaoPadrao.css" rel="stylesheet" type="text/css" />
+    </head>
+
+    <body>
+        <section class="secaoPrincipal">
+            <div class="container">
+                <!-- IMAGEM NA LATERAL ESQUERDA -->
+                <div class="divImagem">
+                    <img id="idArduino" src="../src/Imagens/imagemArduinoLoginCadastro.png" alt="Imagem de um sistema embarcado da marca Arduíno.">
+                </div>
+
+                <!-- CADASTRO PT1 NA LATERAL DIREITA -->
+                <div class="divLoginCadastroDireita">
+                    <h1 class="textoPadraoBranco">CADASTRO</h1>
+                    
+                    <br> <br> <br> <br>
+        
+                    <div class="inputRadio">
+                        <input style="width: 2vw;" type="radio" id="pessoaFisica" name="tipoPessoa" value="fisica" checked>
+                        <label for="pessoaFisica" class="textoPadraoBranco">PESSOA FÍSICA</label>
+                    </div>
+        
+                    <div class="inputRadio">
+                        <input style="width: 2vw;" type="radio" id="pessoaJuridica" name="tipoPessoa" value="juridica">
+                        <label for="pessoaJuridica" class="textoPadraoBranco">PESSOA JURÍDICA</label>
+                    </div>
+                    
+                    <br> <br> <br> <br>
+        
+                    <button class="botaoBranco" onclick="redirecionar()">CONTINUAR</button>
+                </div>
+            </div>
+        </section>
+
+        <!-- SCRIPT: permite que o usuário vá para o tipo de cadastro que ele selecionou no input do tipo radio -->
+        <script>
+            function redirecionar() {
+                const tipoPessoa = document.querySelector('input[name="tipoPessoa"]:checked').value;
+
+                if (tipoPessoa === 'fisica') {
+                    window.location.href = 'cadastroPF2.html'; // Redireciona para página de Pessoa Física
+                } else if (tipoPessoa === 'juridica') {
+                    window.location.href = 'cadastroPJ2.html'; // Redireciona para página de Pessoa Jurídica
+                }
+            }
+        </script>
+
+    </body>
+</html>

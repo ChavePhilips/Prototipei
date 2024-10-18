@@ -1,0 +1,198 @@
+/* vars */
+:root {
+    --azulClaro: #047EFF;
+    --azulMedio: #0352A8;
+    --azulEscuro: #011428;
+    --brancoAzulado: #F1F0EC;
+}
+
+.rotas * {
+    padding: 0;
+    margin: 0;
+}
+
+.rotas {
+    width: 100%;
+    position: relative;
+    
+}
+
+.barras {
+    width: 20%;
+    height: 100%;
+    position: absolute;
+}
+
+.rightBar {
+    width: 20%;
+    height: 100%;
+    
+    position: absolute;
+    margin-left: calc(80% - 2px);
+    border-left: 2px solid var(--azulEscuro) ;
+}
+
+.barra-vazia {
+    background-color: #ddd;
+    position: absolute;
+    width: 10%;
+    height: 80%;
+    margin-left: 45%;
+    top: 10%;
+    
+}
+
+.barra-cheia {
+    background-color: var(--azulClaro);
+    position: absolute;
+    width: 100%;
+    transition: all 0.5s;
+}
+
+.rotas ul {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    list-style: none;
+    height: 100%;
+}
+
+.rotas ul > li {    
+    width: 100%;
+    height: 10vh;
+
+    margin-bottom: 5%;
+    margin-top: 5%;
+
+    display: flex;
+    
+    z-index: 1;
+    transition: all 0.5s;
+    position: relative;
+}
+
+.rotas ul :first-child {
+    margin-top: 0;
+}
+
+.rotas ul :last-child {
+    margin-bottom: 0;
+}
+
+.bolabox {
+    height: 100%;
+    width: 20%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.bola {
+    height: 80%;
+    aspect-ratio: 1/1;
+    background-color: var(--azulClaro);
+    border-radius: 50%;
+}
+
+.textoRota {
+    height: 100%;
+    width: 60%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.textoRota p {
+    text-align: left;
+    margin: 0% 5%;
+}
+
+.tempoRota {
+    height: 100%;
+    width: 20%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+
+/*time 1*/
+.progress-0 .point1 .tempoRota span {
+    display: none;
+}
+.progress-0 .point1 .tempoRota a::after {
+    content: "- - : - -";
+}
+
+/*time 2*/
+.progress-0 .point2 .tempoRota span, 
+.progress-1 .point2 .tempoRota span,
+.progress-2 .point2 .tempoRota span {
+    display: none;
+}
+.progress-0 .point2 .tempoRota a::after,
+.progress-1 .point2 .tempoRota a::after, 
+.progress-2 .point2 .tempoRota a::after {
+    content: "- - : - -";
+}
+
+/*time 3*/
+.progress-0 .point3 .tempoRota span, 
+.progress-1 .point3 .tempoRota span,
+.progress-2 .point3 .tempoRota span,
+.progress-3 .point3 .tempoRota span, 
+.progress-4 .point3 .tempoRota span {
+    display: none;
+}
+.progress-0 .point3 .tempoRota a::after, 
+.progress-1 .point3 .tempoRota a::after, 
+.progress-2 .point3 .tempoRota a::after, 
+.progress-3 .point3 .tempoRota a::after, 
+.progress-4 .point3 .tempoRota a::after {
+    content: "- - : - -";
+}
+
+/*circle 1*/
+.progress-0 .point1 .bolabox .bola {
+    background-color: #ddd;
+}
+
+/*circle 2*/
+.progress-0 .point2 .bolabox .bola, 
+.progress-1 .point2 .bolabox .bola,
+.progress-2 .point2 .bolabox .bola {
+    background-color: #ddd;
+}
+
+/*circle 3*/
+.progress-0 .point3 .bolabox .bola, 
+.progress-1 .point3 .bolabox .bola,
+.progress-2 .point3 .bolabox .bola,
+.progress-3 .point3 .bolabox .bola, 
+.progress-4 .point3 .bolabox .bola {
+    background-color: #ddd;
+}
+
+/*bar percent*/
+
+.progress-0 .barra-cheia, 
+.progress-1 .barra-cheia {
+    height: 0%;
+}
+
+.progress-2 .barra-cheia {
+    height: 25%;
+}
+
+.progress-3 .barra-cheia {
+    height: 50%;
+}
+
+.progress-4 .barra-cheia {
+    height: 75%;
+}
+
+.progress-5 .barra-cheia {
+    height: 100%;
+}

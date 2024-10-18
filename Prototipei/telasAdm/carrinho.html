@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width">
+    <title>Prototipei</title>
+    <link href="../src/css2/carrinho.css" rel="stylesheet" type="text/css" />
+    <!-- IMPORTAÇÃO DA FONTE RALEWAY - API GOOGLE -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Raleway:ital,wght@0,100..900;1,100..900&display=swap"
+        rel="stylesheet">
+
+    <!-- IMPORTAÇÃO DA FONTE ICONS - API GOOGLE -->
+    <link rel="stylesheet"
+        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+</head>
+
+<body>
+
+    <!-- NAVBAR -->
+    <header>
+        <div class="navbar">
+            <a href="index.html">
+                <a href="index.html"><img class="logoNavbar" src="../src/Imagens/logoReduzidaAzul.png" alt="Logo"></a>
+            </a>
+
+            <div class="links">
+                <a href="index.html#segundaSecao">Produtos</a>
+                <a href="index.html#titulo-terceiraSecao">Consultoria</a>
+                <a href="index.html#divSobrenos">Sobre Nós</a>
+                <a href="Login.html">Login</a>
+                <a href="Login.html">
+                    <div class="perfil">
+                        <img src="../src/Imagens/iconePerfil.png" alt="Perfil">
+                    </div>
+                </a>
+                <div class="carrinho">
+                    <img src="../src/Imagens/Carrinhocompras.png" alt="Perfil">
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <section>
+        <div class="banner">
+            <p id="tituloBanner">MEU CARRINHO</p>
+            <img id="logoBanner" src="../src/Imagens/logoBranca.png">
+        </div>
+    </section>
+
+    <section>
+        <div class="setaBranca-banner">
+            <img id="setaBranca" src="../src/Imagens/setaBranca.png">
+        </div>
+    </section>
+
+    <section>
+        <div class="botoesCarrinho">
+            <div id="botoesCarrinho-esquerda">
+                <label class="container-checkbox">
+                    <input type="checkbox" class="checkbox">
+                    <span class="checkmark"></span> <!-- Elemento customizado para o checkbox -->
+                    SELECIONAR TODOS OS ITENS
+                </label>
+            </div>
+            <div id="botoesCarrinho-direita"> 
+                <button class="botaoComprar">COMPRAR</button>
+            </div>
+                
+        </div>
+    </section>
+
+    <section class="valorTotal" style="margin-top: 2vh;">
+        <div class="valorTotal-carrinho">
+            <p> VALOR TOTAL DO CARRINHO: R$300,00</p>
+        </div>
+    </section>
+    
+    <section>
+        <div class="informacoesCarrinho" style="margin-top: 3vh;">
+            <div id="selecionadoCarrinho-item">
+                <p> SELEÇÃO</p>
+            </div>
+            <div id="produtoCarrinho-item">
+                <p> PRODUTO</p>
+            </div>
+            <div id="nomeValorCarrinho-item">
+                <p> NOME DO PRODUTO   |   VALOR</p>
+            </div>
+            <div id="quantidadeCarrinho-item">
+                <p> QUANTIDADE</p>
+            </div>
+            <div id="removerCarrinho-item">
+                <p> EXCLUIR</p>
+            </div>
+            
+
+        </div>
+    </section>
+
+    <section>
+        <div class="paiCarrinho">
+            <div class="itemCarrinho" style="margin-top: 1vh;">
+                <div class="checkboxCarrinho"> 
+                    <label class="checkboxItem-carrinho">
+                        <input type="checkbox" />
+                        <span class="marca-check"></span>
+                    </label>
+                </div>
+                <div class="imgCarrinho"> 
+                    <img class="fotoProduto-carrinho" src="../src/Imagens/imagemEstufa.png">
+                </div>
+                <div class="txtCarrinho"> 
+                    <p class="textoCarrinho" style="padding-bottom: 3vh;">Estufa portátil inteligente Pé de Feijão</p>
+                    <p class="textoCarrinho" style="padding-top: 3vh;">R$ 1.200,00</p>
+                </div>
+                <div class="quantidadeProduto-carrinho"> 
+                    <button class="diminuir">-</button>
+                    <input type="number" class="quantidade" value="1" min="1" readonly>
+                    <button class="aumentar">+</button>
+                </div>
+                <div class="lixeiraProduto-carrinho"></div>
+            </div>
+            
+            <div class="itemCarrinho" style="margin-top: 1vh;">
+                <div class="checkboxCarrinho"> 
+                    <label class="checkboxItem-carrinho">
+                        <input type="checkbox" />
+                        <span class="marca-check"></span>
+                    </label>
+                </div>
+                <div class="imgCarrinho"> 
+                    <img class="fotoProduto-carrinho" src="../src/Imagens/imagemEstufa.png">
+                </div>
+                <div class="txtCarrinho"> 
+                    <p class="textoCarrinho" style="padding-bottom: 3vh;">Estufa portátil inteligente Pé de Feijão</p>
+                    <p class="textoCarrinho" style="padding-top: 3vh;">R$ 1.200,00</p>
+                </div>
+                <div class="quantidadeProduto-carrinho"> 
+                    <button class="diminuir">-</button>
+                    <input type="number" class="quantidade" value="1" min="1" readonly>
+                    <button class="aumentar">+</button>
+                </div>
+                <div class="lixeiraProduto-carrinho"></div>
+            </div>
+
+            <div class="itemCarrinho" style="margin-top: 1vh;">
+                <div class="checkboxCarrinho"> 
+                    <label class="checkboxItem-carrinho">
+                        <input type="checkbox" />
+                        <span class="marca-check"></span>
+                    </label>
+                </div>
+                <div class="imgCarrinho"> 
+                    <img class="fotoProduto-carrinho" src="../src/Imagens/imagemEstufa.png">
+                </div>
+                <div class="txtCarrinho"> 
+                    <p class="textoCarrinho" style="padding-bottom: 3vh;">Estufa portátil inteligente Pé de Feijão</p>
+                    <p class="textoCarrinho" style="padding-top: 3vh;">R$ 1.200,00</p>
+                </div>
+                <div class="quantidadeProduto-carrinho"> 
+                    <button class="diminuir">-</button>
+                    <input type="number" class="quantidade" value="1" min="1" readonly>
+                    <button class="aumentar">+</button>
+                </div>
+                <div class="lixeiraProduto-carrinho"></div>
+            </div>
+
+            <div class="itemCarrinho" style="margin-top: 1vh;">
+                <div class="checkboxCarrinho"> 
+                    <label class="checkboxItem-carrinho">
+                        <input type="checkbox" />
+                        <span class="marca-check"></span>
+                    </label>
+                </div>
+                <div class="imgCarrinho"> 
+                    <img class="fotoProduto-carrinho" src="../src/Imagens/imagemEstufa.png">
+                </div>
+                <div class="txtCarrinho"> 
+                    <p class="textoCarrinho" style="padding-bottom: 3vh;">Estufa portátil inteligente Pé de Feijão</p>
+                    <p class="textoCarrinho" style="padding-top: 3vh;">R$ 1.200,00</p>
+                </div>
+                <div class="quantidadeProduto-carrinho"> 
+                    <button class="diminuir">-</button>
+                    <input type="number" class="quantidade" value="1" min="1" readonly>
+                    <button class="aumentar">+</button>
+                </div>
+                <div class="lixeiraProduto-carrinho"></div>
+            </div>
+
+            <div class="itemCarrinho" style="margin-top: 1vh;">
+                <div class="checkboxCarrinho"> 
+                    <label class="checkboxItem-carrinho">
+                        <input type="checkbox" />
+                        <span class="marca-check"></span>
+                    </label>
+                </div>
+                <div class="imgCarrinho"> 
+                    <img class="fotoProduto-carrinho" src="../src/Imagens/imagemEstufa.png">
+                </div>
+                <div class="txtCarrinho"> 
+                    <p class="textoCarrinho" style="padding-bottom: 3vh;">Estufa portátil inteligente Pé de Feijão</p>
+                    <p class="textoCarrinho" style="padding-top: 3vh;">R$ 1.200,00</p>
+                </div>
+                <div class="quantidadeProduto-carrinho"> 
+                    <button class="diminuir">-</button>
+                    <input type="number" class="quantidade" value="1" min="1" readonly>
+                    <button class="aumentar">+</button>
+                </div>
+                <div class="lixeiraProduto-carrinho"></div>
+            </div>
+        </div>
+    </section>
+
+    
+
+        
+
+        <br> <br> <br> <br>
+        <script src="../src/js/carrinho.js"></script>
+        <!-- FOOTER -->
+        <footer>
+            <div class="footer-content margemLateral">
+                <div class="footer-left">
+                    <img src="../src/Imagens/logoReduzidaBranca.png" alt="Logo" class="footer-logo">
+                    <ul>
+                        <li><a href="#">Contato</a></li>
+                        <li><a href="#">Local</a></li>
+                        <li><a href="#">Política de Testes</a></li>
+                        <li><a href="#">Termos de Uso</a></li>
+                    </ul>
+                </div>
+                <div class="footer-right">
+                    <ul>
+                        <li><a href="#">Pergunta Frequente 1</a></li>
+                        <li><a href="#">Pergunta Frequente 2</a></li>
+                        <li><a href="#">Pergunta Frequente 3</a></li>
+                    </ul>
+                </div>
+            </div>
+        </footer>
+</body>
+
+</html>

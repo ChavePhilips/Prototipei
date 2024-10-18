@@ -1,0 +1,35 @@
+.textareaBriefing {
+    resize: none;
+    width: 100%;
+    border-radius: 10px;
+    font-family: Raleway;
+    font-size: 15pt;
+    box-shadow: 0px 5px 5px #01142884;
+}
+
+.secaoFormulario{
+    background-color: var(--azulMedio);
+    margin: 6% 15%;
+    padding: 10%;
+    border-radius: 10px;
+}
+
+/* CLASSE DA TELA DE DEVOLUÇÃO E TROCA */
+.formDevolucaoTroca{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 1vh 0vh;
+}
+
+.textareaDevolucaoTroca{
+    display: flex;
+    justify-content: start;
+    width: 99%;
+    height: 10vh;
+    font-family: 'Raleway';
+    font-size: 14pt;
+    border: none;
+    background-color: var(--brancoAzulado);
+    resize: none;
+  }
