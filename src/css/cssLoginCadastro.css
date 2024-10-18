@@ -76,17 +76,6 @@
     max-width: 600px;
   }
 
-.inputLoginCadastro {
-    width: 35vw;
-    height: 5vh;
-    border-radius: 20px;
-    border: none;
-    padding: 10px;
-    margin-bottom: 20px;
-    text-align: center;
-    font-size: 13pt;
-}
-
 .formInputs{
     display: flex;
     flex-direction: column;
