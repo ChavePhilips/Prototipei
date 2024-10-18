@@ -199,6 +199,11 @@ html{
   border: 2px solid var(--azulMedio);
 }
 
+.imagemPadrao{
+  width: 80%;
+  height: 80%;
+}
+
 .inputBotaoMaisMenos{
   width: 2.5vw;
   height: 4vh;
@@ -466,6 +471,16 @@ html{
   flex-direction: row;
   gap: 2vw;
   justify-content: space-between;
+}
+
+.secaoDescricaoProduto{
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  background: linear-gradient(to bottom, #095DB7, #042951);
+  color: #007BFF;
+  height: 40vw;
+  display: flex;
 }
 
 
