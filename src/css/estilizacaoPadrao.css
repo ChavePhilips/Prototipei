@@ -477,7 +477,7 @@ html{
   align-items: center;
   justify-content: center;
   text-align: center;
-  background: linear-gradient(to bottom, #095DB7, #042951);
+  background: linear-gradient(to bottom, var(--azulClaro), var(--azulMedio));
   color: #007BFF;
   height: 40vw;
   display: flex;
