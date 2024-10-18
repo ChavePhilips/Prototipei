@@ -273,7 +273,7 @@ html{
   margin: 6% 15% 0 15%; 
 }
   
-.material-symbols-outlined {
+.material-symbols-outlined { /*Icons*/
   font-variation-settings: 'FILL' 1, 'wght' 300, 'GRAD' 0, 'opsz' 24;
 }
 
@@ -497,12 +497,3 @@ footer p{
   margin-top: 3%;
 }
 
-/* ---- ICONS ----*/
-
-.material-symbols-outlined {
-  font-variation-settings:
-  'FILL' 0,
-  'wght' 400,
-  'GRAD' 0,
-  'opsz' 24
-}
