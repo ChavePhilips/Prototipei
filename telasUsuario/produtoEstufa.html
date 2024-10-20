@@ -99,40 +99,84 @@
 
         <br><br><br><br>
 
-        <div id="secaoDescricaoProduto2">
-        <!-- SEÇÃO DA DESCRIÇÃO DO PRODUTO + COMENTÁRIOS -->
-        <section id="secaoDescricaoProduto">
-            <!-- BOTÕES QUE TROCAM ENTRE O PRODUTO E OS TERMOS DE COMPRA -->
-            <section id="" class="margemLateral">
-                <div class="gridDoisEspacos">
+        <!-- BOTÕES QUE TROCAM ENTRE O PRODUTO E OS TERMOS DE COMPRA -->
+    <section class="margemPadrao">
+        <div class="padroesSecaoFlexDirectionRow" style="padding: 0%; padding-left: 50%;">
+                <!-- Botão de produto -->
+                <button class="botaoTab active" data-tab-target="#divGrid-secaoCompraProduto" style="width: 15%;">
+                    <p class="textoPadrao" style="text-align: center;">PRODUTO</p>
+                </button>
+                <!-- Botão de termos de compra -->
+                <button class="botaoTab" data-tab-target="#sesaoTermosDeCompra">
+                    <p class="textoPadrao" style="text-align: center;" data-tab-target="#secaoTermosDeCompra">TERMOS DE COMPRA</p>
+                </button>
+        </div>
+    </section>
 
-                    <!-- Div vazia (tem só pra deixar a 2ª div na lateral direita) -->
-                    <div></div>
+    <!-- PRODUTO - SENSOR DE GASES -->
+    <section id="divGrid-secaoCompraProduto gridDoisEspacos" data-tab-content class="active">
+        <div id="divDados" class="gridDoisEspacos">
+            <!-- DESCRIÇÃO DO PRODUTO - SENSOR DE GASES -->
+            <div id="divDescricaoProduto-divGrid-sesaoDescricaoProduto">
+                <fieldset class="divBordaAzul fieldsetSensorGas">
+                    <legend class="tituloPequeno" style="margin-left: 2%;">Descrição</legend>
+                    <p class="textoPadrao" style="margin: 5%;">
+                        O sensor de gases inflamáveis móvel identifica vazamentos por meio de um sistema embarcado, notificando o usuário do ìndice incomum de gás.
+                        <br> <br>
+                        O sistema embarcado está em uma caixa de 15 cm de largura, 8 cm de altura e 8 cm de comprimento.
+                        <br> <br>
+                        A Prototipei oferece 12 meses de garantia para problemas no circuito elétrico.
+                    </p>
+                </fieldset>
+            </div>
+        </div>
 
-                    <!-- Div com os dois botões -->
-                    <div class="gridDoisEspacos">
+        <!--  AVALIAÇÃO DOS CLIENTES - SENSOR DE GASES -->
+        <div id="divAvaliacaoProduto-divGrid-sesaoDescricaoProduto">
+            <fieldset id="fieldsetSensorGas" class="divBordaAzul fieldsetSensorGas">
+                <legend>
+                    <!-- Classe para colocar os ícones do google -->
+                    <span class="material-symbols-outlined">gradegradegradegradestar_half</span>
+                </legend>
+            </fieldset>
+        </div>
+    </section>
 
-                        <!-- Botão de produto -->
-                        <button class="button tab active" data-tab-target="#divGrid-secaoCompraProduto">
-                            <p class="textoPadrao" style="text-align: right;">PRODUTO</p>
-                        </button>
-                        <!-- Botão de termos de compra -->
-                        <button class="button tab" data-tab-target="#sesaoTermosDeCompra">
-                            <p class="textoPadrao" style="text-align: right;" data-tab-target="#sesaoTermosDeCompra">TERMOS DE COMPRA</p>
-                        </button>
-                    </div>
+        <!-- FOOTER -->
+        <footer>
+            <div>
+                <img src="../src/Imagens/logoBranca.png" class="logoBranca" alt="Logo da Prototipei."/>
+            </div>
+            
+            <div class="padroesSecaoFlexDirectionRow" style="padding: 5% 0%;">
+                <div style="width: 40%;">
+                    <p class="textoPadraoBranco">CONTATO:</p>
+                    <p class="textoPadraoBranco">prototipei@gmail.com</p>
+                    <p class="textoPadraoBranco" style="margin-top: 10%;">LOCAL:</p>
+                    <p class="textoPadraoBranco">Etec de Taboão da Serra</p>
+                    <a href="" class="textoPadraoBranco"> <p>Política de privacidade</p></a>
+                    <a href="" class="textoPadraoBranco"><p>Termos de uso</p></a>
                 </div>
 
-                <div class="gridDoisEspacos">
-                    <fieldset class="divBordaEscura">
-                        <legend >Descrição</legend>
-                    </fieldset>
+                <div style="width: 20%;"></div>
 
-                    <fieldset class="divBordaEscura">
-                        <legend class="material-symbols-outlined">star star star</legend>
-                    </fieldset>
+                <div style="width: 40%;">
+
+                    <!-- LEMBRAR DE ALTERAR ESSA PARTE AQUI -->
+                    <p class="textoPadraoBranco">FAQ:</p>
+                    <p class="textoPadraoBranco">Item Nav Bar</p>
+                    <p class="textoPadraoBranco">Item Nav Bar</p>
+                    <p class="textoPadraoBranco">Item Nav Bar</p>
+                    <p class="textoPadraoBranco">Item Nav Bar</p>
+                    <p class="textoPadraoBranco">Item Nav Bar</p>
                 </div>
-            </section>
-        </main>
+            </div>
+
+            <hr>
+
+            <p class="textoPadraoBranco" style="text-align: center; padding-top: 3%;">Copyright © 2024, Prototipei. Todos os direitos reservados.</p>
+        </footer>
+
+        <script src="../src/js/tabs.js"></script>
     </body>
 </html>

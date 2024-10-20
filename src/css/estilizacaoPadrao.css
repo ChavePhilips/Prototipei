@@ -265,6 +265,14 @@ html{
   height: 20vh;
 }
 
+.divBordaAzul {
+  border: solid;
+  border-color: var(--azulClaro);
+  border-width: 2px;
+  border-radius: 10px;
+  margin: 3%;
+}
+
 .divBordaEscura{
   border: solid;
   border-color: var(--azulEscuro);
@@ -350,6 +358,12 @@ html{
     font-size: 23pt;
     color: var(--brancoAzulado);
 }
+
+.tituloPequeno {
+  font-family: "Raleway";
+  font-size: 15pt;
+  color: var(--azulClaro);
+}
   
 .padroesSecaoFlexDirectionColumn{
   display: flex;
@@ -398,6 +412,17 @@ html{
 .carrossel {
   display: flex;
   transition: transform 0.5s ease-in-out;
+}
+
+.checkmark {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 25px;
+  width: 25px;
+  background-color: #F1F0ECFF;
+  border: 2px solid #184677;
+  transition: all 0.3s ease;
 }
 
 .item {
@@ -481,6 +506,107 @@ html{
   color: #007BFF;
   height: 40vw;
   display: flex;
+}
+
+/* AVALIAÇÕES */
+#divBarrasAvaliacao-divAvaliacaoProduto-divDadosProduto-secaoDescricaoProduto{
+  min-height: 100vh;
+  
+  display: grid;
+  place-items: center;
+
+}
+
+.gridDoisEspacos{
+  display: inline-flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+  align-items: center;
+  width: 100%;
+}
+
+.divAvaliacoes{
+  width: 75vw;
+  display: flex;
+  align-items: center;
+  column-gap: 2rem;
+
+}
+
+.divMedia {
+  width: 30%;
+  text-align: center;
+  padding: 1rem;
+}
+
+.divMedia h1{
+  font-size: 3rem;
+}
+
+.divMedia p{
+  margin-top: .7rem;
+  letter-spacing: .1rem;
+
+}
+
+.divProgresso {
+  width: 70%;
+}
+
+.divValorProgresso{
+  height: 2rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+  column-gap: 1rem;
+}
+
+.divValorProgresso .divEstrelas{
+  font-size: 1.2rem;
+
+}
+
+.divValorProgresso p:last-child{
+  width: 10%;
+}
+
+.divProgresso .divBarrasProgresso{
+  flex: 1 1 0;
+  height: .5rem;
+  border-radius: .5rem;
+  background-color: var(--azulEscuro);
+}
+
+.divBarraIndividual {
+  height: 100%;
+  background-color: var(--azulClaro);
+  border-radius: .5rem;
+}
+
+.divMedia .divOrganizacaoEstrelas {
+  position: relative;
+  font-size: 2rem;
+  display: inline-block;
+}
+
+.divMedia .divOrganizacaoEstrelas::before {
+  content: "\2605 \2605 \2605 \2605 \2605";
+  color: var(--azulMedio);
+}
+
+.divMedia .divEstrelas{
+  position: absolute;
+  left: 0;
+  top: 0;
+
+  width: 50%;
+  overflow: hidden;
+}
+
+.divMedia .divEstrelas::before {
+  content: "\2605 \2605 \2605 \2605 \2605";
+  color: var(--azulClaro);
+  font-size: 2rem;
 }
 
 

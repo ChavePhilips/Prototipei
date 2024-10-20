@@ -21,4 +21,3 @@ document.getElementById('increase').addEventListener('click', function() {
     // Adiciona a classe 'selecionado' ao botão clicado
     document.getElementById(id).classList.add('selecionado');
   }
-  
