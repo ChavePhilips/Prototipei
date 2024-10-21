@@ -655,14 +655,20 @@ html{
   transition: 0.4s;
   border: 2px solid #042951;
   margin-bottom: 2vh;
-  font-size: 13pt;
+  font-size: 14pt;
+  font-family: Raleway;
   color:  #042951;
+}
+
+.negritoLeve{
+  font-weight: 600;
 }
 
 .active,
 .accordion:hover {
   background-color: #F1F0ECFF;
 }
+
 .panel {
   background-color: #F1F0ECFF;
   display: none;
@@ -677,7 +683,7 @@ html{
   width: 60%;
   margin-left: 20%;
   margin-right: 20%;
-  height: 200vh;
+  
 }
 
 .accordion.active {

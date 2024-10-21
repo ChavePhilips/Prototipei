@@ -18,6 +18,8 @@ for (i = 0; i < acc.length; i++) {
   });
 }
 
+
+// BOTÃO +/-
 document.getElementById('increase').addEventListener('click', function() {
     let quantityInput = document.getElementById('quantity');
     let currentValue = parseInt(quantityInput.value);
