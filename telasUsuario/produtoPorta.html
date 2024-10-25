@@ -68,6 +68,11 @@
                             <!-- Imagem da estufa -->
                              <div>
                                 <img class="" src="../src/Imagens/imagemArduinoHome.png" alt="Estufa Portátil Inteligente">
+
+                                <button class="botaoCarrinho">
+                                    <span class="material-symbols-outlined" style="color: #F1F0EC; font-size: 30pt; text-align: center; justify-content: center;">
+                                        add_shopping_cart</span>
+                                </button>
                              </div>
 
                             <!-- Informações do produto -->
@@ -86,7 +91,7 @@
                                 <br> <br>
                                 
                                 <div style="text-align: left;">
-                                    <button class="botaoBranco">COMPRAR</button>
+                                    <button class="botaoBranco" onclick="window.location.href = 'finalizarCompra1.html'">COMPRAR</button>
                                 </div>
                             </div>
                         </div>
@@ -97,6 +102,142 @@
 
         </section>
 
+        <!-- PRODUTO - ESTUFA -->
+        <section id="divGrid-secaoCompraProduto" data-tab-content class="active margemPadrao" style="padding-top: 0%;">
+            <div class="gridDoisEspacos">
+                <!-- DESCRIÇÃO DO PRODUTO - ESTUFA -->
+                <div style="width: 50%;">
+                    <fieldset class="divBordaAzul fieldsetSensorGas" style="height: 67vh;">
+                        <legend class="tituloPequeno" style="margin-left: 2%;">Descrição</legend>
+                        <p class="textoPadrao" style="margin: 5%;">
+                            O Open é um sistema de abertura automática de portas para pessoas com deficiências motoras é capaz de promover a inclusão 
+                            e a acessibilidade para todos em ambientes residenciais e públicos. Com um sistema RFID de alta qualidade, 
+                            abrir portas nunca foi tão fácil: basta apenas encaixar a tag na sua cadeira de rodas e chegar perto do sensor.
+
+                            <br> <br>
+
+                            O sistema conta com: <br>
+                            - 1 motor X; <br>
+                            - 2 módulos RFIDs; <br>
+                            - 1 tag. <br>
+
+                            <br>
+
+                            A Prototipei oferece 12 meses de garantia para problemas no circuito elétrico.
+                        </p>
+                    </fieldset>
+                </div>
+        
+                <!--  AVALIAÇÃO DOS CLIENTES - SENSOR DE GASES -->
+                <div id="divAvaliacaoProduto-divGrid-secaoDescricaoProduto" style="width: 50%;">
+                    <fieldset id="fieldsetSensorGas" class="divBordaAzul fieldsetSensorGas" style="overflow: scroll; height: 67vh;">
+                        <legend>
+                            <!-- Classe para colocar os ícones do google -->
+                            <span class="material-symbols-outlined" style="color: #0352A8;">gradegradegradegradestar_half</span>
+                        </legend>
+
+                        <!-- ORGANIZAÇÃO DAS DIVS DAS AVALIAÇÕES -->
+                        <div id="divBarrasAvaliacao-divAvaliacaoProduto-divDadosProduto-secaoDescricaoProduto">
+                            <div class="divAvaliacoes">
+                                <div class="divProgresso"></div>
+                            </div>
+                        </div>
+                        
+
+                        <div>
+                            <p class="tituloPequeno" style="text-align: center;">COMENTÁRIOS:</p>
+                            <!-- Avaliação 1 -->
+                            <div id="avaliacao1-">
+                                <div id="" class="" style="display: grid; grid-template-columns: 2fr 1fr; margin: 5%;">
+                                    <p class="tituloPequeno">João da Silva Pereira</p>
+                                    <span class="material-symbols-outlined" style="text-align: right; margin: 5%; color: #0352A8;"> gradegradegradegradegrade</span>
+                                </div>
+
+                                <p id="" class="textoPadrao" style="margin: 5%;">Estou muito satisfeito com o produto. Impecável! Comprei para a minha sobrinha e ela amou!</p>
+                            </div>
+
+                            <hr>
+                            <!-- Avaliação 2 -->
+                            <div id="avaliacao2-">
+                                <div id="" class="" style="display: grid; grid-template-columns: 2fr 1fr; margin: 5%;">
+                                    <p class="tituloPequeno">Paula Ramos</p>
+                                    <span class="material-symbols-outlined" style="text-align: right; color: #0352A8;"> gradegradegradegradestar_half</span>
+                                </div>
+
+                                <p id="" class="textoPadrao" style="margin: 5%;">Chegou um dia depois do prazo, porém o produto veio perfeito de acordo com o anúncio!</p>
+                            </div>
+
+                            <hr>
+                            <!-- Avaliação 3 -->
+                            <div id="avaliacao3-">
+                                <div id="" class="" style="display: grid; grid-template-columns: 2fr 1fr; margin: 5%;">
+                                    <p class="tituloPequeno">Victor Gabriel</p>
+                                    <span class="material-symbols-outlined" style="text-align: right; color: #0352A8;"> gradegradegradegradegrade</span>
+                                </div>
+
+                                <p id="" class="textoPadrao" style="margin: 5%;">Adorei, muito linda, atendeu minhas necessidades!</p>
+                            </div>
+                        </div>
+                    </fieldset>
+                </div>
+            </div>
+        </section>
+
+        <section id="secaoTermosDeCompra" data-tab-content>
+            <div class="margemPadrao" style="padding-top: 3%;">
+                <p class="tituloPadrao">TERMOS DE COMPRA</p> <br>
+
+                <p class="textoPadrao">
+                    De acordo com os Termos de Compras da Prototipei, o produto adquirido acima só poderá ser trocado em duas condições, 
+                    sendo elas: <br> <br>
+
+                <b>1. Troca por defeito</b> - Caso o produto apresente algum defeito, a troca poderá ser solicitada dentro do prazo de 30 dias 
+                após a entrega do produto. <a href="">Clique aqui caso queira saber mais</a>. <br> <br>
+
+                <b>2. Devolução por arrependimento</b> -  Conforme o Código de Defesa do Consumidor (Lei nº 8.078, de 11 de setembro de 1990), 
+                o cliente tem o direito de solicitar a devolução por arrependimento somente dentro de 7 dias após o recebimento do produto. 
+                <a href="">Clique aqui caso queira saber mais</a>. <br> <br>
+
+                Situações de troca fora do prazo estipulado e fora dos parâmetros solicitados, não serão aceitas. Para mais informações 
+                entre em contato conosco.
+                </p>
+            </div>
+        </section>
+
+        <!-- FOOTER -->
+        <footer>
+            <div>
+                <img src="../src/Imagens/logoBranca.png" class="logoBranca" alt="Logo da Prototipei."/>
+            </div>
+            
+            <div class="padroesSecaoFlexDirectionRow" style="padding: 5% 0%;">
+                <div style="width: 40%;">
+                    <p class="textoPadraoBranco">CONTATO:</p>
+                    <p class="textoPadraoBranco">prototipei@gmail.com</p>
+                    <p class="textoPadraoBranco" style="margin-top: 10%;">LOCAL:</p>
+                    <p class="textoPadraoBranco">Etec de Taboão da Serra</p>
+                    <a href="" class="textoPadraoBranco"> <p>Política de privacidade</p></a>
+                    <a href="" class="textoPadraoBranco"><p>Termos de uso</p></a>
+                </div>
+
+                <div style="width: 20%;"></div>
+
+                <div style="width: 40%;">
+
+                    <!-- LEMBRAR DE ALTERAR ESSA PARTE AQUI -->
+                    <p class="textoPadraoBranco">FAQ:</p>
+                    <p class="textoPadraoBranco">Item Nav Bar</p>
+                    <p class="textoPadraoBranco">Item Nav Bar</p>
+                    <p class="textoPadraoBranco">Item Nav Bar</p>
+                    <p class="textoPadraoBranco">Item Nav Bar</p>
+                    <p class="textoPadraoBranco">Item Nav Bar</p>
+                </div>
+            </div>
+
+            <hr>
+
+            <p class="textoPadraoBranco" style="text-align: center; padding-top: 3%;">Copyright © 2024, Prototipei. Todos os direitos reservados.</p>
+        </footer>
         <script src="../src/js/avaliacoes.js"></script>
     </body>
 </html>
