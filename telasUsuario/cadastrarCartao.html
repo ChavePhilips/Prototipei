@@ -5,6 +5,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>Prototipei</title>
         <link href="../src/css/estilizacaoPadrao.css" rel="stylesheet" type="text/css">
+        <link href="../src/css/cssFormularios.css" rel="stylesheet" type="text/css">
     </head>
 
     <body>
@@ -64,7 +65,7 @@
         <section id="primeiraSecao" style="margin-top: 11vh;">
             <div class="divBanner">
                 <div id="divTextoBanner">
-                    <p class="tituloPadraoBranco">MINHA CARTEIRA</p>
+                    <p class="tituloPadraoBranco">ADICIONAR MÉTODO DE PAGAMENTO</p>
                     <img src="../src/Imagens/logoBranca.png" class="logoBranca" alt="Logo da Prototipei.">
                 </div>
             </div>
@@ -78,74 +79,48 @@
         </section>
 
         <!-- INTRODUÇÃO -->
-        <section class="padroesSecaoFlexDirectionRow">
+        <section class="padroesSecaoFlexDirectionRow" style="padding-bottom: 0%;">
             <div>
                 <img src="../src/Imagens/iconePerfil.png" alt="Sua foto de perfil."/>
             </div>
 
             <div style="align-content: center; padding-left: 1.5vw;">
                 <p class="tituloPadrao">OLÁ, NOME DO CLIENTE!</p> <!-- Lembrar de puxar o nome do cliente do banco de dados aqui -->
-                <p class="textoPadrao">ESSES SÃO SEUS CARTÕES CADASTRADOS</p>
+                <p class="textoPadrao">Para adicionar um novo método de pagamento, preencha os dados abaixo!</p>
             </div>
         </section>
 
-        <!-- CARTÃO 1 -->
-        <section class="padroesSecaoFlexDirectionRow" style="justify-content: space-between;">
-            <div>
-                <span class="material-symbols-outlined" style="color: #0352A8; font-size: 50pt;">credit_card</span>
-            </div>
+        <section class="margemPadrao" style="margin-top: 0%;">
+            <fieldset class="divBordaAzul" style="margin: 0%; padding: 3%;">
+                <legend style="margin-left: 2%;">
+                    <span class="material-symbols-outlined" style="color: #0352A8; font-size: 50pt;">credit_card</span>
+                </legend>
 
-            <div>
-                <p class="tituloPadrao" style="color: #0352A8;">CARTÃO TERMINADO COM 5874</p>
-                <p class="textoPadrao">Email: marianabatista@gmail.com</p>
-            </div>
-            
-            <div>
-                <button class="botaoAzul">EDITAR</button>
-            </div>
-        </section>
+                <form>
+                    <label for="numeroCartao"><p class="textoPadrao" style="margin-bottom: 1%;">NÚMERO DO CARTÃO:</p></label>
+                    <input class="textareaBriefing" style="border: none; height: 4vh;" id="numeroCartao" name="numeroCartao" 
+                    type="number" required/>
 
-        <!-- CARTÃO 2 -->
-        <section class="padroesSecaoFlexDirectionRow" style="justify-content: space-between; padding-top: 0%;">
-            <div>
-                <span class="material-symbols-outlined" style="color: #0352A8; font-size: 50pt;">credit_card</span>
-            </div>
+                    <div class="padroesSecaoFlexDirectionRow" style="padding: 3% 0%;">
+                        <div style="width: 80%;">
+                            <label for="vencimentoCartao"><p class="textoPadrao" style="margin-bottom: 1%;">VENCIMENTO:</p></label>
+                            <input class="textareaBriefing" style="border: none; height: 4vh;" id="vencimentoCartao" required/>
+                        </div>
 
-            <div>
-                <p class="tituloPadrao" style="color: #0352A8;">CARTÃO TERMINADO COM 5874</p>
-                <p class="textoPadrao">Email: marianabatista@gmail.com</p>
-            </div>
-            
-            <div>
-                <button class="botaoAzul">EDITAR</button>
-            </div>
-        </section>
-
-        <!-- CARTÃO 3 -->
-        <section class="padroesSecaoFlexDirectionRow" style="justify-content: space-between; padding-top: 0%;">
-            <div>
-                <span class="material-symbols-outlined" style="color: #0352A8; font-size: 50pt;">credit_card</span>
-            </div>
-
-            <div>
-                <p class="tituloPadrao" style="color: #0352A8;">CARTÃO TERMINADO COM 5874</p>
-                <p class="textoPadrao">Email: marianabatista@gmail.com</p>
-            </div>
-            
-            <div>
-                <button class="botaoAzul">EDITAR</button>
-            </div>
-        </section>
-
-        <section class="margemPadrao" style="text-align: center; padding-top: 2%;">
-            <div>
-                <button class="botaoAzul" style="width: 32vw;" onclick="window.location.href = 'cadastrarCartao.html'">
-                    <div class="padroesSecaoFlexDirectionRow" style="padding: 1%; gap: 2%; align-items: center; justify-content: center;">
-                        <span class="material-symbols-outlined" style="font-size: 25pt; text-align: center; font-variation-settings: 'fill' 0;">add_circle</span>
-                        ADICIONAR NOVO MÉTODO DE PAGAMENTO
+                        <div>
+                            <label for="cvv"><p class="textoPadrao" style="margin-bottom: 1%;">CVV:</p></label>
+                            <input class="textareaBriefing" style="border: none; height: 4vh;" id="cvv" required/>
+                        </div>
                     </div>
-                </button>
-            </div>
+
+                    <label for="nomeCartao"><p class="textoPadrao" style="margin-bottom: 1%;">NOME NO CARTÃO:</p></label>
+                    <input class="textareaBriefing" style="border: none; height: 4vh;" id="nomeCartao" required/>
+
+                    <div style="text-align: center; padding-top: 5%;">
+                        <button class="botaoAzul" type="submit">CONCLUIR</button>
+                    </div>
+                </form>
+            </fieldset>
         </section>
 
         <!-- FOOTER -->
