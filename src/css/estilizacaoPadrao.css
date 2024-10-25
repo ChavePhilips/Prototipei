@@ -306,6 +306,7 @@ html{
 .imagensPadrao{
   width: 20%;
   height: 20%;
+  border-radius: 5%;
 }
 
 .imagensComHover{
