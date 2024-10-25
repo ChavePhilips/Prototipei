@@ -300,6 +300,7 @@ html{
   
 .material-symbols-outlined { /*Icons*/
   font-variation-settings: 'FILL' 1, 'wght' 300, 'GRAD' 0, 'opsz' 24;
+  transition: 0.4s;
 }
 
 .imagensPadrao{
@@ -315,6 +316,15 @@ html{
 .imagensComHover:hover{
   -webkit-transform: scale(1.1);
   transform: scale(1.1);
+}
+
+.iconesComHover{
+  color: var(--azulMedio);
+  transition: 0.4s;
+}
+
+.iconesComHover:hover{
+  color: var(--azulClaro);
 }
 
 .cardQuadrado {
@@ -380,6 +390,7 @@ html{
   font-family: "Raleway";
   font-size: 15pt;
   color: var(--azulClaro);
+  margin-left: 1%;
 }
   
 .padroesSecaoFlexDirectionColumn{
