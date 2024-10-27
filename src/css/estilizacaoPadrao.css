@@ -391,7 +391,8 @@ html{
   font-family: "Raleway";
   font-size: 15pt;
   color: var(--azulClaro);
-  margin-left: 1%;
+  margin-left: 2%;
+  padding: 1%;
 }
   
 .padroesSecaoFlexDirectionColumn{
