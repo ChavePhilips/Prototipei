@@ -151,6 +151,18 @@ html{
   color: var(--brancoAzulado);
 }
 
+.botaoDesabilitado{
+  background-color: var(--brancoAzulado);
+  color: var(--azulEscuro);
+  border: 2px solid var(--azulEscuro);
+  opacity: 70%;
+  font-family: Raleway;
+  width: 150px;
+  height: 50px;
+  border-radius: 25px;
+  font-size: 18px;
+}
+
 .botaoAzul {
   background-color: var(--azulClaro);
   color: var(--brancoAzulado);
