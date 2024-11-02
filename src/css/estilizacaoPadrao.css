@@ -32,6 +32,7 @@ html{
     top: 0px;
     padding: 2%;
     width: 98%;
+    height: 4%;
   }
   
   .logoNavbar {
@@ -438,6 +439,17 @@ html{
   border-bottom: 13.9vw solid var(--azulClaro);
   margin-top: -13.9vw;
   transform: scaleY(-1);
+  margin-top: 0px;
+  background-image: url('../Imagens/imagemFundoBolinhas.svg');
+}
+
+.separadorBaixoBranco {
+  width: 0;
+  height: 0;
+  border-right: 208.3vh solid transparent;
+  border-bottom: 13vw solid var(--brancoAzulado);
+  margin-top: -13.9vw;
+  transform: scaleX(-1);
   margin-top: 0px;
   background-image: url('../Imagens/imagemFundoBolinhas.svg');
 }
