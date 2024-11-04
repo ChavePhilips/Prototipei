@@ -187,6 +187,7 @@ html{
   height: 2.5vw; /* Definindo a altura fixa */
   margin-right: 1vw;
   border: 2px solid var(--azulMedio);
+  border-radius: 100px;
   background-color: var(--brancoAzulado);
   color: var(--azulEscuro);
   cursor: pointer;
@@ -196,7 +197,12 @@ html{
   display: flex;
   justify-content: center; /* Centraliza o texto horizontalmente */
   align-items: center; /* Centraliza o texto verticalmente */
-  transition: background-color 0.3s ease;
+  transition: 0.4s;
+}
+
+.botaoPagamento:hover{
+  background-color: var(--azulMedio);
+  color: var(--brancoAzulado);
 }
 
 /* Estilo de botões selecionados */
@@ -204,6 +210,13 @@ html{
   background-color: #0352A8FF !important;
   color: #fff;
   font-weight: bold;
+}
+
+.selecionado2 {
+  background-color: #0352A8FF !important;
+  color: var(--brancoAzulado);
+  font-family: Raleway;
+  font-size: 14pt;
 }
 
 .botaoMaisMenos{

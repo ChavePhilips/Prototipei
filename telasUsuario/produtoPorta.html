@@ -105,10 +105,24 @@
 
         </section>
 
-        <!-- PRODUTO - ESTUFA -->
-        <section id="divGrid-secaoCompraProduto" data-tab-content class="active margemPadrao" style="padding-top: 0%;">
+        <!-- BOTÕES QUE TROCAM ENTRE O PRODUTO E OS TERMOS DE COMPRA -->
+    <section class="margemPadrao" style="padding-bottom: 3%; padding-top: 0%">
+        <div class="padroesSecaoFlexDirectionRow" style="padding: 0%; padding-left: 50%;">
+                <!-- Botão de produto -->
+                <button class="botaoTab active" data-tab-target="#secaoDescricaoPorta" style="width: 15%;">
+                    <p class="textoPadrao" style="text-align: center;">PRODUTO</p>
+                </button>
+                <!-- Botão de termos de compra -->
+                <button class="botaoTab" data-tab-target="#secaoTermosDeCompraPorta">
+                    <p class="textoPadrao" style="text-align: center;" data-tab-target="#secaoTermosDeCompraPorta">TERMOS DE COMPRA</p>
+                </button>
+        </div>
+    </section>
+
+        <!-- PRODUTO - PORTA -->
+        <section id="secaoDescricaoPorta" data-tab-content class="active margemPadrao" style="padding-top: 0%;">
             <div class="gridDoisEspacos">
-                <!-- DESCRIÇÃO DO PRODUTO - ESTUFA -->
+                <!-- DESCRIÇÃO DO PRODUTO - PORTA -->
                 <div style="width: 50%;">
                     <fieldset class="divBordaAzul fieldsetSensorGas" style="height: 67vh;">
                         <legend class="tituloPequeno" style="margin-left: 2%;">Descrição</legend>
@@ -131,7 +145,7 @@
                     </fieldset>
                 </div>
         
-                <!--  AVALIAÇÃO DOS CLIENTES - SENSOR DE GASES -->
+                <!--  AVALIAÇÃO DOS CLIENTES - PORTA -->
                 <div id="divAvaliacaoProduto-divGrid-secaoDescricaoProduto" style="width: 50%;">
                     <fieldset id="fieldsetSensorGas" class="divBordaAzul fieldsetSensorGas" style="overflow: scroll; height: 67vh;">
                         <legend>
@@ -186,7 +200,7 @@
             </div>
         </section>
 
-        <section id="secaoTermosDeCompra" data-tab-content>
+        <section id="secaoTermosDeCompraPorta" data-tab-content>
             <div class="margemPadrao" style="padding-top: 3%;">
                 <p class="tituloPadrao">TERMOS DE COMPRA</p> <br>
 
@@ -195,11 +209,11 @@
                     sendo elas: <br> <br>
 
                 <b>1. Troca por defeito</b> - Caso o produto apresente algum defeito, a troca poderá ser solicitada dentro do prazo de 30 dias 
-                após a entrega do produto. <a href="">Clique aqui caso queira saber mais</a>. <br> <br>
+                após a entrega do produto. <a href="termos.html">Clique aqui caso queira saber mais</a>. <br> <br>
 
                 <b>2. Devolução por arrependimento</b> -  Conforme o Código de Defesa do Consumidor (Lei nº 8.078, de 11 de setembro de 1990), 
                 o cliente tem o direito de solicitar a devolução por arrependimento somente dentro de 7 dias após o recebimento do produto. 
-                <a href="">Clique aqui caso queira saber mais</a>. <br> <br>
+                <a href="termos.html">Clique aqui caso queira saber mais</a>. <br> <br>
 
                 Situações de troca fora do prazo estipulado e fora dos parâmetros solicitados, não serão aceitas. Para mais informações 
                 entre em contato conosco.
@@ -242,5 +256,6 @@
             <p class="textoPadraoBranco" style="text-align: center; padding-top: 3%;">Copyright © 2024, Prototipei. Todos os direitos reservados.</p>
         </footer>
         <script src="../src/js/avaliacoes.js"></script>
+        <script src="../src/js/tabs.js"></script>
     </body>
 </html>
