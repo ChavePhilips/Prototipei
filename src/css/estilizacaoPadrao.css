@@ -267,6 +267,7 @@ html{
   margin-bottom: 20px;
   text-align: center;
   font-size: 13pt;
+  background-color: var(--brancoAzulado);
 }
 
 .inputAlterarEndereço {
