@@ -459,7 +459,6 @@ html{
   margin-top: -13.9vw;
   transform: scaleY(-1);
   margin-top: 0px;
-  background-image: url('../Imagens/imagemFundoBolinhas.svg');
 }
 
 .separadorBaixoBranco {
@@ -762,5 +761,9 @@ footer {
 
 footer p{
   margin-top: 3%;
+}
+
+.margemSuperior{
+  margin-top: 5%;
 }
 
