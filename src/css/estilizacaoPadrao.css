@@ -331,6 +331,11 @@ html{
   transition: 0.4s;
 }
 
+.vazado { /*Icons*/
+  font-variation-settings: 'FILL' 0, 'wght' 300, 'GRAD' 0, 'opsz' 24;
+  transition: 0.4s;
+}
+
 .imagensPadrao{
   width: 20%;
   height: 20%;
@@ -749,8 +754,8 @@ html{
 
 footer {
   margin-top: 8%;
-  background-color: var(--azulEscuro);
-  padding: 5% 15%;
+  background-color: var(--azulMedio);
+  padding: 2% 15%;
   text-align: center;
 }
 

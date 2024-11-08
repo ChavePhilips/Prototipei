@@ -1,9 +1,11 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-br">
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Document</title>
+        <title>Prototipei</title>
+        <link href="../src/css/estilizacaoPadrao.css" rel="stylesheet" type="text/css">
+        <link href="../src/css/cssFormularios.css" rel="stylesheet" type="text/css">
     </head>
     
     <body>
@@ -58,5 +60,76 @@
                 </div>
             </div>
         </header>
+
+        <!-- BANNER -->
+        <section id="primeiraSecao" style="margin-top: 11vh;">
+            <div class="divBanner">
+                <div id="divTextoBanner">
+                    <p class="tituloPadraoBranco">EDITAR CARTÃO</p>
+                    <img src="../src/Imagens/logoBranca.png" class="logoBranca" alt="Logo da Prototipei.">
+                </div>
+            </div>
+        </section>
+
+        <!-- BANNER - SETA BRANCA -->
+        <section>
+            <div class="setaBranca-banner">
+                <img id="setaBranca" src="../src/Imagens/setaBranca.png">
+            </div>
+        </section>
+
+        <section class="margemPadrao" style="margin-top: 0%;">
+            <fieldset class="divBordaAzul" style="margin: 0%; padding: 3%;">
+                <legend style="margin-left: 2%;">
+                    <span class="material-symbols-outlined" style="color: #0352A8; font-size: 50pt;">credit_card</span>
+                </legend>
+
+                <form>
+                    <label for="numeroCartao"><p class="textoPadrao" style="margin-bottom: 1%;">NÚMERO DO CARTÃO:</p></label>
+                    <input class="textareaBriefing" style="border: none; height: 4vh;" id="numeroCartao" name="numeroCartao" 
+                    type="number" required/>
+
+                    <div class="padroesSecaoFlexDirectionRow" style="padding: 3% 0%;">
+                        <div style="width: 80%;">
+                            <label for="vencimentoCartao"><p class="textoPadrao" style="margin-bottom: 1%;">VENCIMENTO:</p></label>
+                            <input class="textareaBriefing" style="border: none; height: 4vh;" id="vencimentoCartao" required/>
+                        </div>
+
+                        <div>
+                            <label for="cvv"><p class="textoPadrao" style="margin-bottom: 1%;">CVV:</p></label>
+                            <input class="textareaBriefing" style="border: none; height: 4vh;" id="cvv" required/>
+                        </div>
+                    </div>
+
+                    <label for="nomeCartao"><p class="textoPadrao" style="margin-bottom: 1%;">NOME NO CARTÃO:</p></label>
+                    <input class="textareaBriefing" style="border: none; height: 4vh;" id="nomeCartao" required/>
+
+                    <div style="text-align: center; padding-top: 5%;">
+                        <button class="botaoAzul" type="submit" style="width: 15vw;">SALVAR ALTERAÇÕES</button>
+                    </div>
+                </form>
+            </fieldset>
+        </section>
+
+        <!-- FOOTER -->
+        <div style="background-color: #047EFF; height: 8vh;"></div>
+
+        <footer style="margin-top: 0%;">
+            <div class="padroesSecaoFlexDirectionRow" style="padding: 5% 0%;">
+                <div style="place-content: center; width: 30%;">
+                    <img src="../src/Imagens/logoBranca.png" width="100%"/>
+                </div>
+
+                <hr>
+
+                <div style="width: 30%;">
+                    <p class="textoPadraoBranco">©2024, Prototipei. <br> Todos os direitos reservados.</p>
+                </div>
+
+                <div class="padroesSecaoFlexDirectionColumn" style="gap: 0vw; width: 40%;">
+                    <p class="textoPadraoBranco" style="text-align: right; ">prototipei@gmail.com <br> R. Miguel Ortega, 135</p>
+                </div>
+            </div>
+        </footer>
     </body>
 </html>

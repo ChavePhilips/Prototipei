@@ -7,7 +7,7 @@
         <link href="../src/css/estilizacaoPadrao.css" rel="stylesheet" type="text/css">
         <link href="../src/css/cssFormularios.css" rel="stylesheet" type="text/css">
     </head>
-    
+
     <body>
         <!-- NAVBAR -->
         <header>
@@ -65,7 +65,7 @@
         <section id="primeiraSecao" style="margin-top: 11vh;">
             <div class="divBanner">
                 <div id="divTextoBanner">
-                    <p class="tituloPadraoBranco">MEU PERFIL</p>
+                    <p class="tituloPadraoBranco">AVALIAR PRODUTO</p>
                     <img src="../src/Imagens/logoBranca.png" class="logoBranca" alt="Logo da Prototipei.">
                 </div>
             </div>
@@ -78,113 +78,83 @@
             </div>
         </section>
 
-        <!-- INTRODUÇÃO -->
-        <section class="padroesSecaoFlexDirectionRow">
-            <div>
-                <img src="../src/Imagens/iconePerfil.png" alt="Sua foto de perfil."/>
-            </div>
-
-            <div style="align-content: center; padding-left: 1.5vw;">
-                <p class="tituloPadrao">OLÁ, NOME DO CLIENTE!</p> <!-- Lembrar de puxar o nome do cliente do banco de dados aqui -->
-            </div>
-
-            <div style="place-content: center; width: 40%; text-align: right;">
-                <a href="configuracoes.html">
-                    <span class="material-symbols-outlined iconesComHover" style="font-size: 50pt;">
-                        settings
-                    </span>
-                </a>
-            </div>
-        </section>
-        
-        <section class="margemPadrao" style="padding-top: 0%;">
-            <button class="botaoBranco" style="width: 100%; border: 2px solid;" onclick="window.location.href = 'minhasComprasRota.html'">MINHAS COMPRAS</button>
-
-            <p class="tituloPadrao" style="margin-top: 10%;">MEUS DADOS</p>
-        </section>
-
-        <!-- DADOS DO CLIENTE (PUXAR DO BANCO DE DADOS) -->
         <section>
-            <form>
+            <div class="margemPadrao">
+                <p class="tituloPadrao" style="text-align: center;">O QUE VOCÊ ACHOU DO PRODUTO?</p>
+
+                <div class="divBordaEscura" style="text-align: center; border-color: #0352A8;">
+                    <div class="padroesSecaoFlexDirectionRow" style="align-items: center; gap: 1vh; justify-content: center;">
+                        <p class="textoPadrao">Ruim</p>
+
+                        <button style="border: none; border-radius: 100%;">
+                            <span id="1" class="material-symbols-outlined vazado" style="font-size: 60pt; color: #0352A8;" 
+                            data-estrela="1">grade</span>
+                        </button>
+
+                        <button style="border: none; border-radius: 100%;">
+                            <span id="2" class="material-symbols-outlined vazado" style="font-size: 60pt; color: #0352A8;" 
+                            data-estrela="2">grade</span>
+                        </button>
+
+                        <button style="border: none; border-radius: 100%;">
+                            <span id="3" class="material-symbols-outlined vazado" style="font-size: 60pt; color: #0352A8;" 
+                            data-estrela="3">grade</span>
+                        </button>
+
+                        <button style="border: none; border-radius: 100%;">
+                            <span id="4" class="material-symbols-outlined vazado" style="font-size: 60pt; color: #0352A8;" 
+                            data-estrela="4">grade</span>
+                        </button>
+
+                        <button style="border: none; border-radius: 100%;">
+                            <span id="5" class="material-symbols-outlined vazado" style="font-size: 60pt; color: #0352A8;" 
+                            data-estrela="5">grade</span>
+                        </button>
+                        <p class="textoPadrao">Bom</p>
+                    </div>
+                </div>
+            </div>
+
+            <div>
                 <fieldset class="divBordaEscura" style="margin-top: 0%;">
-                    <legend class="tituloPequeno" style="color: #011428;">E-mail:</legend>
-
-                    <input class="textareaDevolucaoTroca" style="width: 98%; height: 5vh; margin: 1vh;" type="email" required></input>
-                </fieldset>
-
-                <fieldset class="divBordaEscura" style="margin-top: 1%;">
-                    <legend class="tituloPequeno" style="color: #011428;">Senha:</legend>
-
-                    <input class="textareaDevolucaoTroca" style="width: 98%; height: 5vh; margin: 1vh;" type="password" required></input>
-                </fieldset>
-
-                <fieldset class="divBordaEscura" style="margin-top: 1%;">
-                    <legend class="tituloPequeno" style="color: #011428;">Telefone:</legend>
-
-                    <input class="textareaDevolucaoTroca" style="width: 98%; height: 5vh; margin: 1vh;" type="number" required></input>
+                    <legend class="tituloPequeno" style="color: #011428;">ADICIONE UM COMENTÁRIO (opcional):</legend>
+    
+                    <form style="place-items: center;">
+                        <textarea class="textareaDevolucaoTroca" style="border-radius: 10px;" placeholder="Eu achei que meu produto..."></textarea>
+                    </form>
                 </fieldset>
 
                 <div class="margemPadrao" style="text-align: center; padding-top: 3%;">
-                    <button class="botaoAzul" style="width: 25%;">SALVAR ALTERAÇÕES</button>
+                    <button class="botaoAzul" type="submit">ENVIAR</button>
                 </div>
-            </form>
-        </section>
-
-        <!-- SEÇÃO DAS INFORMAÇÕES SOBRE A CONSULTORIA AGENDADA (FAZER JS DISSO AQ) -->
-        <section>
-            <fieldset class="divBordaEscura">
-                <legend class="tituloPequeno" style="color: #011428;">CONSULTORIA</legend>
-
-                <div id="divInfoDaConsultoria" style="margin: 3%;">
-                    <p class="textoPadrao">Aguardando a aprovação da sua consultoria.</p>
-                </div>
-            </fieldset>
-        </section>
-
-        <!-- SEÇÃO DAS INFORMAÇÕES SOBRE AS SOLICITAÇÕES DE TROCA E DEVOLUÇÃO (FAZER JS DISSO AQ) -->
-        <section>
-            <fieldset class="divBordaEscura">
-                <legend class="tituloPequeno" style="color: #011428;">TROCA E DEVOLUÇÃO</legend>
-
-                <div id="divInfoDaConsultoria" style="margin: 3%;">
-                    <p class="textoPadrao">Nenhum pedido de troca ou devolução solicitado até o momento.</p>
-                </div>
-            </fieldset>
-        </section>
-
-        <!-- FOOTER -->
-        <footer>
-            <div>
-                <img src="../src/Imagens/logoBranca.png" class="logoBranca" alt="Logo da Prototipei."/>
             </div>
+        </section>
+
+        <script>
+            var nota;
+            const numbers = document.querySelectorAll('[data-estrela]');
+                
+            numbers.forEach(function(number) {
+                number.addEventListener('click', function() {
+                    const valorClicado = parseInt(this.dataset.estrela); // Pega o valor da estrela clicada
+
+                    numbers.forEach(function(span) {
+                        const valorEstrela = parseInt(span.dataset.estrela); // Pega o valor da estrela no loop
+                        
+                        // Verifica se a estrela deve estar cheia ou vazada
+                        if (valorEstrela <= valorClicado) {
+                            span.classList.remove("vazado");
+                        } 
+                        
+                        else {
+                            span.classList.add("vazado");
+                        }
+                    });
+
+                    nota = valorClicado;
+                });
+            });
             
-            <div class="padroesSecaoFlexDirectionRow" style="padding: 5% 0%;">
-                <div style="width: 40%;">
-                    <p class="textoPadraoBranco">CONTATO:</p>
-                    <p class="textoPadraoBranco">prototipei@gmail.com</p>
-                    <p class="textoPadraoBranco" style="margin-top: 10%;">LOCAL:</p>
-                    <p class="textoPadraoBranco">Etec de Taboão da Serra</p>
-                    <a href="" class="textoPadraoBranco"> <p>Política de privacidade</p></a>
-                    <a href="" class="textoPadraoBranco"><p>Termos de uso</p></a>
-                </div>
-
-                <div style="width: 20%;"></div>
-
-                <div style="width: 40%;">
-
-                    <!-- LEMBRAR DE ALTERAR ESSA PARTE AQUI -->
-                    <p class="textoPadraoBranco">FAQ:</p>
-                    <p class="textoPadraoBranco">Item Nav Bar</p>
-                    <p class="textoPadraoBranco">Item Nav Bar</p>
-                    <p class="textoPadraoBranco">Item Nav Bar</p>
-                    <p class="textoPadraoBranco">Item Nav Bar</p>
-                    <p class="textoPadraoBranco">Item Nav Bar</p>
-                </div>
-            </div>
-
-            <hr>
-
-            <p class="textoPadraoBranco" style="text-align: center; padding-top: 3%;">Copyright ©2024, Prototipei. Todos os direitos reservados.</p>
-        </footer>
+        </script>
     </body>
 </html>
