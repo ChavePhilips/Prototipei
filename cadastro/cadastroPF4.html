@@ -1,85 +1,159 @@
 <!DOCTYPE html>
 <html lang="pt-br">
-    <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Cadastro</title>
-        <link href="../src/css/cssLoginCadastro.css" rel="stylesheet" type="text/css" />
-        <link href="../src/css/estilizacaoPadrao.css" rel="stylesheet" type="text/css" />
-    </head>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cadastro</title>
+    <link href="../src/css/cssLoginCadastro.css" rel="stylesheet" type="text/css" />
+    <link href="../src/css/estilizacaoPadrao.css" rel="stylesheet" type="text/css" />
+</head>
 
-    <body>
-        <section class="secaoPrincipal">
-            <div class="container">
-                <!-- IMAGEM NA LATERAL ESQUERDA -->
-                <div class="divImagem">
-                    <img id="idArduino" src="../src/Imagens/imagemArduinoLoginCadastro.png" alt="Imagem de um sistema embarcado da marca Arduíno.">
-                </div>
-                
-                <!-- CADASTRO PF3 NA LATERAL DIREITA -->
-                <div class="divLoginCadastroDireita">
-                    <h1 class="tituloPadraoBranco">CADASTRO</h1>
+<body>
+    <section class="secaoPrincipal">
+        <div class="container">
+            <!-- IMAGEM NA LATERAL ESQUERDA -->
+            <div class="divImagem">
+                <img id="idArduino" src="../src/Imagens/imagemArduinoLoginCadastro.png" alt="Imagem de um sistema embarcado da marca Arduíno.">
+            </div>
 
-                    <br> <br>
-    
-                    <!-- FORMULÁRIO DO CADASTRO -->
-                    <form class="formInputs">
-                        <!-- Linha Endereço e Número -->
-                        <div class="inputLinha">
-                            <div class="divOrganizacaoInputs" style="margin-right: 1%;">
-                                <label class="textoPadraoBranco" for="endereco">ENDEREÇO:</label>
-                                <input class="inputLoginCadastro" style="width: 100%;" type="text" id="endereco" name="endereco" required>
-                            </div>
+            <!-- CADASTRO PF3 NA LATERAL DIREITA -->
+            <div class="divLoginCadastroDireita">
+                <h1 class="tituloPadraoBranco">CADASTRO</h1>
 
-                            <div class="divOrganizacaoInputs" style="margin-left: 1%;">
-                                <label class="textoPadraoBranco" for="numero">Nº:</label>
-                                <input class="inputLoginCadastro" style="width: 100%;" type="number" id="numero" name="numero" required>
-                            </div>
+                <br><br>
+
+                <!-- FORMULÁRIO DO CADASTRO -->
+                <form id="additionalInfoForm" class="formInputs">
+                    <!-- Linha Endereço e Número -->
+                    <div class="inputLinha">
+                        <div class="divOrganizacaoInputs" style="margin-right: 1%;">
+                            <label class="textoPadraoBranco" for="endereco">ENDEREÇO:</label>
+                            <input class="inputLoginCadastro" style="width: 100%;" type="text" id="endereco" name="endereco" required>
                         </div>
-        
-                        <!-- CEP -->
-                        <label class="textoPadraoBranco" for="cep">CEP:</label>
-                        <input class="inputLoginCadastro" style="width: 100%;" type="text" id="cep" name="cep" required>
-        
-                        <!-- Linha UF e Cidade -->
-                        <div class="inputLinha">
-                            <div class="divOrganizacaoInputs" style="margin-right: 1%;">
-                                <label class="textoPadraoBranco" style="justify-content: start;" for="uf">UF:</label>
-                                <input class="inputLoginCadastro" style="width: 100%;" type="text" id="uf" name="uf" required>
-                            </div>
 
-                            <div class="divOrganizacaoInputs" style="margin-left: 1%;">
-                                <label class="textoPadraoBranco" for="cidade">CIDADE:</label>
-                                <input class="inputLoginCadastro" style="width: 100%;" type="text" id="cidade" name="cidade" required>
-                            </div>
+                        <div class="divOrganizacaoInputs" style="margin-left: 1%;">
+                            <label class="textoPadraoBranco" for="numero">Nº:</label>
+                            <input class="inputLoginCadastro" style="width: 100%;" type="number" id="numero" name="numero" required>
                         </div>
-        
-                        <!-- Complemento -->
-                        <label class="textoPadraoBranco" for="complemento">COMPLEMENTO:</label>
-                        <input class="inputLoginCadastro" style="width: 100%;" type="text" id="complemento" name="complemento">
-        
-                        <br>
+                    </div>
 
-                        <!-- Termos e Condições -->
-                        <div class="checkbox-group">
-                            <input style="width: 3vh; height: 2vh;" type="checkbox" id="termos" name="termos" required>
-                            <label class="textoPadraoBranco" for="termos">Declaro que li e aceito os <a href="#" class="textoPadraoBranco">Termos e Condições de Uso</a></label>
-                        </div>
-        
-                        <br> <br>
+                    <!-- CEP -->
+                    <label class="textoPadraoBranco" for="cep">CEP:</label>
+                    <input class="inputLoginCadastro" style="width: 100%;" type="text" id="cep" name="cep" required>
 
-                        <!-- Botão Concluir -->
-                        <a href="login.html"><button class="botaoBranco">CONCLUIR</button></a>
-        
-                        <!-- Indicador de Páginas -->
-                        <div class="divIndicadores">
-                            <span class="spanIndicador"></span>
-                            <span class="spanIndicador"></span>
-                            <span class="spanIndicador active"></span>
+                    <!-- Linha UF e Cidade -->
+                    <div class="inputLinha">
+                        <div class="divOrganizacaoInputs" style="margin-right: 1%;">
+                            <label class="textoPadraoBranco" style="justify-content: start;" for="uf">UF:</label>
+                            <input class="inputLoginCadastro" style="width: 100%;" type="text" id="uf" name="uf" required maxlength="2">
                         </div>
-                    </form>          
-                </div>
-            </div>  
-        </section>
-    </body>
+
+                        <div class="divOrganizacaoInputs" style="margin-left: 1%;">
+                            <label class="textoPadraoBranco" for="cidade">CIDADE:</label>
+                            <input class="inputLoginCadastro" style="width: 100%;" type="text" id="cidade" name="cidade" required>
+                        </div>
+                    </div>
+
+                    <!-- Complemento -->
+                    <label class="textoPadraoBranco" for="complemento">COMPLEMENTO:</label>
+                    <input class="inputLoginCadastro" style="width: 100%;" type="text" id="complemento" name="complemento">
+
+                    <br>
+
+                    <!-- Termos e Condições -->
+                    <div class="checkbox-group">
+                        <input style="width: 3vh; height: 2vh;" type="checkbox" id="termos" name="termos" required>
+                        <label class="textoPadraoBranco" for="termos">Declaro que li e aceito os <a href="#" class="textoPadraoBranco">Termos e Condições de Uso</a></label>
+                    </div>
+
+                    <br><br>
+
+                    <!-- Botão Concluir -->
+                    <button type="submit" class="botaoBranco" style="display: block; margin: 20px auto;">CONTINUAR</button>
+
+                    <!-- Indicador de Páginas -->
+                    <div class="divIndicadores">
+                        <span class="spanIndicador"></span>
+                        <span class="spanIndicador"></span>
+                        <span class="spanIndicador active"></span>
+                    </div>
+                </form>          
+            </div>
+        </div>  
+    </section>
+
+    <script type="module">
+        // Firebase configuration
+        const firebaseConfig = {
+            apiKey: "AIzaSyBVMWxw3ubEE6HWWxzu1H_BhnWzRXQwd2g",
+            authDomain: "prototipei.firebaseapp.com",
+            projectId: "prototipei",
+            storageBucket: "prototipei.firebasestorage.app",
+            messagingSenderId: "507053339898",
+            appId: "1:507053339898:web:efac2b22db7bde679d4543"
+        };
+
+        // Importações Firebase
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/11.0.1/firebase-app.js";
+        import { getFirestore, doc, updateDoc } from "https://www.gstatic.com/firebasejs/11.0.1/firebase-firestore.js";
+
+        // Inicializa o Firebase
+        const app = initializeApp(firebaseConfig);
+        const db = getFirestore(app);
+
+        // Formatação para CEP
+        const cepInput = document.getElementById('cep');
+        cepInput.addEventListener('input', () => {
+            let cep = cepInput.value.replace(/\D/g, '').substring(0, 8);
+            if (cep.length > 5) {
+                cep = cep.slice(0, 5) + '-' + cep.slice(5);
+            }
+            cepInput.value = cep;
+        });
+
+        // Formatação para UF (apenas letras maiúsculas e no máximo 2 caracteres)
+        const ufInput = document.getElementById('uf');
+        ufInput.addEventListener('input', () => {
+            ufInput.value = ufInput.value.toUpperCase().replace(/[^A-Z]/g, '').substring(0, 2);
+        });
+
+        // Adiciona evento de envio ao formulário
+        document.getElementById('additionalInfoForm').addEventListener('submit', async function(e) {
+            e.preventDefault();
+
+            // Recupera o userId salvo no localStorage
+            const userId = localStorage.getItem('userId');
+            if (!userId) {
+                alert("Erro: ID do usuário não encontrado. Retorne ao início do cadastro.");
+                return;
+            }
+
+            // Recupera os valores dos campos do formulário
+            const endereco = document.getElementById('endereco').value;
+            const numero = document.getElementById('numero').value;
+            const cep = cepInput.value;
+            const uf = ufInput.value;
+            const cidade = document.getElementById('cidade').value;
+            const complemento = document.getElementById('complemento').value;
+
+            try {
+                // Atualiza o documento do usuário no Firestore
+                await updateDoc(doc(db, "usuarios_PF", userId), {
+                    endereco: endereco,
+                    numero: numero,
+                    cep: cep,
+                    uf: uf,
+                    cidade: cidade,
+                    complemento: complemento
+                });
+
+                // Redireciona para a próxima etapa do cadastro
+                window.location.href = "login.html";
+            } catch (error) {
+                console.error("Erro ao atualizar as informações do usuário: ", error);
+                alert("Falha ao atualizar as informações do usuário.");
+            }
+        });
+    </script>
+</body>
 </html>
