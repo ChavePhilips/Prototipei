@@ -581,6 +581,14 @@ html{
   display: block;
 }
 
+.grid{
+  display: grid;
+  grid-template-columns: 15% 42% 8% 31%;
+  column-gap: 1%;
+  grid-template-rows: repeat(3 1fr);
+  row-gap: 5%;
+}
+
 
 
 /* SEÇÃO ESPECÍFICA DA PÁG. ROTAS */

@@ -72,9 +72,9 @@
 
         <section>
             <div class="padroesSecaoFlexDirectionRow" style="justify-content: space-between; padding-bottom: 0vh;">
-                <div class="inputRadio" style="align-items: center;">
-                    <input style="width: 1.5vw; height: 1.5vw;" type="radio" id="pessoaFisica" name="tipoPessoa" value="fisica">
-                    <label for="pessoaFisica" class="textoPadrao">TODOS OS ITENS</label>
+                <div style="align-items: center;">
+                    <input style="width: 1vw; height: 1vw;" type="checkbox" id="todosOsItens" name="tipoPessoa" value="fisica" onclick="todosOsItens()">
+                    <label for="todosOsItens" class="textoPadrao" style="margin-left: 1vw;">TODOS OS ITENS</label>
                 </div>
                 
                 <div>
@@ -84,8 +84,8 @@
 
             <!-- QUADRADO COM O PRODUTO -->
             <div class="padroesSecaoFlexDirectionRow divBordaEscura" style="align-items: center; padding: 2%;">
-                <div class="inputRadio" style="align-items: center;">
-                    <input style="width: 1.5vw; height: 1.5vw;" type="radio">
+                <div style="align-items: center;">
+                    <input id="produto1" style="width: 1vw; height: 1vw;" type="checkbox">
                 </div>
 
                 <img src="../src/Imagens/imagemEstufa.png" class="imagensPadrao"/>
@@ -122,8 +122,8 @@
 
             <!-- QUADRADO COM O PRODUTO -->
             <div class="padroesSecaoFlexDirectionRow divBordaEscura" style="align-items: center; padding: 2%; margin-top: 1%;">
-                <div class="inputRadio" style="align-items: center;">
-                    <input style="width: 1.5vw; height: 1.5vw;" type="radio">
+                <div style="align-items: center;">
+                    <input style="width: 1vw; height: 1vw;" type="checkbox">
                 </div>
 
                 <img src="../src/Imagens/imagemEstufa.png" class="imagensPadrao"/>
@@ -181,5 +181,23 @@
         </footer>
 
         <script src="../src/js/javascriptPadrao.js"></script>
+
+        <script>
+            function todosOsItens() {
+                //CHECHBOX TODOS OS ITENS
+                var checkboxes = document.querySelectorAll('input[type="checkbox"]');
+                var idTodosOsItens = document.getElementById('todosOsItens');
+
+                if (idTodosOsItens.checked) {
+                    checkboxes.forEach(function(checkbox) {
+                        checkbox.checked = true;
+                    });
+                } else {
+                    checkboxes.forEach(function(checkbox) {
+                        checkbox.checked = false;
+                    });
+                }
+            }
+        </script>
     </body>
 </html>

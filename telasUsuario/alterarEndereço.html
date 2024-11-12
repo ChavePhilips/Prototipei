@@ -80,45 +80,54 @@
                 <br> <br>
 
                 <p class="textoPadrao">SELECIONAR ENDEREÇO SALVO:</p> <br>
-                <div style="background-color: #0352A8; padding: 2%; border-radius: 10px;">
-                    <form class="inputRadio">
-                        <input id="enderecoCadastrado1" style="width: 2vw;" type="radio" name="enderecoCadastrado1" value="" checked>
-                        <label for="enderecoCadastrado1" class="textoPadraoBranco">José Serafim de Castro, nº120, Taboão da Serra - São Paulo </label> 
-                    </form>
+                <div>
+                    <form>
+                        <div class="inputRadio padroesSecaoFlexDirectionColumn" style="background-color: #0352A8; padding: 2%; border-radius: 10px; gap: 0vh;">
+                            <div class="padroesSecaoFlexDirectionRow" style="padding: 2%;">
+                                <input id="enderecoCadastrado1" style="width: 2vw;" type="radio" name="enderecoCadastrado1" value="" checked>
+                                <label for="enderecoCadastrado1" class="textoPadraoBranco">José Serafim de Castro, nº120, Taboão da Serra - São Paulo </label>
+                            </div>
+                            
+                            <div class="padroesSecaoFlexDirectionRow" style="padding: 2%;">
+                                <input id="enderecoCadastrado1" style="width: 2vw;" type="radio" name="enderecoCadastrado1" value="" checked>
+                                <label for="enderecoCadastrado1" class="textoPadraoBranco">José Serafim de Castro, nº120, Taboão da Serra - São Paulo </label>
+                            </div>
+                        </div>
 
-                    <form class="inputRadio">
-                        <input id="enderecoCadastrado2" style="width: 2vw;" type="radio" name="enderecoCadastrado2">
-                        <label for="enderecoCadastrado2" class="textoPadraoBranco">José Serafim de Castro, nº120, Taboão da Serra - São Paulo</label>
+                        <br> <br>
+
+                        <p class="textoPadrao" style="text-align: center;"><b>ou</b></p> <br> <br>
+                        <p class="textoPadrao">CADASTRAR NOVO ENDEREÇO:</p> <br>
+
+                        <div class="grid" style="background-color: #0352A8; border-radius: 10px; align-items: center; padding: 3%;">
+                            <label for="rua" class="textoPadraoBranco">RUA:</label>
+                            <input type="text" id="rua" class="inputAlterarEndereço" placeholder="Digite o nome da rua">
+
+                            <label for="numero" class="textoPadraoBranco">Nº:</label>
+                            <input type="text" id="numero" class="inputAlterarEndereço" placeholder="Digite o número">
+
+                            <label for="cidade" class="textoPadraoBranco">CIDADE:</label>
+                            <input type="text" id="cidade" class="inputAlterarEndereço" placeholder="Digite a cidade">
+                            
+                            <label for="bairro" class="textoPadraoBranco">BAIRRO:</label>
+                            <input type="text" id="bairro" class="inputAlterarEndereço"placeholder="Digite o bairro">
+
+                            <label for="complemento" class="textoPadraoBranco">COMPLEMENTO:</label>
+                            <input type="text" id="complemento" class="inputAlterarEndereço" placeholder="Digite o complemento">
+                            
+                            <label for="cep" class="textoPadraoBranco">CEP:</label>
+                            <input type="text" id="cep" class="inputAlterarEndereço" placeholder="Digite o CEP">
+                        </div>
+                        
+                        <div style="text-align: center; margin-top: 5%;">
+                            <button class="botaoAzul" style="width: 30%;" type="submit">DEFINIR NOVO ENDEREÇO</button>
+                        </div>
                     </form>
                 </div>
 
-                <br> <br>
-
-                    <p class="textoPadrao" style="text-align: center;"><b>ou</b></p> <br> <br>
-
-                    <p class="textoPadrao">CADASTRAR NOVO ENDEREÇO:</p> <br>
-
-                    <form style="background-color: #0352A8; padding: 2%; border-radius: 10px">
-                        <label for="rua" class="textoPadraoBranco">RUA:</label>
-                        <input type="text" id="rua" class="inputAlterarEndereço" style="width: 70%;" placeholder="Digite o nome da rua">
-
-                        <label for="numero" class="textoPadraoBranco">Nº:</label>
-                        <input type="text" id="numero" class="inputAlterarEndereço" style="width: 16%;" placeholder="Digite o número">
-
-                        <label for="bairro" class="textoPadraoBranco">BAIRRO:</label>
-                        <input type="text" id="bairro" class="inputAlterarEndereço" style="width: 43%;" placeholder="Digite o bairro">
-                        <label for="cidade" class="textoPadraoBranco">CIDADE:</label>
-                        <input type="text" id="cidade" class="inputAlterarEndereço" style="width: 35%;" placeholder="Digite a cidade">
-
-                        <label for="cep" class="textoPadraoBranco">CEP:</label>
-                        <input type="text" id="cep" class="inputAlterarEndereço" style="width: 42%;" placeholder="Digite o CEP">
-                        <label for="complemento" class="textoPadraoBranco">COMPLEMENTO (OPCIONAL):</label>
-                        <input type="text" id="complemento" class="inputAlterarEndereço" style="width: 20%;" placeholder="Digite o complemento">
+                    <form>
+                        
                     </form>
-
-                    <div style="text-align: center; margin-top: 4%;">
-                        <button class="botaoAzul" style="width: 30%;" type="submit">DEFINIR NOVO ENDEREÇO</button>
-                    </div>
             </div>
         </section>
 
