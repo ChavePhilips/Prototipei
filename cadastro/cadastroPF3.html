@@ -1,58 +1,135 @@
 <!DOCTYPE html>
 <html lang="pt-br">
-    <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Cadastro</title>
-        <link href="../src/css/cssLoginCadastro.css" rel="stylesheet" type="text/css" />
-        <link href="../src/css/estilizacaoPadrao.css" rel="stylesheet" type="text/css" />
-    </head>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cadastro</title>
+    <link href="../src/css/cssLoginCadastro.css" rel="stylesheet" type="text/css" />
+    <link href="../src/css/estilizacaoPadrao.css" rel="stylesheet" type="text/css" />
+</head>
 
-    <body>
-        <section class="secaoPrincipal">
-            <div class="container">
-                <!-- IMAGEM NA LATERAL ESQUERDA -->
-                <div class="divImagem">
-                    <img id="idArduino" src="../src/Imagens/imagemArduinoLoginCadastro.png" alt="Imagem de um sistema embarcado da marca Arduíno.">
-                </div>
+<body>
+    <section class="secaoPrincipal">
+        <div class="container">
+            <!-- IMAGEM NA LATERAL ESQUERDA -->
+            <div class="divImagem">
+                <img id="idArduino" src="../src/Imagens/imagemArduinoLoginCadastro.png" alt="Imagem de um sistema embarcado da marca Arduíno.">
+            </div>
+
+            <!-- CADASTRO PF3 NA LATERAL DIREITA -->
+            <div class="divLoginCadastroDireita">
+                <h1 class="tituloPadraoBranco">CADASTRO</h1>
+
+                <br><br>
+
+                <!-- FORMULÁRIO DO CADASTRO -->
+                <form id="additionalInfoForm" class="formInputs">
+                    <label class="textoPadraoBranco" for="nome">NOME:</label>
+                    <input class="inputLoginCadastro" type="text" id="nome" name="nome" required>
+
+                    <label class="textoPadraoBranco" for="nascimento">DATA DE NASCIMENTO:</label>
+                    <input class="inputLoginCadastro" type="text" id="nascimento" name="nascimento" maxlength="10" placeholder="DD/MM/AAAA" required>
+
+                    <label class="textoPadraoBranco" for="telefone">TELEFONE:</label>
+                    <input class="inputLoginCadastro" type="tel" id="telefone" name="telefone" maxlength="15" placeholder="(XX) XXXXX-XXXX" required>
+
+                    <label class="textoPadraoBranco" for="cpf">CPF:</label>
+                    <input class="inputLoginCadastro" type="text" id="cpf" name="cpf" maxlength="14" placeholder="XXX.XXX.XXX-XX" required>
                 
-                <!-- CADASTRO PF3 NA LATERAL DIREITA -->
-                <div class="divLoginCadastroDireita">
-                    <h1 class="tituloPadraoBranco">CADASTRO</h1>
-    
-                    <br> <br>
-
-                    <!-- FORMULÁRIO DO CADASTRO -->
-                    <form class="formInputs">
-                        <label class="textoPadraoBranco" for="email">NOME:</label>
-                        <input class="inputLoginCadastro" type="email" id="nome" name="email" required>
-        
-                        <label class="textoPadraoBranco" for="dataNascimento">DATA DE NASCIMENTO:</label>
-                        <input class="inputLoginCadastro" type="date" id="nascimento" name="dataNascimento" required>
-        
-                        <label class="textoPadraoBranco" for="telefone">TELEFONE:</label>
-                        <input class="inputLoginCadastro" id="telefone" name="telefone" type="tel" required>
-        
-                        <label class="textoPadraoBranco" for="cpf">CPF:</label>
-                        <input class="inputLoginCadastro" id="cpf" name="cpf" required>
-                    </form>
-    
                     <br>
+                    <button type="submit" class="botaoBranco" style="display: block; margin: 20px auto;">CONTINUAR</button>
+                </form>
 
-                    <a href="cadastroPF4.html">
-                        <button class="botaoBranco">CONTINUAR</button>
-                    </a>
-    
-                    <br>
-
-                    <!-- INDICADORES DE QUAL PÁGINA VC TÁ -->
-                    <div class="divIndicadores">
-                        <span class="spanIndicador"></span>
-                        <span class="spanIndicador active"></span>
-                        <span class="spanIndicador"></span>
-                    </div>
+                <!-- INDICADORES DE QUAL PÁGINA VC TÁ -->
+                <div class="divIndicadores">
+                    <span class="spanIndicador"></span>
+                    <span class="spanIndicador active"></span>
+                    <span class="spanIndicador"></span>
                 </div>
             </div>
-        </section>
-    </body>
+        </div>
+    </section>
+
+    <script type="module">
+        // Firebase configuration
+        const firebaseConfig = {
+            apiKey: "AIzaSyBVMWxw3ubEE6HWWxzu1H_BhnWzRXQwd2g",
+            authDomain: "prototipei.firebaseapp.com",
+            projectId: "prototipei",
+            storageBucket: "prototipei.firebasestorage.app",
+            messagingSenderId: "507053339898",
+            appId: "1:507053339898:web:efac2b22db7bde679d4543"
+        };
+
+        // Importações Firebase
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/11.0.1/firebase-app.js";
+        import { getFirestore, doc, updateDoc } from "https://www.gstatic.com/firebasejs/11.0.1/firebase-firestore.js";
+
+        // Inicializa o Firebase
+        const app = initializeApp(firebaseConfig);
+        const db = getFirestore(app);
+
+        // Máscara para telefone
+        document.getElementById('telefone').addEventListener('input', function (e) {
+            e.target.value = e.target.value
+                .replace(/\D/g, '') // Remove caracteres não numéricos
+                .replace(/^(\d{2})(\d)/, '($1) $2') // Formata o DDD
+                .replace(/(\d{5})(\d)/, '$1-$2') // Formata o número
+                .slice(0, 15); // Limita a 15 caracteres
+        });
+
+        // Máscara para CPF
+        document.getElementById('cpf').addEventListener('input', function (e) {
+            e.target.value = e.target.value
+                .replace(/\D/g, '') // Remove caracteres não numéricos
+                .replace(/(\d{3})(\d)/, '$1.$2')
+                .replace(/(\d{3})(\d)/, '$1.$2')
+                .replace(/(\d{3})(\d{1,2})$/, '$1-$2')
+                .slice(0, 14); // Limita a 14 caracteres
+        });
+
+        // Máscara para data de nascimento
+        document.getElementById('nascimento').addEventListener('input', function (e) {
+            e.target.value = e.target.value
+                .replace(/\D/g, '') // Remove caracteres não numéricos
+                .replace(/(\d{2})(\d)/, '$1/$2')
+                .replace(/(\d{2})(\d)/, '$1/$2')
+                .slice(0, 10); // Limita a 10 caracteres
+        });
+
+        // Adiciona evento de envio ao formulário
+        document.getElementById('additionalInfoForm').addEventListener('submit', async function(e) {
+            e.preventDefault();
+
+            // Recupera o userId salvo no localStorage
+            const userId = localStorage.getItem('userId');
+            if (!userId) {
+                alert("Erro: ID do usuário não encontrado. Retorne ao início do cadastro.");
+                return;
+            }
+
+            // Recupera os valores dos campos do formulário
+            const nome = document.getElementById('nome').value;
+            const nascimento = document.getElementById('nascimento').value;
+            const telefone = document.getElementById('telefone').value;
+            const cpf = document.getElementById('cpf').value;
+
+            try {
+                // Atualiza o documento do usuário no Firestore
+                await updateDoc(doc(db, "usuarios_PF", userId), {
+                    nome: nome,
+                    dataNascimento: nascimento,
+                    telefone: telefone,
+                    cpf: cpf
+                });
+
+                // Redireciona para a próxima etapa do cadastro
+                window.location.href = "cadastroPF4.html";
+            } catch (error) {
+                console.error("Erro ao atualizar as informações do usuário: ", error);
+                alert("Falha ao atualizar as informações do usuário.");
+            }
+        });
+    </script>
+</body>
 </html>
