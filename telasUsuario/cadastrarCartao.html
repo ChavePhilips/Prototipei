@@ -1,14 +1,11 @@
 <!DOCTYPE html>
-<html>
-
+<html lang="en">
     <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width">
-    <title>Prototipei</title>
-    <link href="../src/css/estilizacaoPadrao.css" rel="stylesheet" type="text/css" />
-
-    <!-- IMPORTAÇÃO DA FONTE ICONS - API GOOGLE -->
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Prototipei</title>
+        <link href="../src/css/estilizacaoPadrao.css" rel="stylesheet" type="text/css">
+        <link href="../src/css/cssFormularios.css" rel="stylesheet" type="text/css">
     </head>
 
     <body>
@@ -68,53 +65,63 @@
         <section id="primeiraSecao" style="margin-top: 11vh;">
             <div class="divBanner">
                 <div id="divTextoBanner">
-                    <p class="tituloPadraoBranco">CONFIGURAÇÕES</p>
+                    <p class="tituloPadraoBranco">ADICIONAR MÉTODO DE PAGAMENTO</p>
                     <img src="../src/Imagens/logoBranca.png" class="logoBranca" alt="Logo da Prototipei.">
                 </div>
             </div>
         </section>
-        
-        <div class="margemPadrao" style="padding-top: 0%;">
-            <!-- Foto de perfil e saudação -->
-            <div class="padroesSecaoFlexDirectionRow" style="padding: 6% 0%; align-items: center;">
-                <img src="../src/Imagens/iconePerfil.png" alt="Sua foto de perfil."/>
-                <p class="tituloPadrao">Olá, Mariana!</p> <!-- LEMBRAR DE ADICIONAR O JAVASCRIPT AQUI -->
+
+        <!-- BANNER - SETA BRANCA -->
+        <section>
+            <div class="setaBranca-banner">
+                <img id="setaBranca" src="../src/Imagens/setaBranca.png">
             </div>
-    
-            <!-- Botões principais -->
-            <div class="padroesSecaoFlexDirectionColumn">
-                <button class="botaoAzul" style="width: 100%; box-shadow: 0px 1vh 5px rgba(1, 20, 40, 0.3);"
-                onclick="window.location = 'carteira.html'">Carteira</button>
-                <button class="botaoAzul" style="width: 100%; box-shadow: 0px 1vh 5px rgba(1, 20, 40, 0.3);"
-                onclick="window.location = 'termos.html'">Termos da Prototipei</button>
-                <button class="botaoAzul" style="width: 100%; box-shadow: 0px 1vh 5px rgba(1, 20, 40, 0.3);"
-                onclick="window.location = 'faq.html'">Dúvidas Frequentes</button>
-            </div>
-    
-            <br> <br> <br> <br> <br> <br> <br> <br>
-            <!-- Texto de contato -->
-            <p class="tituloPadrao" style="text-align: center;">Caso precise, entre em contato conosco!</p>
-    
-            <!-- Contatos com ícones -->
+        </section>
+
+        <!-- INTRODUÇÃO -->
+        <section class="padroesSecaoFlexDirectionRow" style="padding-bottom: 0%;">
             <div>
-                <div class="divBordaEscura padroesSecaoFlexDirectionRow" style="border-color: #0352A8; 
-                align-items: center; padding: 2%;">
-                    <span class="material-symbols-outlined" style="color: #0352A8; font-size: 20pt;">mail</span>
-                    <p class="textoPadrao">prototipeiltda@gmail.com</p>
-                </div>
-                <div class="divBordaEscura padroesSecaoFlexDirectionRow" style="border-color: #0352A8; 
-                align-items: center; padding: 2%;">
-                    <img src="https://via.placeholder.com/20" alt="WhatsApp Icon"> <!-- PEGAR OS ÍCONES DAQUI DPS -->
-                    <p class="textoPadrao">11 98412-2005</p>
-                    <p class="textoPadrao">11 98412-2005</p>
-                </div>
-                <div class="divBordaEscura padroesSecaoFlexDirectionRow" style="border-color: #0352A8; 
-                align-items: center; padding: 2%;">
-                    <img src="https://via.placeholder.com/20" alt="WhatsApp Icon"> <!-- PEGAR OS ÍCONES DAQUI DPS -->
-                    <span class="textoPadrao">@Prototipei</span>
-                </div>
+                <img src="../src/Imagens/iconePerfil.png" alt="Sua foto de perfil."/>
             </div>
-        </div>
+
+            <div style="align-content: center; padding-left: 1.5vw;">
+                <p class="tituloPadrao">OLÁ, NOME DO CLIENTE!</p> <!-- Lembrar de puxar o nome do cliente do banco de dados aqui -->
+                <p class="textoPadrao">Para adicionar um novo método de pagamento, preencha os dados abaixo!</p>
+            </div>
+        </section>
+
+        <section class="margemPadrao" style="margin-top: 0%;">
+            <fieldset class="divBordaAzul" style="margin: 0%; padding: 3%;">
+                <legend style="margin-left: 2%;">
+                    <span class="material-symbols-outlined" style="color: #0352A8; font-size: 50pt;">credit_card</span>
+                </legend>
+
+                <form>
+                    <label for="numeroCartao"><p class="textoPadrao" style="margin-bottom: 1%;">NÚMERO DO CARTÃO:</p></label>
+                    <input class="textareaBriefing" style="border: none; height: 4vh;" id="numeroCartao" name="numeroCartao" 
+                    type="number" required/>
+
+                    <div class="padroesSecaoFlexDirectionRow" style="padding: 3% 0%;">
+                        <div style="width: 80%;">
+                            <label for="vencimentoCartao"><p class="textoPadrao" style="margin-bottom: 1%;">VENCIMENTO:</p></label>
+                            <input class="textareaBriefing" style="border: none; height: 4vh;" id="vencimentoCartao" required/>
+                        </div>
+
+                        <div>
+                            <label for="cvv"><p class="textoPadrao" style="margin-bottom: 1%;">CVV:</p></label>
+                            <input class="textareaBriefing" style="border: none; height: 4vh;" id="cvv" required/>
+                        </div>
+                    </div>
+
+                    <label for="nomeCartao"><p class="textoPadrao" style="margin-bottom: 1%;">NOME NO CARTÃO:</p></label>
+                    <input class="textareaBriefing" style="border: none; height: 4vh;" id="nomeCartao" required/>
+
+                    <div style="text-align: center; padding-top: 5%;">
+                        <button class="botaoAzul" type="submit">CONCLUIR</button>
+                    </div>
+                </form>
+            </fieldset>
+        </section>
 
         <!-- FOOTER -->
         <div class="margemSuperior" style="background-color: #047EFF; height: 8vh;"></div>

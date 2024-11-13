@@ -14,11 +14,11 @@
                 <a href="home.html"><img class="logoNavbar" src="../src/Imagens/logoReduzidaAzul.png" alt="Logo"></a>
                 
                 <div class="divLinks">
-                    <a href="home.html#secaoProdutosHome"><p class="textoPadrao">Produtos</p></a>
-                    <a href="home.html#secaoAgendeConsultoriaHome"><p class="textoPadrao">Consultoria</p></a>
-                    <a href="home.html#secaoSobreNosHome"><p class="textoPadrao">Sobre nós</p></a>
+                  <a href="home.html#secaoProdutosHome"><p class="textoPadrao">Produtos</p></a>
+                  <a href="home.html#secaoAgendeConsultoriaHome"><p class="textoPadrao">Consultoria</p></a>
+                  <a href="home.html#secaoSobreNosHome"><p class="textoPadrao">Sobre nós</p></a>
 
-                    <a href="login.html">
+                    <a href="perfil.html">
                         <div class="divPerfil">
 
                             <!-- SVG do perfil -->
@@ -120,7 +120,7 @@
                         </div>
 
                         <div>
-                            <button class="botaoAzul">
+                            <button class="botaoAzul" onclick="window.location.href = 'acompanharRotas.html'">
                                 <p class="textoPadraoBranco" style="text-align: center;">VER ROTAS</p>
                             </button>
                         </div>
@@ -147,7 +147,7 @@
                         </div>
 
                         <div>
-                            <button class="botaoAzul">
+                            <button class="botaoAzul" onclick="window.location.href = 'acompanharRotas.html'">
                                 <p class="textoPadraoBranco" style="text-align: center;">VER ROTAS</p>
                             </button>
                         </div>
@@ -182,7 +182,7 @@
                         </div>
 
                         <div>
-                            <button class="botaoAzul">
+                            <button class="botaoAzul" onclick="window.location.href = 'produtoEstufa.html'">
                                 <p class="textoPadraoBranco" style="text-align: center;">COMPRAR NOVAMENTE</p>
                             </button>
                         </div>
@@ -209,7 +209,7 @@
                         </div>
 
                         <div>
-                            <button class="botaoAzul">
+                            <button class="botaoAzul" onclick="window.location.href = 'produtoEstufa.html'">
                                 <p class="textoPadraoBranco" style="text-align: center;">COMPRAR NOVAMENTE</p>
                             </button>
                         </div>
@@ -231,7 +231,7 @@
                 <div class="padroesSecaoFlexDirectionColumn" style="width: 100%;">
                     
                     <div class="secaoRotasFlexDirectionRow">
-                        <p class="textoPadrao">Estufa portátil inteligente Pé de Feijão...</p>
+                        <p class="textoPadrao">Pé de Feijão: estufa portátil e inteligente</p>
                         <p class="textoPadrao">10/07</p> <!-- LIGAR COM O BANCO DE DADOS -->
                     </div>
 
@@ -242,13 +242,17 @@
                             <p class="textoPadrao">QT: 1</p> <!-- LIGAR COM O BANCO DE DADOS - ESTOQUE -->
                         </div>
 
-                        <div>
-                            <button class="botaoAzul">
+                        <div style="justify-content: space-between; align-items: center; display: flex;">
+                            <button class="botaoAzul" onclick="window.location.href = 'devolucoesTrocas.html'" style="margin: 1%;">
                                 <p class="textoPadraoBranco" style="text-align: center;">TROCA E DEVOLUÇÃO</p>
                             </button>
 
-                            <button class="botaoAzul">
+                            <button class="botaoAzul" onclick="window.location.href = 'produtoEstufa.html'" style="margin: 1%;">
                                 <p class="textoPadraoBranco" style="text-align: center;">COMPRAR NOVAMENTE</p>
+                            </button>
+
+                            <button class="botaoAzul" onclick="window.location.href = 'comentarios.html'" style="margin: 1%;">
+                                <p class="textoPadraoBranco" style="text-align: center;">AVALIAR</p>
                             </button>
                         </div>
                     </div>
@@ -262,7 +266,7 @@
                 <div class="padroesSecaoFlexDirectionColumn" style="width: 100%;">
                     
                     <div class="secaoRotasFlexDirectionRow">
-                        <p class="textoPadrao">Estufa portátil inteligente Pé de Feijão...</p>
+                        <p class="textoPadrao">Open: sistema de abertura de portas para PCDs</p>
                         <p class="textoPadrao">10/07</p> <!-- LIGAR COM O BANCO DE DADOS -->
                     </div>
 
@@ -273,13 +277,17 @@
                             <p class="textoPadrao">QT: 1</p> <!-- LIGAR COM O BANCO DE DADOS - ESTOQUE -->
                         </div>
 
-                        <div>
-                            <button class="botaoAzul">
+                        <div style="justify-content: space-between; align-items: center; display: flex;">
+                            <button class="botaoAzul" onclick="window.location.href = 'devolucoesTrocas.html'" style="margin: 1%;">
                                 <p class="textoPadraoBranco" style="text-align: center;">TROCA E DEVOLUÇÃO</p>
                             </button>
 
-                            <button class="botaoAzul">
+                            <button class="botaoAzul" onclick="window.location.href = 'produtoEstufa.html'" style="margin: 1%;">
                                 <p class="textoPadraoBranco" style="text-align: center;">COMPRAR NOVAMENTE</p>
+                            </button>
+
+                            <button class="botaoAzul" onclick="window.location.href = 'comentarios.html'" style="margin: 1%;">
+                                <p class="textoPadraoBranco" style="text-align: center;">AVALIAR</p>
                             </button>
                         </div>
                     </div>
@@ -288,38 +296,24 @@
         </section>
 
         <!-- FOOTER -->
-        <footer>
-            <div>
-                <img src="../src/Imagens/logoBranca.png" class="logoBranca" alt="Logo da Prototipei."/>
-            </div>
-            
+        <div class="margemSuperior" style="background-color: #047EFF; height: 8vh;"></div>
+
+        <footer style="margin-top: 0%;">
             <div class="padroesSecaoFlexDirectionRow" style="padding: 5% 0%;">
-                <div style="width: 40%;">
-                    <p class="textoPadraoBranco">CONTATO:</p>
-                    <p class="textoPadraoBranco">prototipei@gmail.com</p>
-                    <p class="textoPadraoBranco" style="margin-top: 10%;">LOCAL:</p>
-                    <p class="textoPadraoBranco">Etec de Taboão da Serra</p>
-                    <a href="" class="textoPadraoBranco"> <p>Política de privacidade</p></a>
-                    <a href="" class="textoPadraoBranco"><p>Termos de uso</p></a>
+                <div style="place-content: center; width: 30%;">
+                    <img src="../src/Imagens/logoBranca.png" width="100%"/>
                 </div>
 
-                <div style="width: 20%;"></div>
+                <hr>
 
-                <div style="width: 40%;">
+                <div style="width: 30%;">
+                    <p class="textoPadraoBranco">©2024, Prototipei. <br> Todos os direitos reservados.</p>
+                </div>
 
-                    <!-- LEMBRAR DE ALTERAR ESSA PARTE AQUI -->
-                    <p class="textoPadraoBranco">FAQ:</p>
-                    <p class="textoPadraoBranco">Item Nav Bar</p>
-                    <p class="textoPadraoBranco">Item Nav Bar</p>
-                    <p class="textoPadraoBranco">Item Nav Bar</p>
-                    <p class="textoPadraoBranco">Item Nav Bar</p>
-                    <p class="textoPadraoBranco">Item Nav Bar</p>
+                <div class="padroesSecaoFlexDirectionColumn" style="gap: 0vw; width: 40%;">
+                    <p class="textoPadraoBranco" style="text-align: right; ">prototipei@gmail.com <br> R. Miguel Ortega, 135</p>
                 </div>
             </div>
-
-            <hr>
-
-            <p class="textoPadraoBranco" style="text-align: center; padding-top: 3%;">Copyright © 2024, Prototipei. Todos os direitos reservados.</p>
         </footer>
 
         <script src="../src/js/tabs.js"></script>

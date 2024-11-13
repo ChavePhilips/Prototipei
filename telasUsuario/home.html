@@ -19,7 +19,7 @@
                   <a href="#secaoAgendeConsultoriaHome"><p class="textoPadrao">Consultoria</p></a>
                   <a href="#secaoSobreNosHome"><p class="textoPadrao">Sobre nós</p></a>
 
-                    <a href="login.html">
+                    <a href="perfil.html">
                         <div class="divPerfil">
 
                             <!-- SVG do perfil -->
@@ -73,6 +73,8 @@
             </div>
         </section>
 
+        <div class="divBannerFundoBolinha" style="z-index: -1; position: absolute; width: 70%; align-self: center; margin-top: 3.5%;"></div>
+
         <!-- MARGEM NA DIAGONAL -->
         <div class="separadorBaixo" style="transform: scaleY(1); transform: scaleX(-1); margin-left: 0.4%;"></div>
 
@@ -88,13 +90,13 @@
                     <a href="produtoEstufa.html">
                         <img class="imagensComHover" src="../src/Imagens/imagemEstufaHome.png">
                     </a>
-                    <p class="textoPadraoBranco" style="text-align: center; padding-top: 5%;">Estufa Portátil Inteligente</p>
+                    <p class="textoPadraoBranco" style="text-align: center; padding-top: 5%;"><b>Pé de Feijão:</b> estufa portátil inteligente</p>
                 </div>
 
                 <!-- Porta -->
                 <div>
                     <a href="produtoPorta.html"><img class="imagensComHover" src="../src/Imagens/imagemArduinoHome.png"></a>
-                    <p class="textoPadraoBranco" style="text-align: center; padding-top: 5%;">Abertura de portas para PCD's</p>
+                    <p class="textoPadraoBranco" style="text-align: center; padding-top: 5%;"><b>Open:</b> abertura de portas para PCDs</p>
                 </div>
             </div>
         </section>
@@ -211,44 +213,30 @@
             </div>
 
             <div style="padding-top: 2%;">
-                <button class="botaoAzul">SAIBA MAIS</button>
+                <button class="botaoAzul" onclick="window.location.href='sobrenos.html'">SAIBA MAIS</button>
             </div>
         </section>
 
 
         <!-- FOOTER -->
-        <footer>
-            <div>
-                <img src="../src/Imagens/logoBranca.png" class="logoBranca" alt="Logo da Prototipei."/>
-            </div>
-            
+        <div style="background-color: #047EFF; height: 8vh;"></div>
+
+        <footer style="margin-top: 0%;">
             <div class="padroesSecaoFlexDirectionRow" style="padding: 5% 0%;">
-                <div style="width: 40%;">
-                    <p class="textoPadraoBranco">CONTATO:</p>
-                    <p class="textoPadraoBranco">prototipei@gmail.com</p>
-                    <p class="textoPadraoBranco" style="margin-top: 10%;">LOCAL:</p>
-                    <p class="textoPadraoBranco">Etec de Taboão da Serra</p>
-                    <a href="" class="textoPadraoBranco"> <p>Política de privacidade</p></a>
-                    <a href="" class="textoPadraoBranco"><p>Termos de uso</p></a>
+                <div style="place-content: center; width: 30%;">
+                    <img src="../src/Imagens/logoBranca.png" width="100%"/>
                 </div>
 
-                <div style="width: 20%;"></div>
+                <hr>
 
-                <div style="width: 40%;">
+                <div style="width: 30%;">
+                    <p class="textoPadraoBranco">©2024, Prototipei. <br> Todos os direitos reservados.</p>
+                </div>
 
-                    <!-- LEMBRAR DE ALTERAR ESSA PARTE AQUI -->
-                    <p class="textoPadraoBranco">FAQ:</p>
-                    <p class="textoPadraoBranco">Item Nav Bar</p>
-                    <p class="textoPadraoBranco">Item Nav Bar</p>
-                    <p class="textoPadraoBranco">Item Nav Bar</p>
-                    <p class="textoPadraoBranco">Item Nav Bar</p>
-                    <p class="textoPadraoBranco">Item Nav Bar</p>
+                <div class="padroesSecaoFlexDirectionColumn" style="gap: 0vw; width: 40%;">
+                    <p class="textoPadraoBranco" style="text-align: right; ">prototipei@gmail.com <br> R. Miguel Ortega, 135</p>
                 </div>
             </div>
-
-            <hr>
-
-            <p class="textoPadraoBranco" style="text-align: center; padding-top: 3%;">Copyright © 2024, Prototipei. Todos os direitos reservados.</p>
         </footer>
 
 

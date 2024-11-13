@@ -1,18 +1,14 @@
 <!DOCTYPE html>
-<html>
-
+<html lang="en">
     <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width">
-    <title>Prototipei</title>
-    <link href="../src/css/estilizacaoPadrao.css" rel="stylesheet" type="text/css" />
-
-    <!-- IMPORTAÇÃO DA FONTE ICONS - API GOOGLE -->
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Prototipei</title>
+        <link href="../src/css/estilizacaoPadrao.css" rel="stylesheet" type="text/css">
     </head>
 
     <body>
-        <!-- NAVBAR -->
+        <!-- NAVBAR --> 
         <header>
             <div class="navbar">
                 <a href="home.html"><img class="logoNavbar" src="../src/Imagens/logoReduzidaAzul.png" alt="Logo"></a>
@@ -22,7 +18,7 @@
                     <a href="home.html#secaoAgendeConsultoriaHome"><p class="textoPadrao">Consultoria</p></a>
                     <a href="home.html#secaoSobreNosHome"><p class="textoPadrao">Sobre nós</p></a>
 
-                    <a href="perfil.html">
+                    <a href="login.html">
                         <div class="divPerfil">
 
                             <!-- SVG do perfil -->
@@ -68,73 +64,48 @@
         <section id="primeiraSecao" style="margin-top: 11vh;">
             <div class="divBanner">
                 <div id="divTextoBanner">
-                    <p class="tituloPadraoBranco">CONFIGURAÇÕES</p>
+                    <p class="tituloPadraoBranco">PEDIDO DE TROCA</p>
                     <img src="../src/Imagens/logoBranca.png" class="logoBranca" alt="Logo da Prototipei.">
                 </div>
             </div>
         </section>
-        
-        <div class="margemPadrao" style="padding-top: 0%;">
-            <!-- Foto de perfil e saudação -->
-            <div class="padroesSecaoFlexDirectionRow" style="padding: 6% 0%; align-items: center;">
-                <img src="../src/Imagens/iconePerfil.png" alt="Sua foto de perfil."/>
-                <p class="tituloPadrao">Olá, Mariana!</p> <!-- LEMBRAR DE ADICIONAR O JAVASCRIPT AQUI -->
+
+        <!-- BANNER - SETA BRANCA -->
+        <section>
+            <div class="setaBranca-banner">
+                <img id="setaBranca" src="../src/Imagens/setaBranca.png">
             </div>
-    
-            <!-- Botões principais -->
-            <div class="padroesSecaoFlexDirectionColumn">
-                <button class="botaoAzul" style="width: 100%; box-shadow: 0px 1vh 5px rgba(1, 20, 40, 0.3);"
-                onclick="window.location = 'carteira.html'">Carteira</button>
-                <button class="botaoAzul" style="width: 100%; box-shadow: 0px 1vh 5px rgba(1, 20, 40, 0.3);"
-                onclick="window.location = 'termos.html'">Termos da Prototipei</button>
-                <button class="botaoAzul" style="width: 100%; box-shadow: 0px 1vh 5px rgba(1, 20, 40, 0.3);"
-                onclick="window.location = 'faq.html'">Dúvidas Frequentes</button>
-            </div>
-    
-            <br> <br> <br> <br> <br> <br> <br> <br>
-            <!-- Texto de contato -->
-            <p class="tituloPadrao" style="text-align: center;">Caso precise, entre em contato conosco!</p>
-    
-            <!-- Contatos com ícones -->
-            <div>
-                <div class="divBordaEscura padroesSecaoFlexDirectionRow" style="border-color: #0352A8; 
-                align-items: center; padding: 2%;">
-                    <span class="material-symbols-outlined" style="color: #0352A8; font-size: 20pt;">mail</span>
-                    <p class="textoPadrao">prototipeiltda@gmail.com</p>
-                </div>
-                <div class="divBordaEscura padroesSecaoFlexDirectionRow" style="border-color: #0352A8; 
-                align-items: center; padding: 2%;">
-                    <img src="https://via.placeholder.com/20" alt="WhatsApp Icon"> <!-- PEGAR OS ÍCONES DAQUI DPS -->
-                    <p class="textoPadrao">11 98412-2005</p>
-                    <p class="textoPadrao">11 98412-2005</p>
-                </div>
-                <div class="divBordaEscura padroesSecaoFlexDirectionRow" style="border-color: #0352A8; 
-                align-items: center; padding: 2%;">
-                    <img src="https://via.placeholder.com/20" alt="WhatsApp Icon"> <!-- PEGAR OS ÍCONES DAQUI DPS -->
-                    <span class="textoPadrao">@Prototipei</span>
-                </div>
-            </div>
-        </div>
+        </section>
 
-        <!-- FOOTER -->
-        <div class="margemSuperior" style="background-color: #047EFF; height: 8vh;"></div>
+        <!-- PEDIDO DE TROCA -->
+        <main class="margemPadrao">
+            <fieldset class="divBordaAzul" style="margin: 0%;">
+                <legend class="tituloPequeno">PEDIDO Nº 000000</legend>
 
-        <footer style="margin-top: 0%;">
-            <div class="padroesSecaoFlexDirectionRow" style="padding: 5% 0%;">
-                <div style="place-content: center; width: 30%;">
-                    <img src="../src/Imagens/logoBranca.png" width="100%"/>
+                <div class="padroesSecaoFlexDirectionRow" style="padding: 3%;">
+                    <img class="imagensPadrao" style="width: 30%; height: 30%;" src="../src/Imagens/imagemEstufa.png"/>
+
+                    <div>
+                        <p class="tituloPadrao">Pé de Feijão: estufa portátil inteligente</p> <br> <br>
+                        <p class="tituloPadrao">R$400,00</p> <br> <br>
+
+                        <p class="textoPadrao">NOME: Jefferson Ribeiro</p> <br>
+                        <p class="textoPadrao">CPF: 123.456.789-00</p> <br>
+                        <p class="textoPadrao">ENDEREÇO: Rua Joaquim Pereira de Sales</p> <br>
+                        <p class="textoPadrao">DATA DO PEDIDO: 10/07/2024</p>
+                    </div>
                 </div>
 
-                <hr>
-
-                <div style="width: 30%;">
-                    <p class="textoPadraoBranco">©2024, Prototipei. <br> Todos os direitos reservados.</p>
+                <div style="padding: 3%;">
+                    <p class="tituloPadrao">DESCRIÇÃO DO PEDIDO:</p> <br>
+                    <p class="textoPadrao">Meu produto veio com defeito na base. A estufa tem um furo que vaza água quando rego.</p>
                 </div>
 
-                <div class="padroesSecaoFlexDirectionColumn" style="gap: 0vw; width: 40%;">
-                    <p class="textoPadraoBranco" style="text-align: right; ">prototipei@gmail.com <br> R. Miguel Ortega, 135</p>
+                <div class="padroesSecaoFlexDirectionRow" style="padding: 2% 25%; padding-bottom: 5%; justify-content: space-between;">
+                    <button class="botaoAzul">ACEITAR</button>
+                    <button class="botaoBranco">RECUSAR</button>
                 </div>
-            </div>
-        </footer>
+            </fieldset>
+        </main>
     </body>
 </html>

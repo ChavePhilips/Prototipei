@@ -1,64 +1,100 @@
 <!DOCTYPE html>
 <html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Prototipei</title>
+    <link href="../src/css/cssLoginCadastro.css" rel="stylesheet" type="text/css">
+    <link href="../src/css/estilizacaoPadrao.css" rel="stylesheet" type="text/css">
+</head>
+<body>
+    <section class="secaoPrincipal">
+        <div class="container">
+            <!-- IMAGEM NA LATERAL ESQUERDA -->
+            <div class="divImagem">
+                <img src="../src/Imagens/imagemArduinoLoginCadastro.png" alt="Imagem de um sistema embarcado da marca Arduíno.">
+            </div>
 
-    <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Prototipei</title>
-        <link href="../src/css/cssLoginCadastro.css" rel="stylesheet" type="text/css">
-        <link href="../src/css/estilizacaoPadrao.css" rel="stylesheet" type="text/css">
-    </head>
+            <!-- LOGIN NA LATERAL DIREITA -->
+            <div class="divLoginCadastroDireita">
+                    <h1 class="tituloPadraoBranco">FAÇA LOGIN PARA CONTINUAR!</h1>
+                    <br> <br>
 
-    <body>
-        <section class="secaoPrincipal">
-            <div class="container">
-                <!-- IMAGEM NA LATERAL ESQUERDA -->
-                <div class="divImagem">
-                    <img src="../src/Imagens/imagemArduinoLoginCadastro.png" alt="Imagem de um sistema embarcado da marca Arduíno.">
-                </div>
-    
-                <!-- LOGIN NA LATERAL DIREITA -->
-                <div class="divLoginCadastroDireita">
-                        <h1 class="tituloPadraoBranco">FAÇA LOGIN PARA CONTINUAR!</h1>
-
-                        <br> <br>
-
-                        <!-- FORMULÁRIO DE LOGIN -->
-                        <form class="formInputs">
-                            <label class="textoPadraoBranco" for="login">LOGIN:</label>
-                            <input class="inputLoginCadastro" type="email" id="login" name="login" required autocomplete="email">
-            
-                            <label class="textoPadraoBranco" for="senha">SENHA:</label>
-                            <input class="inputLoginCadastro" type="password" id="senha" name="senha" required>
-            
-                            <br>
-                            
-                            <a href="home.html">
-                                <button class="botaoBranco" type="submit">CONFIRMAR</button>
-                            </a>
-            
-                            <br>
-
-                            <p class="textoPequeno" style="text-align: center;">OU:</p>
-                        </form>
+                    <!-- FORMULÁRIO DE LOGIN -->
+                    <form class="formInputs" id="loginForm">
+                        <label class="textoPadraoBranco" for="email">LOGIN:</label>
+                        <input class="inputLoginCadastro" type="email" id="email" name="email" required autocomplete="email">
+        
+                        <label class="textoPadraoBranco" for="password">SENHA:</label>
+                        <input class="inputLoginCadastro" type="password" id="password" name="password" required>
+        
+                        <br>
                         
-                        <!-- ÍCONES DAS APIS DE LOGIN -->
-                        <div class="divIcones">
-                            <img class="imagensComHover icone" src="../src/Imagens/iconeApple.png" alt="Ícone para realizar o login pela conta da Apple.">
-                            <img  class="icone imagensComHover" src="../src/Imagens/iconeGoogle.png" alt="Ícone para realizar o login pela conta da Google.">
-                            <img class="icone imagensComHover" src="../src/Imagens/iconeFacebook.png" alt="Ícone para realizar o login pela conta do Facebook.">
+                        <div style="place-content: center;">
+                            <button class="botaoBranco" type="submit">CONFIRMAR</button>
                         </div>
         
-                        <!-- LINK PARA O CADASTRO -->
-                        <p class="textoPadraoBranco">NÃO TEM UMA CONTA? 
-                            <a class="textoPadraoBranco" href="cadastroP1.html">CADASTRE-SE!</a>
-                        </p>
+                        <br>
 
-                        <br> 
-                        <!-- LINK PARA O "ESQUECI A SENHA" -->
-                        <a class="textoPequeno" href="recuperarSenhaP1.html" class="forgot-password">ESQUECI A SENHA</a>
-                </div>
+                        <p class="textoPequeno" style="text-align: center;">OU:</p>
+                    </form>
+                    
+                    <!-- ÍCONES DAS APIS DE LOGIN -->
+                    <div class="divIcones">
+                        <img class="imagensComHover icone" src="../src/Imagens/iconeApple.png" alt="Ícone para realizar o login pela conta da Apple.">
+                        <img  class="icone imagensComHover" src="../src/Imagens/iconeGoogle.png" alt="Ícone para realizar o login pela conta da Google.">
+                        <img class="icone imagensComHover" src="../src/Imagens/iconeFacebook.png" alt="Ícone para realizar o login pela conta do Facebook.">
+                    </div>
+    
+                    <!-- LINK PARA O CADASTRO -->
+                    <p class="textoPadraoBranco">NÃO TEM UMA CONTA? 
+                        <a class="textoPadraoBranco" href="cadastroP1.html">CADASTRE-SE!</a>
+                    </p>
+
+                    <br> 
+                    <!-- LINK PARA O "ESQUECI A SENHA" -->
+                    <a class="textoPequeno" href="recuperarSenha1.html" class="forgot-password">ESQUECI A SENHA</a>
             </div>
-        </section>
-    </body>
+        </div>
+    </section>
+
+    <!-- Inclusão do script -->
+    <script type="module">
+        // Configuração do Firebase
+        const firebaseConfig = {
+            apiKey: "AIzaSyBVMWxw3ubEE6HWWxzu1H_BhnWzRXQwd2g",
+            authDomain: "prototipei.firebaseapp.com",
+            projectId: "prototipei",
+            storageBucket: "prototipei.firebasestorage.app",
+            messagingSenderId: "507053339898",
+            appId: "1:507053339898:web:efac2b22db7bde679d4543"
+        };
+
+        // Inicializa o Firebase
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/11.0.1/firebase-app.js";
+        import { getAuth, signInWithEmailAndPassword } from "https://www.gstatic.com/firebasejs/11.0.1/firebase-auth.js";
+
+        const app = initializeApp(firebaseConfig);
+        const auth = getAuth(app);
+
+        document.getElementById('loginForm').addEventListener('submit', async function(e) {
+            e.preventDefault();
+
+            const email = document.getElementById('email').value;
+            const password = document.getElementById('password').value;
+
+            try {
+                const userCredential = await signInWithEmailAndPassword(auth, email, password);
+
+                // Redirecionamento após login bem-sucedido
+                setTimeout(() => {
+                    window.location.href = "../telasUsuario/home.html";
+                }, 2000);
+            } catch (error) {
+                // Exibe um alerta em caso de erro
+                alert("Erro ao fazer login: " + error.message);
+            }
+        });
+    </script>
+</body>
 </html>

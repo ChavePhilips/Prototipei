@@ -5,7 +5,6 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>Prototipei</title>
         <link href="../src/css/estilizacaoPadrao.css" rel="stylesheet" type="text/css">
-        <link href="../src/css/cssRotas.css" rel="stylesheet" type="text/css">
     </head>
 
     <body>
@@ -65,88 +64,100 @@
         <section id="primeiraSecao" style="margin-top: 11vh;">
             <div class="divBanner">
                 <div id="divTextoBanner">
-                    <p class="tituloPadraoBranco">MINHAS COMPRAS</p>
+                    <p class="tituloPadraoBranco">CARRINHO</p>
                     <img src="../src/Imagens/logoBranca.png" class="logoBranca" alt="Logo da Prototipei.">
                 </div>
             </div>
         </section>
 
-        <main class="margemPadrao">
+        <section>
+            <div class="padroesSecaoFlexDirectionRow" style="justify-content: space-between; padding-bottom: 0vh;">
+                <div style="align-items: center;">
+                    <input style="width: 1vw; height: 1vw;" type="checkbox" id="todosOsItens" name="tipoPessoa" value="fisica" onclick="todosOsItens()">
+                    <label for="todosOsItens" class="textoPadrao" style="margin-left: 1vw;">TODOS OS ITENS</label>
+                </div>
+                
+                <div>
+                    <button class="botaoAzul" onclick="window.location.href = 'finalizarCompra1.html'">COMPRAR</button>   
+                </div>
+            </div>
 
-            <section>
-                <div class="padroesSecaoFlexDirectionRow divBordaEscura" style="align-items: center; padding: 2%;">
-                    <img src="../src/Imagens/imagemEstufa.png" class="imagensPadrao"/>
+            <!-- QUADRADO COM O PRODUTO -->
+            <div class="padroesSecaoFlexDirectionRow divBordaEscura" style="align-items: center; padding: 2%;">
+                <div style="align-items: center;">
+                    <input id="produto1" style="width: 1vw; height: 1vw;" type="checkbox">
+                </div>
+
+                <img src="../src/Imagens/imagemEstufa.png" class="imagensPadrao"/>
+                
+                <div class="padroesSecaoFlexDirectionColumn" style="width: 100%;">
                     
-                    <div class="padroesSecaoFlexDirectionColumn" style="width: 100%;">
-                        
-                        <div class="secaoRotasFlexDirectionRow">
-                            <p class="textoPadrao">Estufa portátil inteligente Pé de Feijão...</p>
-                            <p class="textoPadrao">10/07</p> <!-- LIGAR COM O BANCO DE DADOS -->
+                    <div class="secaoRotasFlexDirectionRow">
+                        <p class="textoPadrao">Estufa portátil inteligente Pé de Feijão...</p>
+                        <p class="textoPadrao">10/07</p> <!-- LIGAR COM O BANCO DE DADOS -->
+                    </div>
+
+                    <div class="secaoRotasFlexDirectionRow">
+                        <div class="secaoRotasFlexDirectionRow" style="align-items: center;">
+                            <p class="textoPadrao">R$500,00</p>
+
+                            <p class="textoPadrao">QT: 1</p> <!-- LIGAR COM O BANCO DE DADOS - ESTOQUE -->
                         </div>
-    
+
                         <div class="secaoRotasFlexDirectionRow">
-                            <div class="secaoRotasFlexDirectionRow" style="align-items: center;">
-                                <p class="textoPadrao">R$500,00</p>
+                            <div>            
+                                <p class="textoPadrao">Quantidade:</p>
+                                <button id="decrease" class="botaoMaisMenos">-</button>
+                                <input class="inputBotaoMaisMenos" type="number" id="quantity" value="1" min="1" readonly>
+                                <button id="increase" class="botaoMaisMenos">+</button>
+                            </div>
     
-                                <p class="textoPadrao">QT: 1</p> <!-- LIGAR COM O BANCO DE DADOS - ESTOQUE -->
+                            <div style="place-content: center;">
+                                <span class="material-symbols-outlined iconesComHover" style="font-size: 22pt; text-align: right;">delete</span>
                             </div>
                         </div>
                     </div>
                 </div>
-            </section>
+            </div>
 
-            <section class="divBordaEscura" style="padding: 3% 5%;"> 
-                <div class="progress-3">
-                    <div class="rotas">
+            <!-- QUADRADO COM O PRODUTO -->
+            <div class="padroesSecaoFlexDirectionRow divBordaEscura" style="align-items: center; padding: 2%; margin-top: 1%;">
+                <div style="align-items: center;">
+                    <input style="width: 1vw; height: 1vw;" type="checkbox">
+                </div>
 
-                        <div class="barras"> 
-                            <div class="barra-vazia">
-                                <div class="barra-cheia"></div>
-                            </div>
+                <img src="../src/Imagens/imagemEstufa.png" class="imagensPadrao"/>
+                
+                <div class="padroesSecaoFlexDirectionColumn" style="width: 100%;">
+                    
+                    <div class="secaoRotasFlexDirectionRow">
+                        <p class="textoPadrao">Estufa portátil inteligente Pé de Feijão...</p>
+                        <p class="textoPadrao">10/07</p> <!-- LIGAR COM O BANCO DE DADOS -->
+                    </div>
+
+                    <div class="secaoRotasFlexDirectionRow">
+                        <div class="secaoRotasFlexDirectionRow" style="align-items: center;">
+                            <p class="textoPadrao">R$500,00</p>
+
+                            <p class="textoPadrao">QT: 1</p> <!-- LIGAR COM O BANCO DE DADOS - ESTOQUE -->
                         </div>
 
-                        <div class="rightBar"></div>
-                        
-
-                        <ul>
-                            <li class="point1">
-                                <div class="bolabox">
-                                    <div class="bola"></div>
-                                </div>
-                                <div class="textoRota">
-                                    <p class="textoPequenoEscuro">O pedido está aguardando pagamento</p>
-                                </div>
-                                <div class="tempoRota">
-                                    <span class="textoPadrao">12:00</span><a></a>
-                                </div>
-                            </li>
-                            <li class="point2">
-                                <div class="bolabox">
-                                    <div class="bola"></div>
-                                </div>
-                                <div class="textoRota">
-                                    <p class="textoPequenoEscuro">O pedido está aguardando pagamento</p>
-                                </div>
-                                <div class="tempoRota">
-                                    <span class="textoPadrao">12:00</span><a></a>
-                                </div>
-                            </li>
-                            <li class="point3">
-                                <div class="bolabox">
-                                    <div class="bola"></div>
-                                </div>
-                                <div class="textoRota">
-                                    <p class="textoPequenoEscuro">O pedido está aguardando pagamento</p>
-                                </div>
-                                <div class="tempoRota">
-                                    <span class="textoPadrao">12:00</span><a></a>
-                                </div>
-                            </li>
-                        </ul>
+                        <div class="secaoRotasFlexDirectionRow">
+                            <div>            
+                                <p class="textoPadrao">Quantidade:</p>
+                                <button id="decrease" class="botaoMaisMenos">-</button>
+                                <input class="inputBotaoMaisMenos" type="number" id="quantity" value="1" min="1" readonly>
+                                <button id="increase" class="botaoMaisMenos">+</button>
+                            </div>
+    
+                            <div style="place-content: center;">
+                                <span class="material-symbols-outlined iconesComHover" style="font-size: 22pt; text-align: right;">delete</span>
+                            </div>
+                        </div>
                     </div>
                 </div>
-            </section>
-        </main>
+            </div>
+        </section>
 
         <!-- FOOTER -->
         <div class="margemSuperior" style="background-color: #047EFF; height: 8vh;"></div>
@@ -168,7 +179,25 @@
                 </div>
             </div>
         </footer>
-        
-        <script src="../src/js/rotas.js"></script>
+
+        <script src="../src/js/javascriptPadrao.js"></script>
+
+        <script>
+            function todosOsItens() {
+                //CHECHBOX TODOS OS ITENS
+                var checkboxes = document.querySelectorAll('input[type="checkbox"]');
+                var idTodosOsItens = document.getElementById('todosOsItens');
+
+                if (idTodosOsItens.checked) {
+                    checkboxes.forEach(function(checkbox) {
+                        checkbox.checked = true;
+                    });
+                } else {
+                    checkboxes.forEach(function(checkbox) {
+                        checkbox.checked = false;
+                    });
+                }
+            }
+        </script>
     </body>
 </html>

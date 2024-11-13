@@ -5,7 +5,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>Prototipei</title>
         <link href="../src/css/estilizacaoPadrao.css" rel="stylesheet" type="text/css">
-        <link href="../src/css/cssCalendario" rel="stylesheet" type="text/css">
+        <link href="../src/css/cssFormularios.css" rel="stylesheet" type="text/css">
     </head>
 
     <body>
@@ -65,21 +65,103 @@
         <section id="primeiraSecao" style="margin-top: 11vh;">
             <div class="divBanner">
                 <div id="divTextoBanner">
-                    <p class="tituloPadraoBranco">OLÁ, CONSULTOR</p>
+                    <p class="tituloPadraoBranco">EDIÇÃO DE PRODUTO</p>
                     <img src="../src/Imagens/logoBranca.png" class="logoBranca" alt="Logo da Prototipei.">
                 </div>
             </div>
         </section>
 
-        <main class="margemPadrao">
-
-            <div class="calendar">
-                <div class="header"></div>
-                <div class="week"></div>
-                <div class="days"></div>
+        <!-- BANNER - SETA BRANCA -->
+        <section>
+            <div class="setaBranca-banner">
+                <img id="setaBranca" src="../src/Imagens/setaBranca.png">
             </div>
+        </section>
 
+        <!-- EDIÇÃO DO PRODUTO -->
+        <main class="margemPadrao">
+            <fieldset class="divBordaAzul" style="margin: 0%;">
+                <legend class="tituloPequeno">COD: 0000001</legend>
+
+                <!-- Div dos botões -->
+                <div style="padding: 3%;">
+                    <div class="secaoRotasFlexDirectionRow">
+                        <button class="botaoAzul" style="width: 50%;">
+                            <div class="secaoRotasFlexDirectionRow" style="justify-content: center; align-items: center;">
+                                <div>
+                                    <span class="material-symbols-outlined" style="font-size: 22pt;">arrow_upward</span>
+                                </div>
+                                Adicionar produto no site
+                            </div>
+                        </button>
+                        <button class="botaoAzul" style="width: 50%;">
+                            <div class="secaoRotasFlexDirectionRow" style="justify-content: center; align-items: center;">
+                                <div>
+                                    <span class="material-symbols-outlined" style="font-size: 22pt;">arrow_downward</span>
+                                </div>
+                                Remover produto do site
+                            </div>
+                        </button>
+                    </div>
+
+                    <br>
+
+                    <button class="botaoBranco" style="width: 100%; border: 2px solid #011428; align-items: center;">
+                        <div class="secaoRotasFlexDirectionRow" style="justify-content: center; align-items: center;">
+                            <div>
+                                <span class="material-symbols-outlined" style="font-size: 22pt;">delete</span>
+                            </div>
+                            Remover produto do estoque
+                        </div>
+                    </button>
+                </div>
+
+                <div class="padroesSecaoFlexDirectionRow" style="padding: 3%;">
+                    <img class="imagensPadrao" style="width: 30%; height: 30%;" src="../src/Imagens/imagemEstufa.png"/>
+
+                    <div class="secaoRotasFlexDirectionColumn" style="width: 100%;">
+                        <form>
+                            <label class="textoPadrao" for="tituloProduto"><b>TITULO DO PRODUTO:</b></label>
+                            <input id="tituloProduto" class="textareaBriefing" style="font-size: 14pt;" value="Pé de Feijão: estufa portátil inteligente">
+                            
+                            <br> <br>
+
+                            <label class="textoPadrao"><b>PREÇO:</b></label>
+                            <input class="textareaBriefing" style="font-size: 14pt;" value="R$400,00">
+
+                            <br> <br>
+
+                            <label class="textoPadrao"><b>ESTOQUE:</b></label>
+                            <input class="textareaBriefing" style="font-size: 14pt;" value="125">
+                        </form>
+                    </div>
+                </div>
+
+                <div style="padding: 3%;">
+                    <p class="tituloPadrao">DESCRIÇÃO DO PRODUTO:</p> <br>
+                    <textarea class="textareaDevolucaoTroca" style="height: 51vh; border: 2px solid #0352A8; border-radius: 10px;">
+A estufa portátil inteligente Pé de Feijão é um produto da Prototipei em que há um monitoramento por meio de um sistema embarcado.
+                        
+Feito de MDF, O produto contém 28,5 cm de largura, 70cm de altura e 36 cm de comprimento.
+                        
+Cor: MDF cru.
+                        
+Idade recomendada: 6 à 12 anos.
+                        
+A estufa vem acompanhada de:
+                   
+1. Manual de Instrução;
+2. Um rolo de polietileno de 1,30 cm x 0.30 cm;
+3. 35 parafusos para montagem da estufa.
+                        
+A Prototipei oferece 12 meses de garantia para problemas no circuito elétrico.
+                    </textarea>
+                </div>
+
+                <div style="text-align: center;">
+                    <button class="botaoAzul" style="margin-bottom: 5%;">SALVAR</button>
+                </div>
+            </fieldset>
         </main>
-    <script src="../src/js/homeConsultor.js"></script>
     </body>
 </html>
