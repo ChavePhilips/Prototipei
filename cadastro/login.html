@@ -59,7 +59,6 @@
     </section>
 
     <!-- Inclusão do script -->
-    <!-- Inclusão do script -->
     <script type="module">
         // Configuração do Firebase
         const firebaseConfig = {
@@ -92,14 +91,33 @@
             try {
                 const userCredential = await signInWithEmailAndPassword(auth, email, password);
 
-                // Redirecionamento após login bem-sucedido
-                setTimeout(() => {
-                    window.location.href = "../telasUsuario/home.html";
-                }, 2000);
+                // Consultas nas coleções para verificar onde o usuário está
+                const colecoes = [
+                    { nome: "usuarios_PF", pagina: "../telasUsuario/home.html" },
+                    { nome: "usuarios_PJ", pagina: "../telasUsuario/home.html" },
+                    { nome: "consultor", pagina: "../telasConsultor/homeConsultor.html" },
+                    { nome: "administrador", pagina: "../telasADM/homeAdm.html" }
+                ];
+
+                for (let colecao of colecoes) {
+                    const q = query(collection(db, colecao.nome), where("email", "==", email));
+                    const querySnapshot = await getDocs(q);
+                    
+                    if (!querySnapshot.empty) {
+                        // Redireciona para a página associada a essa coleção
+                        window.location.href = colecao.pagina;
+                        return;
+                    }
+                }
+
+                // Caso o usuário não seja encontrado em nenhuma coleção
+                alert("Usuário não encontrado em nenhuma categoria.");
+
             } catch (error) {
                 // Exibe um alerta em caso de erro
                 alert("Erro ao fazer login: " + error.message);
             }
+
         });
 
         document.getElementById('google-login').addEventListener('click', async () => { 
