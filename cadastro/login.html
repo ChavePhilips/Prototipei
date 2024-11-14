@@ -42,7 +42,7 @@
                     <!-- ÍCONES DAS APIS DE LOGIN -->
                     <div class="divIcones">
                         <img class="imagensComHover icone" src="../src/Imagens/iconeApple.png" alt="Ícone para realizar o login pela conta da Apple.">
-                        <img  class="icone imagensComHover" src="../src/Imagens/iconeGoogle.png" alt="Ícone para realizar o login pela conta da Google.">
+                        <button id="google-login"> <img  class="icone imagensComHover" src="../src/Imagens/iconeGoogle.png" alt="Ícone para realizar o login pela conta da Google."></button> 
                         <img class="icone imagensComHover" src="../src/Imagens/iconeFacebook.png" alt="Ícone para realizar o login pela conta do Facebook.">
                     </div>
     
@@ -59,6 +59,7 @@
     </section>
 
     <!-- Inclusão do script -->
+    <!-- Inclusão do script -->
     <script type="module">
         // Configuração do Firebase
         const firebaseConfig = {
@@ -72,10 +73,15 @@
 
         // Inicializa o Firebase
         import { initializeApp } from "https://www.gstatic.com/firebasejs/11.0.1/firebase-app.js";
-        import { getAuth, signInWithEmailAndPassword } from "https://www.gstatic.com/firebasejs/11.0.1/firebase-auth.js";
+        import { getAuth, signInWithEmailAndPassword, GoogleAuthProvider, signInWithPopup } from "https://www.gstatic.com/firebasejs/11.0.1/firebase-auth.js";
+        import { getFirestore, collection, query, where, getDocs } from "https://www.gstatic.com/firebasejs/11.0.1/firebase-firestore.js";
 
         const app = initializeApp(firebaseConfig);
         const auth = getAuth(app);
+        const db = getFirestore(app);
+
+        // Coleções que desejamos verificar se o usuário está cadastrado, para que o login com provedores externos possa ocorrer.
+        const collections = ["usuarios_PF", "usuarios_PJ", "consultor", "administrador"];
 
         document.getElementById('loginForm').addEventListener('submit', async function(e) {
             e.preventDefault();
@@ -95,6 +101,54 @@
                 alert("Erro ao fazer login: " + error.message);
             }
         });
+
+        document.getElementById('google-login').addEventListener('click', async () => { 
+            
+            const provider = new GoogleAuthProvider();
+
+            provider.addScope('https://www.googleapis.com/auth/userinfo.profile');
+            provider.addScope('https://www.googleapis.com/auth/user.addresses.read');
+            provider.addScope('https://www.googleapis.com/auth/user.birthday.read');
+            
+        try {
+                const result = await signInWithPopup(auth, provider);
+                const user = result.user;
+                const userEmail = user.email; // Pega o email do usuário autenticado
+
+                // Função para verificar se o authUserId está em alguma das coleções
+                const isUserRegistered = await checkEmailInCollections(userEmail, collections);
+
+                if (isUserRegistered) {
+                    console.log("Usuário autenticado e encontrado em uma das coleções.");
+                    alert("Usuário autenticado.")
+                    window.location.href = "../telasUsuario/home.html"; // Redirecionamento
+                } else {
+                    console.error("Usuário não registrado.");
+                    alert("Usuário não registrado. Faça o cadastro antes de fazer login.");
+                    auth.signOut(); // Desloga o usuário
+                }
+            } catch (error) {
+                console.error("Erro ao fazer login: ", error);
+            }
+        });
+
+    async function checkEmailInCollections(email, collections) {
+        for (const collectionName of collections) {
+            // Cria uma consulta para procurar o documento pelo email
+            const collectionRef = collection(db, collectionName);
+            const emailQuery = query(collectionRef, where("email", "==", email));
+            const querySnapshot = await getDocs(emailQuery);
+
+            // Verifica se encontrou algum documento com o email
+            if (!querySnapshot.empty) {
+                // Email encontrado na coleção atual
+                return true;
+            }
+        }
+        // Email não encontrado em nenhuma das coleções
+        return false;
+    }
+       
     </script>
 </body>
 </html>
