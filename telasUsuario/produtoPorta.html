@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-br">
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -8,7 +8,7 @@
     </head>
 
     <body>
-        <!-- NAVBAR --> 
+        <!-- NAVBAR -->
         <header>
             <div class="navbar">
                 <a href="home.html"><img class="logoNavbar" src="../src/Imagens/logoReduzidaAzul.png" alt="Logo"></a>
@@ -18,7 +18,7 @@
                     <a href="home.html#secaoAgendeConsultoriaHome"><p class="textoPadrao">Consultoria</p></a>
                     <a href="home.html#secaoSobreNosHome"><p class="textoPadrao">Sobre nós</p></a>
 
-                    <a href="login.html">
+                    <a href="perfil.html">
                         <div class="divPerfil">
 
                             <!-- SVG do perfil -->
@@ -68,6 +68,11 @@
                             <!-- Imagem da estufa -->
                              <div>
                                 <img class="" src="../src/Imagens/imagemArduinoHome.png" alt="Estufa Portátil Inteligente">
+
+                                <button class="botaoCarrinho">
+                                    <span class="material-symbols-outlined" style="color: #F1F0EC; font-size: 30pt; text-align: center; justify-content: center;">
+                                        add_shopping_cart</span>
+                                </button>
                              </div>
 
                             <!-- Informações do produto -->
@@ -81,12 +86,15 @@
 
                                 <br><br>
 
-                                <p class="tituloPadraoBranco" style="text-align: left;">R$500,00</p>
+                                <div class="secaoRotasFlexDirectionRow">
+                                    <p class="tituloPadraoBranco" style="text-align: left;">R$500,00</p>
+                                    <p class="textoPadraoBranco" style="align-self: center;">Estoque: 125</p>
+                                </div>
 
                                 <br> <br>
                                 
                                 <div style="text-align: left;">
-                                    <button class="botaoBranco">COMPRAR</button>
+                                    <button class="botaoBranco" onclick="window.location.href = 'finalizarCompra1.html'">COMPRAR</button>
                                 </div>
                             </div>
                         </div>
@@ -97,6 +105,144 @@
 
         </section>
 
+        <!-- BOTÕES QUE TROCAM ENTRE O PRODUTO E OS TERMOS DE COMPRA -->
+    <section class="margemPadrao" style="padding-bottom: 3%; padding-top: 0%">
+        <div class="padroesSecaoFlexDirectionRow" style="padding: 0%; padding-left: 50%;">
+                <!-- Botão de produto -->
+                <button class="botaoTab active" data-tab-target="#secaoDescricaoPorta" style="width: 15%;">
+                    <p class="textoPadrao" style="text-align: center;">PRODUTO</p>
+                </button>
+                <!-- Botão de termos de compra -->
+                <button class="botaoTab" data-tab-target="#secaoTermosDeCompraPorta">
+                    <p class="textoPadrao" style="text-align: center;" data-tab-target="#secaoTermosDeCompraPorta">TERMOS DE COMPRA</p>
+                </button>
+        </div>
+    </section>
+
+        <!-- PRODUTO - PORTA -->
+        <section id="secaoDescricaoPorta" data-tab-content class="active margemPadrao" style="padding-top: 0%;">
+            <div class="gridDoisEspacos">
+                <!-- DESCRIÇÃO DO PRODUTO - PORTA -->
+                <div style="width: 50%;">
+                    <fieldset class="divBordaAzul fieldsetSensorGas" style="height: 67vh;">
+                        <legend class="tituloPequeno" style="margin-left: 2%;">Descrição</legend>
+                        <p class="textoPadrao" style="margin: 5%;">
+                            O Open é um sistema de abertura automática de portas para pessoas com deficiências motoras é capaz de promover a inclusão 
+                            e a acessibilidade para todos em ambientes residenciais e públicos. Com um sistema RFID de alta qualidade, 
+                            abrir portas nunca foi tão fácil: basta apenas encaixar a tag na sua cadeira de rodas e chegar perto do sensor.
+
+                            <br> <br>
+
+                            O sistema conta com: <br>
+                            - 1 motor X; <br>
+                            - 2 módulos RFIDs; <br>
+                            - 1 tag. <br>
+
+                            <br>
+
+                            A Prototipei oferece 12 meses de garantia para problemas no circuito elétrico.
+                        </p>
+                    </fieldset>
+                </div>
+        
+                <!--  AVALIAÇÃO DOS CLIENTES - PORTA -->
+                <div id="divAvaliacaoProduto-divGrid-secaoDescricaoProduto" style="width: 50%;">
+                    <fieldset id="fieldsetSensorGas" class="divBordaAzul fieldsetSensorGas" style="overflow: scroll; height: 67vh;">
+                        <legend>
+                            <!-- Classe para colocar os ícones do google -->
+                            <span class="material-symbols-outlined" style="color: #0352A8;">gradegradegradegradestar_half</span>
+                        </legend>
+
+                        <!-- ORGANIZAÇÃO DAS DIVS DAS AVALIAÇÕES -->
+                        <div id="divBarrasAvaliacao-divAvaliacaoProduto-divDadosProduto-secaoDescricaoProduto">
+                            <div class="divAvaliacoes">
+                                <div class="divProgresso"></div>
+                            </div>
+                        </div>
+                        
+
+                        <div>
+                            <p class="tituloPequeno" style="text-align: center;">COMENTÁRIOS:</p>
+                            <!-- Avaliação 1 -->
+                            <div id="avaliacao1-">
+                                <div id="" class="" style="display: grid; grid-template-columns: 2fr 1fr; margin: 5%;">
+                                    <p class="tituloPequeno">João da Silva Pereira</p>
+                                    <span class="material-symbols-outlined" style="text-align: right; margin: 5%; color: #0352A8;"> gradegradegradegradegrade</span>
+                                </div>
+
+                                <p id="" class="textoPadrao" style="margin: 5%;">Estou muito satisfeito com o produto. Impecável! Comprei para a minha sobrinha e ela amou!</p>
+                            </div>
+
+                            <hr>
+                            <!-- Avaliação 2 -->
+                            <div id="avaliacao2-">
+                                <div id="" class="" style="display: grid; grid-template-columns: 2fr 1fr; margin: 5%;">
+                                    <p class="tituloPequeno">Paula Ramos</p>
+                                    <span class="material-symbols-outlined" style="text-align: right; color: #0352A8;"> gradegradegradegradestar_half</span>
+                                </div>
+
+                                <p id="" class="textoPadrao" style="margin: 5%;">Chegou um dia depois do prazo, porém o produto veio perfeito de acordo com o anúncio!</p>
+                            </div>
+
+                            <hr>
+                            <!-- Avaliação 3 -->
+                            <div id="avaliacao3-">
+                                <div id="" class="" style="display: grid; grid-template-columns: 2fr 1fr; margin: 5%;">
+                                    <p class="tituloPequeno">Victor Gabriel</p>
+                                    <span class="material-symbols-outlined" style="text-align: right; color: #0352A8;"> gradegradegradegradegrade</span>
+                                </div>
+
+                                <p id="" class="textoPadrao" style="margin: 5%;">Adorei, muito linda, atendeu minhas necessidades!</p>
+                            </div>
+                        </div>
+                    </fieldset>
+                </div>
+            </div>
+        </section>
+
+        <section id="secaoTermosDeCompraPorta" data-tab-content>
+            <div class="margemPadrao" style="padding-top: 3%;">
+                <p class="tituloPadrao">TERMOS DE COMPRA</p> <br>
+
+                <p class="textoPadrao">
+                    De acordo com os Termos de Compras da Prototipei, o produto adquirido acima só poderá ser trocado em duas condições, 
+                    sendo elas: <br> <br>
+
+                <b>1. Troca por defeito</b> - Caso o produto apresente algum defeito, a troca poderá ser solicitada dentro do prazo de 30 dias 
+                após a entrega do produto. <a href="termos.html">Clique aqui caso queira saber mais</a>. <br> <br>
+
+                <b>2. Devolução por arrependimento</b> -  Conforme o Código de Defesa do Consumidor (Lei nº 8.078, de 11 de setembro de 1990), 
+                o cliente tem o direito de solicitar a devolução por arrependimento somente dentro de 7 dias após o recebimento do produto. 
+                <a href="termos.html">Clique aqui caso queira saber mais</a>. <br> <br>
+
+                Situações de troca fora do prazo estipulado e fora dos parâmetros solicitados, não serão aceitas. Para mais informações 
+                entre em contato conosco.
+                </p>
+            </div>
+        </section>
+
+        <!-- FOOTER -->
+        <div class="margemSuperior" style="background-color: #047EFF; height: 8vh;"></div>
+
+        <footer style="margin-top: 0%;">
+            <div class="padroesSecaoFlexDirectionRow" style="padding: 5% 0%;">
+                <div style="place-content: center; width: 30%;">
+                    <img src="../src/Imagens/logoBranca.png" width="100%"/>
+                </div>
+
+                <hr>
+
+                <div style="width: 30%;">
+                    <p class="textoPadraoBranco">©2024, Prototipei. <br> Todos os direitos reservados.</p>
+                </div>
+
+                <div class="padroesSecaoFlexDirectionColumn" style="gap: 0vw; width: 40%;">
+                    <p class="textoPadraoBranco" style="text-align: right; ">prototipeiltda@gmail.com <br> R. Miguel Ortega, 135</p>
+                </div>
+            </div>
+        </footer>
+        
         <script src="../src/js/avaliacoes.js"></script>
+        <script src="../src/js/tabs.js"></script>
     </body>
 </html>

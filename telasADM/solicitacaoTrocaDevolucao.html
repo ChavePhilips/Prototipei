@@ -5,6 +5,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>Prototipei</title>
         <link href="../src/css/estilizacaoPadrao.css" rel="stylesheet" type="text/css">
+        <link href="../src/css/cssRotas.css" rel="stylesheet" type="text/css">
     </head>
 
     <body>
@@ -18,7 +19,7 @@
                     <a href="home.html#secaoAgendeConsultoriaHome"><p class="textoPadrao">Consultoria</p></a>
                     <a href="home.html#secaoSobreNosHome"><p class="textoPadrao">Sobre nós</p></a>
 
-                    <a href="perfil.html">
+                    <a href="login.html">
                         <div class="divPerfil">
 
                             <!-- SVG do perfil -->
@@ -64,140 +65,180 @@
         <section id="primeiraSecao" style="margin-top: 11vh;">
             <div class="divBanner">
                 <div id="divTextoBanner">
-                    <p class="tituloPadraoBranco">CARRINHO</p>
+                    <p class="tituloPadraoBranco">TROCAS E DEVOLUÇÕES</p>
                     <img src="../src/Imagens/logoBranca.png" class="logoBranca" alt="Logo da Prototipei.">
                 </div>
             </div>
         </section>
 
+        <!-- BANNER - SETA BRANCA -->
         <section>
-            <div class="padroesSecaoFlexDirectionRow" style="justify-content: space-between; padding-bottom: 0vh;">
-                <div style="align-items: center;">
-                    <input style="width: 1vw; height: 1vw;" type="checkbox" id="todosOsItens" name="tipoPessoa" value="fisica" onclick="todosOsItens()">
-                    <label for="todosOsItens" class="textoPadrao" style="margin-left: 1vw;">TODOS OS ITENS</label>
-                </div>
-                
-                <div>
-                    <button class="botaoAzul" onclick="window.location.href = 'finalizarCompra1.html'">COMPRAR</button>   
-                </div>
-            </div>
-
-            <!-- QUADRADO COM O PRODUTO -->
-            <div class="padroesSecaoFlexDirectionRow divBordaEscura" style="align-items: center; padding: 2%;">
-                <div style="align-items: center;">
-                    <input id="produto1" style="width: 1vw; height: 1vw;" type="checkbox">
-                </div>
-
-                <img src="../src/Imagens/imagemEstufa.png" class="imagensPadrao"/>
-                
-                <div class="padroesSecaoFlexDirectionColumn" style="width: 100%;">
-                    
-                    <div class="secaoRotasFlexDirectionRow">
-                        <p class="textoPadrao">Estufa portátil inteligente Pé de Feijão...</p>
-                        <p class="textoPadrao">10/07</p> <!-- LIGAR COM O BANCO DE DADOS -->
-                    </div>
-
-                    <div class="secaoRotasFlexDirectionRow">
-                        <div class="secaoRotasFlexDirectionRow" style="align-items: center;">
-                            <p class="textoPadrao">R$500,00</p>
-
-                            <p class="textoPadrao">QT: 1</p> <!-- LIGAR COM O BANCO DE DADOS - ESTOQUE -->
-                        </div>
-
-                        <div class="secaoRotasFlexDirectionRow">
-                            <div>            
-                                <p class="textoPadrao">Quantidade:</p>
-                                <button id="decrease" class="botaoMaisMenos">-</button>
-                                <input class="inputBotaoMaisMenos" type="number" id="quantity" value="1" min="1" readonly>
-                                <button id="increase" class="botaoMaisMenos">+</button>
-                            </div>
-    
-                            <div style="place-content: center;">
-                                <span class="material-symbols-outlined iconesComHover" style="font-size: 22pt; text-align: right;">delete</span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <!-- QUADRADO COM O PRODUTO -->
-            <div class="padroesSecaoFlexDirectionRow divBordaEscura" style="align-items: center; padding: 2%; margin-top: 1%;">
-                <div style="align-items: center;">
-                    <input style="width: 1vw; height: 1vw;" type="checkbox">
-                </div>
-
-                <img src="../src/Imagens/imagemEstufa.png" class="imagensPadrao"/>
-                
-                <div class="padroesSecaoFlexDirectionColumn" style="width: 100%;">
-                    
-                    <div class="secaoRotasFlexDirectionRow">
-                        <p class="textoPadrao">Estufa portátil inteligente Pé de Feijão...</p>
-                        <p class="textoPadrao">10/07</p> <!-- LIGAR COM O BANCO DE DADOS -->
-                    </div>
-
-                    <div class="secaoRotasFlexDirectionRow">
-                        <div class="secaoRotasFlexDirectionRow" style="align-items: center;">
-                            <p class="textoPadrao">R$500,00</p>
-
-                            <p class="textoPadrao">QT: 1</p> <!-- LIGAR COM O BANCO DE DADOS - ESTOQUE -->
-                        </div>
-
-                        <div class="secaoRotasFlexDirectionRow">
-                            <div>            
-                                <p class="textoPadrao">Quantidade:</p>
-                                <button id="decrease" class="botaoMaisMenos">-</button>
-                                <input class="inputBotaoMaisMenos" type="number" id="quantity" value="1" min="1" readonly>
-                                <button id="increase" class="botaoMaisMenos">+</button>
-                            </div>
-    
-                            <div style="place-content: center;">
-                                <span class="material-symbols-outlined iconesComHover" style="font-size: 22pt; text-align: right;">delete</span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+            <div class="setaBranca-banner">
+                <img id="setaBranca" src="../src/Imagens/setaBranca.png">
             </div>
         </section>
 
-        <!-- FOOTER -->
-        <div class="margemSuperior" style="background-color: #047EFF; height: 8vh;"></div>
+        <!-- TAB -->
+        <section class="padroesSecaoFlexDirectionRow" style="justify-content: center;">
+            <div class="divTab">
+                <button class="textoPadrao botaoTab active" 
+                data-tab-target="#devolucao" style="text-align: center;">DEVOLUÇÃO</button>
 
-        <footer style="margin-top: 0%;">
-            <div class="padroesSecaoFlexDirectionRow" style="padding: 5% 0%;">
-                <div style="place-content: center; width: 30%;">
-                    <img src="../src/Imagens/logoBranca.png" width="100%"/>
-                </div>
+                <button class="textoPadrao botaoTab" 
+                data-tab-target="#troca" style="text-align: center;">TROCA</button>
+            </div>
+        </section>
 
-                <hr>
+        <!-- SOLICITAÇÕES DE DEVOLUÇÃO -->
+         <section id="devolucao" data-tab-content class="active">
+            <div class="padroesSecaoFlexDirectionRow divBordaEscura" style="align-items: center; padding: 2%; margin-top: 1%;">
+                <img src="../src/Imagens/imagemEstufa.png" class="imagensPadrao"/>
+                
+                <div class="padroesSecaoFlexDirectionColumn" style="width: 100%;">
+                    
+                    <div class="secaoRotasFlexDirectionRow">
+                        <div class="secaoRotasFlexDirectionColumn">
+                            <p class="textoPadrao">Pé de Feijão: Estufa portátil inteligente</p> <br>
+                            <p class="textoPadrao"><b>Jeferson Ribeiro</b></p>
+                        </div>
+                        <p class="textoPadrao">10/07</p> <!-- LIGAR COM O BANCO DE DADOS -->
+                    </div>
 
-                <div style="width: 30%;">
-                    <p class="textoPadraoBranco">©2024, Prototipei. <br> Todos os direitos reservados.</p>
-                </div>
+                    <div class="secaoRotasFlexDirectionRow">
+                        <div class="secaoRotasFlexDirectionRow" style="align-items: center;">
+                            <p class="textoPadrao">R$500,00</p>
 
-                <div class="padroesSecaoFlexDirectionColumn" style="gap: 0vw; width: 40%;">
-                    <p class="textoPadraoBranco" style="text-align: right; ">prototipeiltda@gmail.com <br> R. Miguel Ortega, 135</p>
+                            <p class="textoPadrao">QT: 1</p> <!-- LIGAR COM O BANCO DE DADOS - ESTOQUE -->
+                        </div>
+
+                        <div class="secaoRotasFlexDirectionRow">
+                            <button class="botaoAzul" onclick="window.location.href = 'pedidoDeDevolucao.html'">VISUALIZAR PEDIDO</button>
+                        </div>
+                    </div>
                 </div>
             </div>
+
+            <div class="padroesSecaoFlexDirectionRow divBordaEscura" style="align-items: center; padding: 2%; margin-top: 1%;">
+                <img src="../src/Imagens/imagemEstufa.png" class="imagensPadrao"/>
+                
+                <div class="padroesSecaoFlexDirectionColumn" style="width: 100%;">
+                    
+                    <div class="secaoRotasFlexDirectionRow">
+                        <div class="secaoRotasFlexDirectionColumn">
+                            <p class="textoPadrao">Pé de Feijão: Estufa portátil inteligente</p> <br>
+                            <p class="textoPadrao"><b>Jeferson Ribeiro</b></p>
+                        </div>
+                        <p class="textoPadrao">10/07</p> <!-- LIGAR COM O BANCO DE DADOS -->
+                    </div>
+
+                    <div class="secaoRotasFlexDirectionRow">
+                        <div class="secaoRotasFlexDirectionRow" style="align-items: center;">
+                            <p class="textoPadrao">R$500,00</p>
+
+                            <p class="textoPadrao">QT: 1</p> <!-- LIGAR COM O BANCO DE DADOS - ESTOQUE -->
+                        </div>
+
+                        <div class="secaoRotasFlexDirectionRow">
+                            <button class="botaoAzul" onclick="window.location.href = 'pedidoDeDevolucao.html'">VISUALIZAR PEDIDO</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+         </section>
+         
+
+         <!-- SOLICITAÇÕES DE TROCA -->
+          <section id="troca" data-tab-content>
+            <div class="padroesSecaoFlexDirectionRow divBordaEscura" style="align-items: center; padding: 2%; margin-top: 1%;">
+                <img src="../src/Imagens/imagemEstufa.png" class="imagensPadrao"/>
+                
+                <div class="padroesSecaoFlexDirectionColumn" style="width: 100%;">
+                    
+                    <div class="secaoRotasFlexDirectionRow">
+                        <div class="secaoRotasFlexDirectionColumn">
+                            <p class="textoPadrao">Pé de Feijão: Estufa portátil inteligente</p> <br>
+                            <p class="textoPadrao"><b>Jéssica dos Santos</b></p>
+                        </div>
+                        <p class="textoPadrao">10/07</p> <!-- LIGAR COM O BANCO DE DADOS -->
+                    </div>
+
+                    <div class="secaoRotasFlexDirectionRow">
+                        <div class="secaoRotasFlexDirectionRow" style="align-items: center;">
+                            <p class="textoPadrao">R$500,00</p>
+
+                            <p class="textoPadrao">QT: 1</p> <!-- LIGAR COM O BANCO DE DADOS - ESTOQUE -->
+                        </div>
+
+                        <div class="secaoRotasFlexDirectionRow">
+                            <button class="botaoAzul" onclick="window.location.href = 'pedidoDeTroca.html'">VISUALIZAR PEDIDO</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="padroesSecaoFlexDirectionRow divBordaEscura" style="align-items: center; padding: 2%; margin-top: 1%;">
+                <img src="../src/Imagens/imagemEstufa.png" class="imagensPadrao"/>
+                
+                <div class="padroesSecaoFlexDirectionColumn" style="width: 100%;">
+                    
+                    <div class="secaoRotasFlexDirectionRow">
+                        <div class="secaoRotasFlexDirectionColumn">
+                            <p class="textoPadrao">Pé de Feijão: Estufa portátil inteligente</p> <br>
+                            <p class="textoPadrao"><b>Jéssica dos Santos</b></p>
+                        </div>
+                        <p class="textoPadrao">10/07</p> <!-- LIGAR COM O BANCO DE DADOS -->
+                    </div>
+
+                    <div class="secaoRotasFlexDirectionRow">
+                        <div class="secaoRotasFlexDirectionRow" style="align-items: center;">
+                            <p class="textoPadrao">R$500,00</p>
+
+                            <p class="textoPadrao">QT: 1</p> <!-- LIGAR COM O BANCO DE DADOS - ESTOQUE -->
+                        </div>
+
+                        <div class="secaoRotasFlexDirectionRow">
+                            <button class="botaoAzul" onclick="window.location.href = 'pedidoDeTroca.html'">VISUALIZAR PEDIDO</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+          </section>
+
+          <!-- FOOTER -->
+        <footer>
+            <div>
+                <img src="../src/Imagens/logoBranca.png" class="logoBranca" alt="Logo da Prototipei."/>
+            </div>
+            
+            <div class="padroesSecaoFlexDirectionRow" style="padding: 5% 0%;">
+                <div style="width: 40%;">
+                    <p class="textoPadraoBranco">CONTATO:</p>
+                    <p class="textoPadraoBranco">prototipei@gmail.com</p>
+                    <p class="textoPadraoBranco" style="margin-top: 10%;">LOCAL:</p>
+                    <p class="textoPadraoBranco">Etec de Taboão da Serra</p>
+                    <a href="" class="textoPadraoBranco"> <p>Política de privacidade</p></a>
+                    <a href="" class="textoPadraoBranco"><p>Termos de uso</p></a>
+                </div>
+
+                <div style="width: 20%;"></div>
+
+                <div style="width: 40%;">
+
+                    <!-- LEMBRAR DE ALTERAR ESSA PARTE AQUI -->
+                    <p class="textoPadraoBranco">FAQ:</p>
+                    <p class="textoPadraoBranco">Item Nav Bar</p>
+                    <p class="textoPadraoBranco">Item Nav Bar</p>
+                    <p class="textoPadraoBranco">Item Nav Bar</p>
+                    <p class="textoPadraoBranco">Item Nav Bar</p>
+                    <p class="textoPadraoBranco">Item Nav Bar</p>
+                </div>
+            </div>
+
+            <hr>
+
+            <p class="textoPadraoBranco" style="text-align: center; padding-top: 3%;">Copyright © 2024, Prototipei. Todos os direitos reservados.</p>
         </footer>
 
-        <script src="../src/js/javascriptPadrao.js"></script>
-
-        <script>
-            function todosOsItens() {
-                //CHECHBOX TODOS OS ITENS
-                var checkboxes = document.querySelectorAll('input[type="checkbox"]');
-                var idTodosOsItens = document.getElementById('todosOsItens');
-
-                if (idTodosOsItens.checked) {
-                    checkboxes.forEach(function(checkbox) {
-                        checkbox.checked = true;
-                    });
-                } else {
-                    checkboxes.forEach(function(checkbox) {
-                        checkbox.checked = false;
-                    });
-                }
-            }
-        </script>
+        <script src="../src/js/tabs.js"></script>
     </body>
 </html>

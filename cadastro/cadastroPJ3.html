@@ -1,61 +1,133 @@
 <!DOCTYPE html>
 <html lang="pt-br">
-    <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Cadastro</title>
-        <link href="../src/css/cssLoginCadastro.css" rel="stylesheet" type="text/css" />
-        <link href="../src/css/estilizacaoPadrao.css" rel="stylesheet" type="text/css" />
-    </head>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cadastro PJ - Etapa 2</title>
+    <link href="../src/css/cssLoginCadastro.css" rel="stylesheet" type="text/css" />
+    <link href="../src/css/estilizacaoPadrao.css" rel="stylesheet" type="text/css" />
+</head>
 
-    <body>
-        <section class="secaoPrincipal">
-            <div class="container">
-                <!-- IMAGEM NA LATERAL ESQUERDA -->
-                <div class="divImagem">
-                    <img id="idArduino" src="../src/Imagens/imagemArduinoLoginCadastro.png" alt="Imagem de um sistema embarcado da marca Arduíno.">
+<body>
+    <section class="secaoPrincipal">
+        <div class="container">
+            <!-- IMAGEM NA LATERAL ESQUERDA -->
+            <div class="divImagem">
+                <img id="idArduino" src="../src/Imagens/imagemArduinoLoginCadastro.png" alt="Imagem de um sistema embarcado da marca Arduíno.">
+            </div>
+
+            <!-- CADASTRO PF3 NA LATERAL DIREITA -->
+            <div class="divLoginCadastroDireita">
+                <h1 class="tituloPadraoBranco">CADASTRO PJ - Etapa 2</h1>
+
+                <br> <br>
+    
+                <!-- FORMULÁRIO DE CADASTRO -->
+                <form id="pfForm" class="formInputs">
+                    <label for="email">E-MAIL:</label>
+                    <input class="inputLoginCadastro" type="email" id="email" name="email" required>
+        
+                    <label for="senha">SENHA:</label>
+                    <input class="inputLoginCadastro" type="password" id="senha" name="senha" required>
+        
+                    <label for="confirmarSenha">CONFIRMAR SENHA:</label>
+                    <input class="inputLoginCadastro" type="password" id="confirmarSenha" name="confirmarSenha" required>
+        
+                    <br>
+
+                    <div style="place-items: center;">
+                        <button class="botaoBranco" type="submit">CONTINUAR</button>
+                    </div>
+                </form>
+
+                <br> 
+
+                <!-- ÍCONES DAS APIS DE LOGIN -->
+                <p class="textoPequeno" style="text-align: center;">OU:</p>
+                <div class="divIcones">
+                    <img src="../src/Imagens/iconeApple.png" alt="Apple" class="icone imagensComHover">
+                    <img src="../src/Imagens/iconeGoogle.png" alt="Google" class="icone imagensComHover">
+                    <img src="../src/Imagens/iconeFacebook.png" alt="Facebook" class="icone imagensComHover">
                 </div>
 
-                <!-- CADASTRO PF3 NA LATERAL DIREITA -->
-                <div class="divLoginCadastroDireita">
-                    <h1 class="tituloPadraoBranco">CADASTRO</h1>
-
-                    <br> <br>
-        
-                    <!-- FORMULÁRIO DE CADASTRO -->
-                    <form class="formInputs">
-                        <label for="email">E-MAIL:</label>
-                        <input class="inputLoginCadastro" type="email" id="email" name="email" required>
-            
-                        <label for="senha">SENHA:</label>
-                        <input class="inputLoginCadastro" type="password" id="senha" name="senha" required>
-            
-                        <label for="confirmarSenha">CONFIRMAR SENHA:</label>
-                        <input class="inputLoginCadastro" type="password" id="confirmarSenha" name="confirmarSenha" required>
-            
-                        <br>
-
-                        <a href="index.html"><button class="botaoBranco">CONTINUAR</button></a>
-                    </form>
-        
-                    <br> 
-
-                    <p>OU:</p>
-                        <div class="divIcones">
-                            <img src="../src/Imagens/iconeApple.png" alt="Apple" class="icone">
-                            <img src="../src/Imagens/iconeGoogle.png" alt="Google" class="icone">
-                            <img src="../src/Imagens/iconeFacebook.png" alt="Facebook" class="icone">
-                        </div>
-
-                    <br>
-        
-                    <!-- INDICADORES DE QUAL PÁGINA VC TÁ -->
-                    <div class="divIndicadores">
-                        <span class="spanIndicador"></span>
-                        <span class="spanIndicador active"></span>
-                    </div>
+                <br>
+    
+                <!-- INDICADORES DE QUAL PÁGINA VC TÁ -->
+                <div class="divIndicadores">
+                    <span class="spanIndicador"></span>
+                    <span class="spanIndicador active"></span>
                 </div>
             </div>
-        </section>
-    </body>
+        </div>
+    </section>
+
+    <script type="module">
+        // Configuração do Firebase
+        const firebaseConfig = {
+            apiKey: "AIzaSyBVMWxw3ubEE6HWWxzu1H_BhnWzRXQwd2g",
+            authDomain: "prototipei.firebaseapp.com",
+            projectId: "prototipei",
+            storageBucket: "prototipei.firebasestorage.app",
+            messagingSenderId: "507053339898",
+            appId: "1:507053339898:web:efac2b22db7bde679d4543"
+        };
+
+        // Importa as funções do Firebase
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/11.0.1/firebase-app.js";
+        import { getFirestore, doc, updateDoc } from "https://www.gstatic.com/firebasejs/11.0.1/firebase-firestore.js";
+        import { getAuth, createUserWithEmailAndPassword } from "https://www.gstatic.com/firebasejs/11.0.1/firebase-auth.js";
+
+        // Inicializa o Firebase
+        const app = initializeApp(firebaseConfig);
+        const db = getFirestore(app);
+        const auth = getAuth(app);
+
+        // Evento de envio do formulário
+        document.getElementById('pfForm').addEventListener('submit', async function(e) {
+            e.preventDefault();
+
+            const email = document.getElementById('email').value;
+            const senha = document.getElementById('senha').value;
+            const confirmarSenha = document.getElementById('confirmarSenha').value;
+
+            // Verifica se as senhas coincidem
+            if (senha !== confirmarSenha) {
+                alert("As senhas não correspondem.");
+                return;
+            }
+
+            // Recupera o ID do usuário salvo no localStorage
+            const userId = localStorage.getItem('userId');
+            if (!userId) {
+                alert("Erro: ID do usuário não encontrado.");
+                return;
+            }
+
+            try {
+                // Cria usuário no Firebase Authentication
+                const userCredential = await createUserWithEmailAndPassword(auth, email, senha);
+                const authUserId = userCredential.user.uid;
+
+                // Atualiza o documento do usuário com o e-mail e authUserId
+                const userRef = doc(db, "usuarios_PJ", userId);
+                await updateDoc(userRef, {
+                    email: email,
+                    authUserId: authUserId
+                });
+
+                // Opcional: Remove o userId do localStorage após o cadastro
+                localStorage.removeItem('userId');
+
+                // Redireciona para a página de login ou dashboard
+                window.location.href = "login.html";
+
+            } catch (error) {
+                console.error("Erro ao cadastrar o usuário: ", error);
+                alert("Falha ao cadastrar o usuário. Verifique se o e-mail já está em uso.");
+            }
+
+            document.getElementById('pfForm').reset();
+        });
+    </script>
+</body>
 </html>

@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-br">
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -18,7 +18,7 @@
                     <a href="home.html#secaoAgendeConsultoriaHome"><p class="textoPadrao">Consultoria</p></a>
                     <a href="home.html#secaoSobreNosHome"><p class="textoPadrao">Sobre nós</p></a>
 
-                    <a href="login.html">
+                    <a href="perfil.html">
                         <div class="divPerfil">
 
                             <!-- SVG do perfil -->
@@ -78,7 +78,7 @@
                         <p class="textoPadrao"> Endereço de entrega:<br>José Serafim de Castro, nº120, Taboão da Serra - São Paulo</p>
                     </div>
                      
-                    <a href="" class="textoPadrao">Alterar endereço de entrega</a>
+                    <a href="alterarEndereço.html" class="textoPadrao">Alterar endereço de entrega</a>
                 </div>
             </div>
 
@@ -110,17 +110,17 @@
             
                         <!-- Grupo de Botões de Forma de Pagamento -->
                         <div class="secaoRotasFlexDirectionRow" style="gap: 0%;">
-                            <div class="botaoPagamento" id="debito" onclick="selecionarPagamento('debito')">
+                            <button class="botaoPagamento" id="debito" value="debito" onclick="selecionarPagamento('debito')">
                                 CARTÃO DE<br> DÉBITO
-                            </div>
+                            </button>
 
-                            <div class="botaoPagamento" id="pix" onclick="selecionarPagamento('pix')">
+                            <button class="botaoPagamento" id="pix" value="pix" onclick="selecionarPagamento('pix')">
                                 PIX
-                            </div>
+                            </button>
 
-                            <div class="botaoPagamento" id="credito" onclick="selecionarPagamento('credito')">
+                            <button class="botaoPagamento" id="credito" value="credito" onclick="selecionarPagamento('credito')">
                                 CARTÃO DE CRÉDITO
-                            </div>
+                            </button>
                         </div>
                         <!-- Fim dos Botões -->
                       </div>
@@ -130,7 +130,7 @@
                     </div>
 
                     <div>
-                        <div class="txtFinalizarEndereço3">
+                        <div>
                             <p class="textoPadrao"> Valor dos produtos: R$ 400,00</p><br>
                             <p class="textoPadrao"> Valor do frete: R$ 12,00</p><br>
                             <p class="textoPadrao"> Valor total: R$ 412,00</p>
@@ -138,8 +138,59 @@
                     </div>
                 </div>
             </div>
+
+            <div style="text-align: center; padding-top: 3%;">
+                <button class="botaoAzul" onclick="verificarERedirecionar()">PAGAR</button>
+            </div>
         </section>
 
+        <!-- FOOTER -->
+        <div class="margemSuperior" style="background-color: #047EFF; height: 8vh;"></div>
+
+        <footer style="margin-top: 0%;">
+            <div class="padroesSecaoFlexDirectionRow" style="padding: 5% 0%;">
+                <div style="place-content: center; width: 30%;">
+                    <img src="../src/Imagens/logoBranca.png" width="100%"/>
+                </div>
+
+                <hr>
+
+                <div style="width: 30%;">
+                    <p class="textoPadraoBranco">©2024, Prototipei. <br> Todos os direitos reservados.</p>
+                </div>
+
+                <div class="padroesSecaoFlexDirectionColumn" style="gap: 0vw; width: 40%;">
+                    <p class="textoPadraoBranco" style="text-align: right; ">prototipeiltda@gmail.com <br> R. Miguel Ortega, 135</p>
+                </div>
+            </div>
+        </footer>
+
         <script src="../src/js/javascriptPadrao.js"></script>
+
+        <script>
+            function verificarERedirecionar() {
+                // Verifica se algum dos botões de pagamento foi clicado
+                const escolha = document.querySelector('button.selecionado');
+
+                if (!escolha) {
+                    alert('Para finalizar sua compra, escolha um método de pagamento.');  // Caso nenhum método tenha sido escolhido
+                    return;  // Se nenhum botão foi escolhido, a função é interrompida
+                }
+
+                redirecionar(escolha.id);
+            }
+
+            function redirecionar(id) {
+                // Obtém o elemento do botão que foi clicado
+                const escolhaDePagamento = document.getElementById(id);
+                
+                // Verifica o valor do botão
+                if (escolhaDePagamento.value === 'pix') {
+                    window.location.href = 'finalizarCompraPix.html';
+                } else if (escolhaDePagamento.value === 'debito' || escolhaDePagamento.value === 'credito') {
+                    window.location.href = 'finalizarCompraCartao.html';
+                }
+            }
+        </script>
     </body>
 </html>

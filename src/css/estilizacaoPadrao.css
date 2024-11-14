@@ -32,6 +32,7 @@ html{
     top: 0px;
     padding: 2%;
     width: 98%;
+    height: 4%;
   }
   
   .logoNavbar {
@@ -143,11 +144,24 @@ html{
   font-size: 18px;
   cursor: pointer;
   transition-duration: 0.4s;
+  font-family: Raleway;
 }
 
 .botaoBranco:hover {
   background-color: var(--azulEscuro);
   color: var(--brancoAzulado);
+}
+
+.botaoDesabilitado{
+  background-color: var(--brancoAzulado);
+  color: var(--azulEscuro);
+  border: 2px solid var(--azulEscuro);
+  opacity: 70%;
+  font-family: Raleway;
+  width: 150px;
+  height: 50px;
+  border-radius: 25px;
+  font-size: 18px;
 }
 
 .botaoAzul {
@@ -160,6 +174,7 @@ html{
   font-size: 18px;
   cursor: pointer;
   transition-duration: 0.4s;
+  font-family: Raleway;
 }
 
 .botaoAzul:hover {
@@ -172,6 +187,7 @@ html{
   height: 2.5vw; /* Definindo a altura fixa */
   margin-right: 1vw;
   border: 2px solid var(--azulMedio);
+  border-radius: 100px;
   background-color: var(--brancoAzulado);
   color: var(--azulEscuro);
   cursor: pointer;
@@ -181,7 +197,12 @@ html{
   display: flex;
   justify-content: center; /* Centraliza o texto horizontalmente */
   align-items: center; /* Centraliza o texto verticalmente */
-  transition: background-color 0.3s ease;
+  transition: 0.4s;
+}
+
+.botaoPagamento:hover{
+  background-color: var(--azulMedio);
+  color: var(--brancoAzulado);
 }
 
 /* Estilo de botões selecionados */
@@ -189,6 +210,13 @@ html{
   background-color: #0352A8FF !important;
   color: #fff;
   font-weight: bold;
+}
+
+.selecionado2 {
+  background-color: #0352A8FF !important;
+  color: var(--brancoAzulado);
+  font-family: Raleway;
+  font-size: 14pt;
 }
 
 .botaoMaisMenos{
@@ -239,6 +267,7 @@ html{
   margin-bottom: 20px;
   text-align: center;
   font-size: 13pt;
+  background-color: var(--brancoAzulado);
 }
 
 .inputAlterarEndereço {
@@ -300,11 +329,18 @@ html{
   
 .material-symbols-outlined { /*Icons*/
   font-variation-settings: 'FILL' 1, 'wght' 300, 'GRAD' 0, 'opsz' 24;
+  transition: 0.4s;
+}
+
+.vazado { /*Icons*/
+  font-variation-settings: 'FILL' 0, 'wght' 300, 'GRAD' 0, 'opsz' 24;
+  transition: 0.4s;
 }
 
 .imagensPadrao{
   width: 20%;
   height: 20%;
+  border-radius: 5%;
 }
 
 .imagensComHover{
@@ -315,6 +351,15 @@ html{
 .imagensComHover:hover{
   -webkit-transform: scale(1.1);
   transform: scale(1.1);
+}
+
+.iconesComHover{
+  color: var(--azulMedio);
+  transition: 0.4s;
+}
+
+.iconesComHover:hover{
+  color: var(--azulClaro);
 }
 
 .cardQuadrado {
@@ -380,6 +425,8 @@ html{
   font-family: "Raleway";
   font-size: 15pt;
   color: var(--azulClaro);
+  margin-left: 2%;
+  padding: 1%;
 }
   
 .padroesSecaoFlexDirectionColumn{
@@ -412,6 +459,16 @@ html{
   margin-top: -13.9vw;
   transform: scaleY(-1);
   margin-top: 0px;
+}
+
+.separadorBaixoBranco {
+  width: 0;
+  height: 0;
+  border-right: 208.3vh solid transparent;
+  border-bottom: 13vw solid var(--brancoAzulado);
+  margin-top: -13.9vw;
+  transform: scaleX(-1);
+  margin-top: 0px;
   background-image: url('../Imagens/imagemFundoBolinhas.svg');
 }
 
@@ -438,7 +495,7 @@ html{
   height: 25px;
   width: 25px;
   background-color: #F1F0ECFF;
-  border: 2px solid #184677;
+  border: 2px solid var(--azulMedio);
   transition: all 0.3s ease;
 }
 
@@ -522,6 +579,14 @@ html{
 
 .active[data-tab-content] {
   display: block;
+}
+
+.grid{
+  display: grid;
+  grid-template-columns: 15% 42% 8% 31%;
+  column-gap: 1%;
+  grid-template-rows: repeat(3 1fr);
+  row-gap: 5%;
 }
 
 
@@ -697,12 +762,16 @@ html{
 
 footer {
   margin-top: 8%;
-  background-color: var(--azulEscuro);
-  padding: 5% 15%;
+  background-color: var(--azulMedio);
+  padding: 2% 15%;
   text-align: center;
 }
 
 footer p{
   margin-top: 3%;
+}
+
+.margemSuperior{
+  margin-top: 5%;
 }
 

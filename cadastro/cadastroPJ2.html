@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Cadastro</title>
+    <title>Cadastro PJ - Etapa 1</title>
     <link href="../src/css/cssLoginCadastro.css" rel="stylesheet" type="text/css" />
     <link href="../src/css/estilizacaoPadrao.css" rel="stylesheet" type="text/css" />
 </head>
@@ -16,29 +16,31 @@
                 <img id="idArduino" src="../src/Imagens/imagemArduinoLoginCadastro.png" alt="Imagem de um sistema embarcado da marca Arduíno.">
             </div>
 
-            <!-- CADASTRO PF3 NA LATERAL DIREITA -->
+            <!-- CADASTRO PJ NA LATERAL DIREITA -->
             <div class="divLoginCadastroDireita">
-                <p class="tituloPadraoBranco">CADASTRO</p>
-    
-                <br> <br>
+                <p class="tituloPadraoBranco">CADASTRO PJ</p>
+
+                <br><br>
 
                 <!-- FORMULÁRIO DE CADASTRO -->
-                <form class="formInputs">
-                    <label class="textoPadraoBranco" for="email">RAZÃO SOCIAL DA EMPRESA:</label>
-                    <input class="inputLoginCadastro" type="email" id="nome" name="email" required>
-        
-                    <label class="textoPadraoBranco" for="senha">CEP:</label>
-                    <input class="inputLoginCadastro" id="cep" name="senha" required>
-        
-                    <label class="textoPadraoBranco" for="confirmarSenha">TELEFONE:</label>
-                    <input class="inputLoginCadastro" id="telefone" name="confirmarSenha" required>
-        
-                    <label class="textoPadraoBranco" for="confirmarSenha">CNPJ:</label>
-                    <input class="inputLoginCadastro" id="cnpj" name="confirmarSenha" required>
-        
-                    <a href="cadastroPJ3.html"><button class="botaoBranco">CONTINUAR</button></a>
+                <form id="pjForm" class="formInputs">
+                    <label class="textoPadraoBranco" for="nome">RAZÃO SOCIAL DA EMPRESA:</label>
+                    <input class="inputLoginCadastro" type="text" id="nome" name="nome" required>
+
+                    <label class="textoPadraoBranco" for="cep">CEP:</label>
+                    <input class="inputLoginCadastro" id="cep" name="cep" required maxlength="9" placeholder="XXXXX-XXX">
+
+                    <label class="textoPadraoBranco" for="telefone">TELEFONE:</label>
+                    <input class="inputLoginCadastro" id="telefone" name="telefone" required maxlength="15" placeholder="(XX) XXXXX-XXXX">
+
+                    <label class="textoPadraoBranco" for="cnpj">CNPJ:</label>
+                    <input class="inputLoginCadastro" id="cnpj" name="cnpj" required maxlength="18" placeholder="XX.XXX.XXX/0001-XX">
+
+                    <div style="place-items: center;">
+                        <button class="botaoBranco" type="submit">CONTINUAR</button>
+                    </div>
                 </form>
-    
+
                 <!-- INDICADORES DE QUAL PÁGINA VC TÁ -->
                 <div class="divIndicadores">
                     <span class="spanIndicador active"></span>
@@ -47,5 +49,92 @@
             </div>
         </div>
     </section>
+
+    <script type="module">
+        // Configuração do Firebase
+        const firebaseConfig = {
+            apiKey: "AIzaSyBVMWxw3ubEE6HWWxzu1H_BhnWzRXQwd2g",
+            authDomain: "prototipei.firebaseapp.com",
+            projectId: "prototipei",
+            storageBucket: "prototipei.firebasestorage.app",
+            messagingSenderId: "507053339898",
+            appId: "1:507053339898:web:efac2b22db7bde679d4543"
+        };
+
+        // Importa as funções do Firebase
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/11.0.1/firebase-app.js";
+        import { getFirestore, collection, doc, setDoc } from "https://www.gstatic.com/firebasejs/11.0.1/firebase-firestore.js";
+
+        // Inicializa o Firebase
+        const app = initializeApp(firebaseConfig);
+        const db = getFirestore(app);
+
+        // Máscara para formatar campos
+        function applyMask(input, maskFunction) {
+            input.addEventListener('input', () => {
+                input.value = maskFunction(input.value);
+            });
+        }
+
+        function maskCEP(value) {
+            return value.replace(/\D/g, '').replace(/(\d{5})(\d)/, '$1-$2').slice(0, 9);
+        }
+
+        function maskTelefone(value) {
+            return value.replace(/\D/g, '')
+                .replace(/(\d{2})(\d)/, '($1) $2')
+                .replace(/(\d{5})(\d)/, '$1-$2')
+                .slice(0, 15);
+        }
+
+        function maskCNPJ(value) {
+            return value.replace(/\D/g, '')
+                .replace(/(\d{2})(\d)/, '$1.$2')
+                .replace(/(\d{3})(\d)/, '$1.$2')
+                .replace(/(\d{3})(\d)/, '$1/$2')
+                .replace(/(\d{4})(\d)/, '$1-$2')
+                .slice(0, 18);
+        }
+
+        // Aplicando máscaras aos campos
+        applyMask(document.getElementById('cep'), maskCEP);
+        applyMask(document.getElementById('telefone'), maskTelefone);
+        applyMask(document.getElementById('cnpj'), maskCNPJ);
+
+        // Evento de envio do formulário
+        document.getElementById('pjForm').addEventListener('submit', async function(e) {
+            e.preventDefault();
+
+            const nome = document.getElementById('nome').value;
+            const cep = document.getElementById('cep').value;
+            const telefone = document.getElementById('telefone').value;
+            const cnpj = document.getElementById('cnpj').value;
+
+            try {
+                // Gera um ID de documento único
+                const userId = doc(collection(db, "usuarios_PJ")).id;
+
+                // Salva os dados da empresa no Firestore com o ID gerado
+                await setDoc(doc(db, "usuarios_PJ", userId), {
+                    nome: nome,
+                    cep: cep,
+                    telefone: telefone,
+                    cnpj: cnpj
+                });
+
+                // Salva o ID gerado no localStorage para uso na próxima página
+                localStorage.setItem('userId', userId);
+
+                // Redireciona para a próxima página de cadastro
+                window.location.href = "cadastroPJ3.html";
+
+            } catch (error) {
+                console.error("Erro ao cadastrar a empresa: ", error);
+                alert("Falha ao cadastrar a empresa.");
+            }
+
+            document.getElementById('pjForm').reset();
+        });
+    </script>
 </body>
 </html>
