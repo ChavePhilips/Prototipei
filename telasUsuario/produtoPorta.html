@@ -82,13 +82,13 @@
                                 <br> <br>
 
                                 <p class="textoPadraoBranco">Frete: <br><p class="tituloPadraoBranco" style="text-align: left;">R$12,00</p></p>
-                                <p class="textoPadraoBranco">Endereço: Rua Joaquim de Sales...</p>
+                                <p class="textoPadraoBranco" id="Endereço"></p>
 
                                 <br><br>
 
                                 <div class="secaoRotasFlexDirectionRow">
                                     <p class="tituloPadraoBranco" style="text-align: left;">R$500,00</p>
-                                    <p class="textoPadraoBranco" style="align-self: center;">Estoque: 125</p>
+                                    <p class="textoPadraoBranco" style="align-self: center;" id="estoque"></p>
                                 </div>
 
                                 <br> <br>
@@ -244,5 +244,33 @@
         
         <script src="../src/js/avaliacoes.js"></script>
         <script src="../src/js/tabs.js"></script>
+        <script>
+            const dadosUsuario = JSON.parse(localStorage.getItem("dadosUsuario"));
+    
+            if (dadosUsuario) {
+                const informacoesDiv = document.getElementById("Endereço");
+                informacoesDiv.innerHTML = `
+                    <p>Endereço: ${dadosUsuario.endereco || "N/A"}</p>
+                `;
+            } else {
+                document.getElementById("informacoes").innerText = "Nenhuma informação do usuário foi encontrada.";
+            }
+
+            // Recupera os dados de estoque armazenados no localStorage
+            const qt_e = localStorage.getItem("qt_e");
+            const qt_p = localStorage.getItem("qt_p");
+
+            // Verifica se os dados existem
+            if (qt_e || qt_p) {
+            // Exibe os dados de estoque
+                const estoqueDiv = document.getElementById("estoque");
+                estoqueDiv.innerHTML = `
+                    <p>Estoque: ${qt_p || "N/A"}</p>
+                `;
+            } else {
+            // Se não houver dados, exibe uma mensagem de erro
+                document.getElementById("estoque").innerText = "Nenhuma informação do estoque foi encontrada.";
+            }
+        </script>
     </body>
 </html>
