@@ -64,12 +64,12 @@
             <!-- SEÇÃO DA COMPRA DO PRODUTO (PARTE AZUL) -->
         <section style="margin-top: 11vh;">
             <section class="secaoDescricaoProduto">    
-                        <div class="padroesSecaoFlexDirectionRow">
+                        <div class="padroesSecaoFlexDirectionRow" style="width: 55%; justify-content: center;">
                             <!-- Imagem da estufa -->
                              <div>
                                 <img class="" src="../src/Imagens/imagemArduinoHome.png" alt="Estufa Portátil Inteligente">
 
-                                <button class="botaoCarrinho">
+                                <button class="botaoCarrinho" onclick="resumoCompra()">
                                     <span class="material-symbols-outlined" style="color: #F1F0EC; font-size: 30pt; text-align: center; justify-content: center;">
                                         add_shopping_cart</span>
                                 </button>
@@ -77,24 +77,24 @@
 
                             <!-- Informações do produto -->
                             <div style="justify-content: center;">
-                                <p class="tituloPadraoBranco" style="text-align: left;">OPEN: SISTEMA DE ABERTURA <br> DE PORTAS PARA PCDS</p>
+                                <p id="nome" class="tituloPadraoBranco" style="text-align: left;">OPEN: SISTEMA DE ABERTURA DE PORTAS PARA PCDS</p>
 
                                 <br> <br>
 
-                                <p class="textoPadraoBranco">Frete: <br><p class="tituloPadraoBranco" style="text-align: left;">R$12,00</p></p>
-                                <p class="textoPadraoBranco">Endereço: Rua Joaquim de Sales...</p>
+                                <p id="frete" class="textoPadraoBranco">Frete: <br><p class="tituloPadraoBranco" style="text-align: left;">R$12,00</p></p>
+                                <p id="endereco" class="textoPadraoBranco">Endereço: Rua Joaquim de Sales...</p>
 
                                 <br><br>
 
                                 <div class="secaoRotasFlexDirectionRow">
-                                    <p class="tituloPadraoBranco" style="text-align: left;">R$500,00</p>
+                                    <p id="preco" class="tituloPadraoBranco" style="text-align: left;">R$500,00</p>
                                     <p class="textoPadraoBranco" style="align-self: center;">Estoque: 125</p>
                                 </div>
 
                                 <br> <br>
                                 
                                 <div style="text-align: left;">
-                                    <button class="botaoBranco" onclick="window.location.href = 'finalizarCompra1.html'">COMPRAR</button>
+                                    <button class="botaoBranco">COMPRAR</button>
                                 </div>
                             </div>
                         </div>
@@ -244,5 +244,6 @@
         
         <script src="../src/js/avaliacoes.js"></script>
         <script src="../src/js/tabs.js"></script>
+        <script src="../src/js/carrinho.js"></script>
     </body>
 </html>
