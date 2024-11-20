@@ -109,19 +109,29 @@
                 <fieldset class="divBordaEscura" style="margin-top: 0%;">
                     <legend class="tituloPequeno" style="color: #011428;">E-mail:</legend>
 
-                    <input id="email" class="textareaDevolucaoTroca" style="width: 98%; height: 5vh; margin: 1vh;" type="email" required></input>
+                    <!-- Mostra o email do usuário em um imput-->
+                    <input id="Email" class="textareaDevolucaoTroca" style="width: 98%; height: 5vh; margin: 1vh;" type="email" 
+                    placeholder="Digite o email para atualização" 
+                    required></input>
+                    
                 </fieldset>
 
                 <fieldset class="divBordaEscura" style="margin-top: 1%;">
-                    <legend class="tituloPequeno" style="color: #011428;">Senha:</legend>
+                    <legend class="tituloPequeno" style="color: #011428;">Data de nascimento:</legend>
 
-                    <input id="senha"class="textareaDevolucaoTroca" style="width: 98%; height: 5vh; margin: 1vh;" type="password" required></input>
+                    <!-- Mostra a data de nascimento do usuário em um imput-->
+                    <input id="dataNascimento" class="textareaDevolucaoTroca" style="width: 98%; height: 5vh; margin: 1vh;" type = "date" required> </input>
+                    
                 </fieldset>
 
                 <fieldset class="divBordaEscura" style="margin-top: 1%;">
                     <legend class="tituloPequeno" style="color: #011428;">Telefone:</legend>
-
-                    <input id="telefone" class="textareaDevolucaoTroca" style="width: 98%; height: 5vh; margin: 1vh;" type="tel" required></input>
+                    
+                    <!-- Mostra o telefone do usuário em um imput-->
+                    <input id="Telefone" class="textareaDevolucaoTroca" style="width: 98%; height: 5vh; margin: 1vh;" type="tel"
+                    placeholder="Digite o telefone para atualização" 
+                    required></input>
+                    
                 </fieldset>
 
                 <div class="margemPadrao" style="text-align: center; padding-top: 3%;">
@@ -197,6 +207,27 @@
             } else {
                 document.getElementById("informacoes").innerText = "Nenhuma informação do usuário foi encontrada.";
             }
+
+            if (dadosUsuario) {
+            const dataNascimentoInput = document.getElementById("dataNascimento");
+
+            // Função para converter a data do formato dd/mm/aaaa para aaaa-mm-dd
+            function converterData(data) {
+                const partesData = data.split('/'); // Divide a data em partes com base na barra "/"
+                return `${partesData[2]}-${partesData[1]}-${partesData[0]}`; // Retorna no formato aaaa-mm-dd
+            }
+
+            // Se a data de nascimento existir, converta e insira no campo de input
+            if (dadosUsuario.dataNascimento) {
+                const dataFormatada = converterData(dadosUsuario.dataNascimento);
+                dataNascimentoInput.value = dataFormatada; // Define o valor no formato correto
+            } else {
+                dataNascimentoInput.value = ""; // Caso não exista, o campo ficará vazio
+            }
+            } else {
+                document.getElementById("informacoes").innerText = "Nenhuma informação do usuário foi encontrada.";
+            }
+
 
         </script>
     </body>
