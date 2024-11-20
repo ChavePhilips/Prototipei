@@ -85,7 +85,7 @@
             </div>
 
             <div style="align-content: center; padding-left: 1.5vw;">
-                <p class="tituloPadrao" id="nome">OLÁ, BEM VINDO!</p> <!-- Lembrar de puxar o nome do cliente do banco de dados aqui -->
+                <p class="tituloPadrao" id="Nome">OLÁ, BEM VINDO!</p> <!-- Lembrar de puxar o nome do cliente do banco de dados aqui -->
             </div>
 
             <div style="place-content: center; width: 40%; text-align: right;">
@@ -183,7 +183,7 @@
             </div>
         </footer>
         <script>
-const dadosUsuario = JSON.parse(localStorage.getItem("dadosUsuario"));
+        const dadosUsuario = JSON.parse(localStorage.getItem("dadosUsuario"));
             
             if (dadosUsuario) {
                 const Nome = document.getElementById("Nome");
@@ -227,7 +227,6 @@ const dadosUsuario = JSON.parse(localStorage.getItem("dadosUsuario"));
             } else {
                 document.getElementById("informacoes").innerText = "Nenhuma informação do usuário foi encontrada.";
             }
-
 
         </script>
     </body>
