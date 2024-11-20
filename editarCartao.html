@@ -83,7 +83,7 @@
                     <span class="material-symbols-outlined" style="color: #0352A8; font-size: 50pt;">credit_card</span>
                 </legend>
 
-                <form>
+                <form id="additionalInfoForm">
                     <label for="numeroCartao"><p class="textoPadrao" style="margin-bottom: 1%;">NÚMERO DO CARTÃO:</p></label>
                     <input class="textareaBriefing" style="border: none; height: 4vh;" id="numeroCartao" name="numeroCartao" 
                     type="number" required/>
@@ -96,7 +96,7 @@
 
                         <div>
                             <label for="cvv"><p class="textoPadrao" style="margin-bottom: 1%;">CVV:</p></label>
-                            <input class="textareaBriefing" style="border: none; height: 4vh;" id="cvv" required/>
+                            <input class="textareaBriefing" style="border: none; height: 4vh;" id="CVV" required/>
                         </div>
                     </div>
 
@@ -130,5 +130,91 @@
                 </div>
             </div>
         </footer>
+        <script type="module">
+            // Firebase configuration
+            const firebaseConfig = {
+                apiKey: "AIzaSyBVMWxw3ubEE6HWWxzu1H_BhnWzRXQwd2g",
+                authDomain: "prototipei.firebaseapp.com",
+                projectId: "prototipei",
+                storageBucket: "prototipei.firebasestorage.app",
+                messagingSenderId: "507053339898",
+                appId: "1:507053339898:web:efac2b22db7bde679d4543"
+            };
+        
+            // Importações Firebase
+            import { initializeApp } from "https://www.gstatic.com/firebasejs/11.0.1/firebase-app.js";
+            import { getFirestore, doc, updateDoc } from "https://www.gstatic.com/firebasejs/11.0.1/firebase-firestore.js";
+        
+            // Inicializa o Firebase
+            const app = initializeApp(firebaseConfig);
+            const db = getFirestore(app);
+            const dadosUsuario = JSON.parse(localStorage.getItem("dadosUsuario"));
+            
+            if (dadosUsuario) {
+                
+                // Exibe o e-mail
+                const numeroCartaoInput = document.getElementById("numeroCartao");
+                numeroCartaoInput.value = dadosUsuario.numerocartao || ""; // Define o valor do input como o email do usuário ou uma string vazia caso não exista
+                
+                // Exibe o telefone
+                const vencimentoCartaoInput = document.getElementById("vencimentoCartao");
+                vencimentoCartaoInput.value = dadosUsuario.vencimentocartao || ""; // Define o valor do input como o telefone do usuário ou uma string vazia caso não exista
+                
+                // Exibe a data de nascimento
+                const CVVInput = document.getElementById("CVV");
+                CVVInput.value = dadosUsuario.cvv || ""; // Define o valor do input como o telefone do usuário ou uma string vazia caso não exista
+                
+                // Exibe a data de nascimento
+                const nomeCartaoInput = document.getElementById("nomeCartao");
+                nomeCartaoInput.value = dadosUsuario.nomecartao || ""; // Define o valor do input como o telefone do usuário ou uma string vazia caso não exista
+                
+            
+            } else {
+                document.getElementById("informacoes").innerText = "Nenhuma informação do usuário foi encontrada.";
+            }
+        
+            // Adiciona evento de envio ao formulário
+            document.getElementById('additionalInfoForm').addEventListener('submit', async function(e) {
+                e.preventDefault();
+        
+                // Recupera o userId salvo no localStorage
+                const userId = localStorage.getItem('userId');
+                if (!userId) {
+                    alert("Erro: ID do usuário não encontrado. Retorne ao início do cadastro.");
+                    return;
+                }
+        
+                // Recupera os valores dos campos do formulário
+                const NumeroCartao = document.getElementById('numeroCartao').value;
+                const VencimentoCartao = document.getElementById('vencimentoCartao').value;
+                const CVVs = document.getElementById('CVV').value;
+                const NomeCartao = document.getElementById('nomeCartao').value;
+        
+                // Atualiza os dados no objeto dadosUsuario
+                dadosUsuario.numerocartao = NumeroCartao;
+                dadosUsuario.vencimentocartao = VencimentoCartao;
+                dadosUsuario.cvv = CVVs;
+                dadosUsuario.nomecartao = NomeCartao;
+        
+                // Atualiza os dados no localStorage
+                localStorage.setItem("dadosUsuario", JSON.stringify(dadosUsuario));
+        
+                try {
+                    // Atualiza o documento do usuário no Firestore
+                    await updateDoc(doc(db, "usuarios_PF", userId), {
+                        numerocartao: NumeroCartao,
+                        vencimentocartao: VencimentoCartao,
+                        cvv: CVVs,
+                        nomecartao: NomeCartao
+                    });
+                    
+                    // Redireciona para a próxima etapa do cadastro
+                    window.location.href = "carteira.html";
+                } catch (error) {
+                    console.error("Erro ao atualizar as informações do usuário: ", error);
+                    alert("Falha ao atualizar as informações do usuário.");
+                }
+            });
+        </script>
     </body>
 </html>
