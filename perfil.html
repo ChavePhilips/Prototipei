@@ -85,7 +85,7 @@
             </div>
 
             <div style="align-content: center; padding-left: 1.5vw;">
-                <p class="tituloPadrao" id="nome">OLÁ, BEM VINDO!</p> <!-- Lembrar de puxar o nome do cliente do banco de dados aqui -->
+                <p class="tituloPadrao" id="nome">OLÁ, BEM VINDO!</p>
             </div>
 
             <div style="place-content: center; width: 40%; text-align: right;">
@@ -99,7 +99,11 @@
         
         <section class="margemPadrao" style="padding-top: 0%;">
             <button class="botaoBranco" style="width: 100%; border: 2px solid;" onclick="window.location.href = 'minhasComprasRota.html'">MINHAS COMPRAS</button>
-
+            
+            <div class="margemPadrao" style="text-align: center; padding-top: 3%;">
+                <button id="btnDeslogar" class="botaoAzul" style="width: 25%;">DESLOGAR</button>
+            </div>
+            
             <p class="tituloPadrao" style="margin-top: 10%;">MEUS DADOS</p>
         </section>
 
@@ -264,6 +268,38 @@
                     alert("Falha ao atualizar as informações do usuário.");
                 }
             });
+
+             // Deslogando o usuário
+
+            document.getElementById('btnDeslogar').addEventListener('click', function() {
+               
+               // Desconecta o usuário do Firebase
+               signOut(auth).then(() => {
+
+                   // Limpar dados do localStorage se necessário
+                   localStorage.removeItem("usuarioLogado");
+                   localStorage.removeItem("dadosUsuario");
+                   localStorage.removeItem("qt_e");
+                   localStorage.removeItem("qt_p");
+
+                   console.log("Usuário deslogado com sucesso!"); // Verificar se o deslogamento ocorreu
+
+                   // Redireciona para a tela home
+                   window.location.href = "../cadastro/login.html"; //alterar para index
+               }).catch((error) => {
+                   console.error("Erro ao deslogar: ", error);
+                   alert("Erro ao deslogar: " + error.message);
+               });
+             });
+    
+               //Confirmação que o usuário realmente será redirecionado para home, após se deslogar
+               onAuthStateChanged(auth, (user) => {
+                   if (!user) {
+                       // Usuário não está logado, redireciona para a home
+                       window.location.href = "../cadastro/login.html";
+                   }
+               });
+            
         </script>        
     </body>
 </html>
