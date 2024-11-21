@@ -258,12 +258,16 @@
                 linkPerfil.addEventListener("click", function() {
                     window.location.href = "perfil.html"; // Página de perfil
                 });
-
-            } if (usuarioLogado) {
+            } else {
+                linkPerfil.addEventListener("click", function() {
+                    window.location.href = "../cadastro/login.html"; // Página de login
+                });
+            }
+                
+            if (usuarioLogado) {
                 linkCompra.addEventListener("click", function() {
                     window.location.href = "finalizarCompra1.html"; // Página de finalzar compra
                 });
-
             } else {
                 linkPerfil.addEventListener("click", function() {
                     window.location.href = "../cadastro/login.html"; // Página de login
