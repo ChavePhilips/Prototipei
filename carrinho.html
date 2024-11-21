@@ -18,7 +18,7 @@
                     <a href="home.html#secaoAgendeConsultoriaHome"><p class="textoPadrao">Consultoria</p></a>
                     <a href="home.html#secaoSobreNosHome"><p class="textoPadrao">Sobre nós</p></a>
 
-                    <a href="perfil.html">
+                    <a id = "linkPerfil">
                         <div class="divPerfil">
 
                             <!-- SVG do perfil -->
@@ -78,7 +78,7 @@
                 </div>
                 
                 <div>
-                    <button class="botaoAzul" onclick="window.location.href = 'finalizarCompra1.html'">COMPRAR</button>   
+                    <button class="botaoAzul" id="linkCompra">COMPRAR</button>   
                 </div>
             </div>
                 
@@ -101,7 +101,7 @@
                         <div class="secaoRotasFlexDirectionRow" style="align-items: center;">
                             <p class="textoPadrao">R$500,00</p>
 
-                            <p class="textoPadrao">QT: 1</p> <!-- LIGAR COM O BANCO DE DADOS - ESTOQUE -->
+                            <p class="textoPadrao">QT: 1</p>
                         </div>
 
                         <div class="secaoRotasFlexDirectionRow">
@@ -139,7 +139,7 @@
                         <div class="secaoRotasFlexDirectionRow" style="align-items: center;">
                             <p class="textoPadrao">R$500,00</p>
 
-                            <p class="textoPadrao">QT: 1</p> <!-- LIGAR COM O BANCO DE DADOS - ESTOQUE -->
+                            <p class="textoPadrao">QT: 1</p>
                         </div>
 
                         <div class="secaoRotasFlexDirectionRow">
@@ -243,6 +243,33 @@
                     });
                 }
             }
+
+            document.addEventListener("DOMContentLoaded", function() {
+
+            // Obtém as informações do usuário armazenadas no localStorage
+            const usuarioLogado = localStorage.getItem("dadosUsuario");
+
+            // Seleciona o ícone de perfil
+            const linkPerfil = document.getElementById("linkPerfil");
+            const linkCompra = document.getElementById("linkCompra");
+
+            // Verifica se o usuário está logado. Se estiver logado, é direcionado à tela de perfil. Senão, é direcionado à tela de login.
+            if (usuarioLogado) {
+                linkPerfil.addEventListener("click", function() {
+                    window.location.href = "perfil.html"; // Página de perfil
+                });
+
+            } if (usuarioLogado) {
+                linkCompra.addEventListener("click", function() {
+                    window.location.href = "finalizarCompra1.html"; // Página de finalzar compra
+                });
+
+            } else {
+                linkPerfil.addEventListener("click", function() {
+                    window.location.href = "../cadastro/login.html"; // Página de login
+                });
+            }
+            });
         </script>
     </body>
 </html>
