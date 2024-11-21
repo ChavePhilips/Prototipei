@@ -93,8 +93,8 @@
 
                 // Consultas nas coleções para verificar onde o usuário está
                 const colecoes = [
-                    { nome: "usuarios_PF", pagina: "index.html" },
-                    { nome: "usuarios_PJ", pagina: "index.html" },
+                    { nome: "usuarios_PF", pagina: "../index.html" },
+                    { nome: "usuarios_PJ", pagina: "../index.html" },
                     { nome: "consultor", pagina: "../telasConsultor/homeConsultor.html" },
                     { nome: "administrador", pagina: "../telasADM/homeAdm.html" }
                 ];
@@ -184,7 +184,7 @@
                 if (isUserRegistered) {
                     console.log("Usuário autenticado e encontrado em uma das coleções.");
                     alert("Usuário autenticado.")
-                    window.location.href = "index.html"; // Redirecionamento
+                    window.location.href = "../index.html"; // Redirecionamento
                 } else {
                     console.error("Usuário não registrado.");
                     alert("Usuário não registrado. Faça o cadastro antes de fazer login.");
