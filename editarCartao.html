@@ -76,9 +76,6 @@
                 <img id="setaBranca" src="../src/Imagens/setaBranca.png">
             </div>
         </section>
-        <div style="align-content: center; padding-left: 1.5vw;">
-            <p class="tituloPadrao" id="nome">OLÁ, BEM VINDO!</p> <!-- Lembrar de puxar o nome do cliente do banco de dados aqui -->
-        </div>
         <section class="margemPadrao" style="margin-top: 0%;">
             <fieldset class="divBordaAzul" style="margin: 0%; padding: 3%;">
                 <legend style="margin-left: 2%;">
@@ -154,11 +151,7 @@
             
             
             if (dadosUsuario) {
-                // Exibe o nome do usuário
-                const nome = document.getElementById("nome"); // ID com letra minúscula
-                nome.innerHTML = `
-                    <p>Olá, ${dadosUsuario.nome || "N/A"}</p>
-                `;
+                
                 // Exibe o e-mail
                 const numeroCartaoInput = document.getElementById("numeroCartao");
                 numeroCartaoInput.value = dadosUsuario.numerocartao || ""; // Define o valor do input como o email do usuário ou uma string vazia caso não exista
@@ -224,4 +217,4 @@
             });
         </script>
     </body>
-</html
+</html>
