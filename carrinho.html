@@ -81,7 +81,7 @@
                     <button class="botaoAzul" onclick="window.location.href = 'finalizarCompra1.html'">COMPRAR</button>   
                 </div>
             </div>
-
+                
             <!-- QUADRADO COM O PRODUTO -->
             <div class="padroesSecaoFlexDirectionRow divBordaEscura" style="align-items: center; padding: 2%;">
                 <div style="align-items: center;">
@@ -183,6 +183,51 @@
         <script src="../src/js/javascriptPadrao.js"></script>
 
         <script>
+            // Configuração do Firebase
+            import { initializeApp } from "https://www.gstatic.com/firebasejs/11.0.1/firebase-app.js";
+            import { getFirestore, doc, getDoc } from "https://www.gstatic.com/firebasejs/11.0.1/firebase-firestore.js";
+    
+            const firebaseConfig = {
+                apiKey: "AIzaSyBVMWxw3ubEE6HWWxzu1H_BhnWzRXQwd2g",
+                authDomain: "prototipei.firebaseapp.com",
+                projectId: "prototipei",
+                storageBucket: "prototipei.firebasestorage.app",
+                messagingSenderId: "507053339898",
+                appId: "1:507053339898:web:efac2b22db7bde679d4543"
+            };
+    
+            const app = initializeApp(firebaseConfig);
+            const db = getFirestore(app);
+    
+            async function atualizarEstoque() {
+                try {
+                    // Consultando o estoque da estufa
+                    const estufaRef = doc(db, "estoque", "Estufa");
+                    const estufaDoc = await getDoc(estufaRef);
+                    if (estufaDoc.exists()) {
+                        const qt_e = estufaDoc.data().QT_E; // Quantidade da estufa
+                        localStorage.setItem("qt_e", qt_e); // Armazenando no localStorage
+                    } else {
+                        console.log("Documento 'Estufa' não encontrado!");
+                    }
+    
+                    // Consultando o estoque da porta
+                    const portaRef = doc(db, "estoque", "Porta");
+                    const portaDoc = await getDoc(portaRef);
+                    if (portaDoc.exists()) {
+                        const qt_p = portaDoc.data().QT_P; // Quantidade da porta
+                        localStorage.setItem("qt_p", qt_p); // Armazenando no localStorage
+                    } else {
+                        console.log("Documento 'Porta' não encontrado!");
+                    }
+                } catch (error) {
+                    console.error("Erro ao atualizar estoque:", error);
+                }
+            }
+                // Chamando a função para atualizar o estoque ao carregar a página
+                atualizarEstoque();
+    
+            
             function todosOsItens() {
                 //CHECHBOX TODOS OS ITENS
                 var checkboxes = document.querySelectorAll('input[type="checkbox"]');

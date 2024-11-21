@@ -90,26 +90,37 @@
                 <span class="material-symbols-outlined" style="font-size: 35pt; color: #0352A8;">credit_card</span>
 
                 <div class="padroesSecaoFlexDirectionColumn">
-                    <p class="textoPadrao">CARTÃO TERMINADO COM 0574 <br> Email: marianabatista@gmail.com</p>
+                    <p class="textoPadrao">CARTÃO TERMINADO COM 0574 <br> 
+                        <!-- Mostra email do usuário -->
+                        <p class="textoPadrao Email"></p>
+                    </p>
                 </div>
 
-                <button class="botaoAzul">EDITAR</button>
+                 <button class="botaoAzul" onclick="window.location.href = 'editarCartao.html'">EDITAR</button>
             </div>
 
             <div id="cartao2" class="divBordaEscura padroesSecaoFlexDirectionRow cartaoSelecionado" onclick="selecionarPagamento('cartao2')" style="padding: 3%; justify-content: space-between; margin-top: 3%;">
                 <span class="material-symbols-outlined" style="font-size: 35pt; color: #0352A8;">credit_card</span>
 
-                <div class="padroesSecaoFlexDirectionColumn">
-                    <p class="textoPadrao">CARTÃO TERMINADO COM 0574 <br> Email: marianabatista@gmail.com</p>
+               <div class="padroesSecaoFlexDirectionColumn">
+                    <p class="textoPadrao">CARTÃO TERMINADO COM 0574 <br> 
+                        <!-- Mostra email do usuário -->
+                        <p class="textoPadrao Email"></p>
+                    </p>
                 </div>
 
-                <button class="botaoAzul">EDITAR</button>
+                <button class="botaoAzul" onclick="window.location.href = 'editarCartao.html'">EDITAR</button>
             </div>
 
             <div id="cartao3" class="divBordaEscura padroesSecaoFlexDirectionRow cartaoSelecionado" onclick="selecionarPagamento('cartao3')" style="padding: 3%; justify-content: space-between; margin-top: 3%; margin-bottom: 5%;">
                 <span class="material-symbols-outlined" style="font-size: 35pt; color: #0352A8;">credit_card</span>
                 
-                <p class="textoPadrao">CARTÃO TERMINADO COM 0574 <br> Email: marianabatista@gmail.com</p>
+               <div class="padroesSecaoFlexDirectionColumn">
+                    <p class="textoPadrao">CARTÃO TERMINADO COM 0574 <br> 
+                        <!-- Mostra email do usuário -->
+                        <p class="textoPadrao Email"></p>
+                    </p>
+                </div>
                 
                 <button class="botaoAzul" onclick="window.location.href = 'editarCartao.html'">EDITAR</button>
             </div>
@@ -150,6 +161,23 @@
                 // Adiciona a classe 'selecionado' ao botão clicado
                 document.getElementById(id).classList.add('selecionado2');
             }
+
+            const dadosUsuario = JSON.parse(localStorage.getItem("dadosUsuario"));
+    
+            if (dadosUsuario) {
+                // Usando querySelectorAll para buscar múltiplos elementos com a classe 'Email'
+                const emailDivs = document.querySelectorAll(".Email");
+
+                emailDivs.forEach((emailDiv) => {
+                    emailDiv.innerHTML = `
+                        <p>Email: ${dadosUsuario.email || "N/A"}</p>
+                    `;
+                });
+            } else {
+                // Caso o usuário não tenha dados, exibe uma mensagem alternativa
+                document.getElementById("informacoes").innerText = "Nenhuma informação do usuário foi encontrada.";
+            }
+            
         </script>
     </body>
 </html>

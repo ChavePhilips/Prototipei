@@ -244,32 +244,75 @@
         
         <script src="../src/js/avaliacoes.js"></script>
         <script src="../src/js/tabs.js"></script>
-        <script>
-            const dadosUsuario = JSON.parse(localStorage.getItem("dadosUsuario"));
+        <script type="module">
+            // Configuração do Firebase
+            import { initializeApp } from "https://www.gstatic.com/firebasejs/11.0.1/firebase-app.js";
+            import { getFirestore, doc, getDoc } from "https://www.gstatic.com/firebasejs/11.0.1/firebase-firestore.js";
     
+            const firebaseConfig = {
+                apiKey: "AIzaSyBVMWxw3ubEE6HWWxzu1H_BhnWzRXQwd2g",
+                authDomain: "prototipei.firebaseapp.com",
+                projectId: "prototipei",
+                storageBucket: "prototipei.firebasestorage.app",
+                messagingSenderId: "507053339898",
+                appId: "1:507053339898:web:efac2b22db7bde679d4543"
+            };
+    
+            const app = initializeApp(firebaseConfig);
+            const db = getFirestore(app);
+    
+            async function atualizarEstoque() {
+                try {
+                    // Consultando o estoque da estufa
+                    const estufaRef = doc(db, "estoque", "Estufa");
+                    const estufaDoc = await getDoc(estufaRef);
+                    if (estufaDoc.exists()) {
+                        const qt_e = estufaDoc.data().QT_E; // Quantidade da estufa
+                        localStorage.setItem("qt_e", qt_e); // Armazenando no localStorage
+                    } else {
+                        console.log("Documento 'Estufa' não encontrado!");
+                    }
+    
+                    // Consultando o estoque da porta
+                    const portaRef = doc(db, "estoque", "Porta");
+                    const portaDoc = await getDoc(portaRef);
+                    if (portaDoc.exists()) {
+                        const qt_p = portaDoc.data().QT_P; // Quantidade da porta
+                        localStorage.setItem("qt_p", qt_p); // Armazenando no localStorage
+                    } else {
+                        console.log("Documento 'Porta' não encontrado!");
+                    }
+    
+                    // Atualizando as informações na página
+                    const qt_e = localStorage.getItem("qt_e");
+                    const qt_p = localStorage.getItem("qt_p");
+    
+                    const estoqueDiv = document.getElementById("estoque");
+                    if (qt_e || qt_p) {
+                        estoqueDiv.innerHTML = `
+                            <p>Estoque: ${qt_p || "N/A"}</p>
+                        `;
+                    } else {
+                        estoqueDiv.innerText = "Nenhuma informação do estoque foi encontrada.";
+                    }
+    
+                } catch (error) {
+                    console.error("Erro ao atualizar estoque:", error);
+                }
+            }
+    
+            // Chamando a função para atualizar o estoque ao carregar a página
+            atualizarEstoque();
+    
+            // Exibindo informações do usuário
+            const dadosUsuario = JSON.parse(localStorage.getItem("dadosUsuario"));
             if (dadosUsuario) {
-                const informacoesDiv = document.getElementById("Endereço");
-                informacoesDiv.innerHTML = `
+                const enderecoDiv = document.getElementById("Endereço");
+                enderecoDiv.innerHTML = `
                     <p>Endereço: ${dadosUsuario.endereco || "N/A"}</p>
                 `;
             } else {
-                document.getElementById("informacoes").innerText = "Nenhuma informação do usuário foi encontrada.";
-            }
-
-            // Recupera os dados de estoque armazenados no localStorage
-            const qt_e = localStorage.getItem("qt_e");
-            const qt_p = localStorage.getItem("qt_p");
-
-            // Verifica se os dados existem
-            if (qt_e || qt_p) {
-            // Exibe os dados de estoque
-                const estoqueDiv = document.getElementById("estoque");
-                estoqueDiv.innerHTML = `
-                    <p>Estoque: ${qt_p || "N/A"}</p>
-                `;
-            } else {
-            // Se não houver dados, exibe uma mensagem de erro
-                document.getElementById("estoque").innerText = "Nenhuma informação do estoque foi encontrada.";
+                console.log("Nenhuma informação do usuário encontrada.");
             }
         </script>
     </body>
