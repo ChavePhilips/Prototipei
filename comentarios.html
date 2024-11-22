@@ -175,6 +175,71 @@
                     nota = valorClicado;
                 });
             });
+
+            // Importando o Firebase
+            import { initializeApp } from "https://www.gstatic.com/firebasejs/11.0.1/firebase-app.js";
+            import { getFirestore, collection, addDoc } from "https://www.gstatic.com/firebasejs/11.0.1/firebase-firestore.js";
+
+            const firebaseConfig = {
+                apiKey: "AIzaSyBVMWxw3ubEE6HWWxzu1H_BhnWzRXQwd2g",
+                authDomain: "prototipei.firebaseapp.com",
+                projectId: "prototipei",
+                storageBucket: "prototipei.firebasestorage.app",
+                messagingSenderId: "507053339898",
+                appId: "1:507053339898:web:efac2b22db7bde679d4543"
+            };
+
+            // Inicializando o Firebase e Firestore
+            const app = initializeApp(firebaseConfig);
+            const db = getFirestore(app);
+
+            // Selecionando elementos
+            const textareaComentario = document.querySelector(".textareaDevolucaoTroca");
+            const btnEnviar = document.querySelector(".botaoAzul");
+
+            // Adicionando evento para as estrelas
+            const stars = document.querySelectorAll("[data-estrela]");
+            stars.forEach(star => {
+                star.addEventListener("click", () => {
+                    nota = parseInt(star.dataset.estrela); // Captura a nota da estrela clicada
+                    stars.forEach(s => {
+                        const valorEstrela = parseInt(s.dataset.estrela);
+                        if (valorEstrela <= nota) {
+                            s.classList.remove("vazado"); // Estrela cheia
+                        } else {
+                            s.classList.add("vazado"); // Estrela vazada
+                        }
+                    });
+                });
+            });
+
+            // Evento de clique no botão de envio
+            btnEnviar.addEventListener("click", async () => {
+                const comentario = textareaComentario.value.trim(); // Captura o comentário escrito
+                if (!nota) {
+                    alert("Por favor, selecione uma nota antes de enviar.");
+                    return;
+                }
+
+                try {
+                    // Criando novo documento na coleção "comentario"
+                    const docRef = await addDoc(collection(db, "comentario"), {
+                        nota: nota, // Adiciona a nota
+                        comentario: comentario || "Sem comentário" // Adiciona o comentário ou um texto padrão
+                    });
+
+                    alert("Avaliação enviada com sucesso!");
+                    console.log("Documento criado com ID:", docRef.id);
+
+                    // Reseta os campos
+                    textareaComentario.value = "";
+                    stars.forEach(s => s.classList.add("vazado")); // Reseta as estrelas
+                    nota = null;
+                } catch (error) {
+                    console.error("Erro ao enviar avaliação:", error);
+                    alert("Erro ao enviar avaliação. Por favor, tente novamente.");
+                }
+            });
             
         </script>
     </body>
