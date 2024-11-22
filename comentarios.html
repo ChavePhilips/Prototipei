@@ -189,7 +189,7 @@
                 appId: "1:507053339898:web:efac2b22db7bde679d4543"
             };
 
-            // Inicializando o Firebase e Firestore
+             // Inicializando o Firebase e Firestore
             const app = initializeApp(firebaseConfig);
             const db = getFirestore(app);
 
@@ -216,6 +216,13 @@
             // Evento de clique no botão de envio
             btnEnviar.addEventListener("click", async () => {
                 const comentario = textareaComentario.value.trim(); // Captura o comentário escrito
+
+                // Recupera o nome e o email do usuário do localStorage
+                const dadosUsuario = JSON.parse(localStorage.getItem("dadosUsuario"));
+                const nomeUsuario = dadosUsuario?.nome || "Usuário desconhecido"; // Usa "Usuário desconhecido" caso o nome não exista
+                const emailUsuario = dadosUsuario?.email || "Email não disponível"; // Usa "Email não disponível" caso o email não exista
+
+                // Validações
                 if (!nota) {
                     alert("Por favor, selecione uma nota antes de enviar.");
                     return;
@@ -225,7 +232,9 @@
                     // Criando novo documento na coleção "comentario"
                     const docRef = await addDoc(collection(db, "comentario"), {
                         nota: nota, // Adiciona a nota
-                        comentario: comentario || "Sem comentário" // Adiciona o comentário ou um texto padrão
+                        comentario: comentario || "Sem comentário", // Adiciona o comentário ou um texto padrão
+                        nomeUsuario: nomeUsuario, // Adiciona o nome do usuário
+                        emailUsuario: emailUsuario // Adiciona o email do usuário
                     });
 
                     alert("Avaliação enviada com sucesso!");
@@ -240,6 +249,7 @@
                     alert("Erro ao enviar avaliação. Por favor, tente novamente.");
                 }
             });
+            
             
         </script>
     </body>
