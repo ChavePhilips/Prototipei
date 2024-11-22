@@ -226,12 +226,42 @@
                 // Exibe a data de nascimento
                 const dataNascimentoInput = document.getElementById("dataNascimento");
                 dataNascimentoInput.value = dadosUsuario.dataNascimento || ""; // Define o valor do input como o telefone do usuário ou uma string vazia caso não exista
-                
-                
             
             } else {
                 document.getElementById("informacoes").innerText = "Nenhuma informação do usuário foi encontrada.";
             }
+
+            // Deslogando o usuário
+
+            document.getElementById('btnDeslogar').addEventListener('click', function() {
+               
+               // Desconecta o usuário do Firebase
+               signOut(auth).then(() => {
+
+                   // Limpar dados do localStorage se necessário
+                   localStorage.removeItem("usuarioLogado");
+                   localStorage.removeItem("dadosUsuario");
+                   localStorage.removeItem("qt_e");
+                   localStorage.removeItem("qt_p");
+
+                   console.log("Usuário deslogado com sucesso!"); // Verificar se o deslogamento ocorreu
+
+                   // Redireciona para a tela home
+                   window.location.href = "../telasUsuario/home.html"; //alterar para index
+               }).catch((error) => {
+                   console.error("Erro ao deslogar: ", error);
+                   alert("Erro ao deslogar: " + error.message);
+               });
+           });
+
+           //Confirmação que o usuário realmente será redirecionado para home, após se deslogar
+           onAuthStateChanged(auth, (user) => {
+           if (!user) {
+               // Usuário não está logado, redireciona para a home
+               window.location.href = "../telasUsuario/home.html";
+           }
+       });
+
         
             // Adiciona evento de envio ao formulário
             document.getElementById('additionalInfoForm').addEventListener('submit', async function(e) {
@@ -271,37 +301,7 @@
                 }
             });
 
-             // Deslogando o usuário
+        </script>
 
-            document.getElementById('btnDeslogar').addEventListener('click', function() {
-               
-               // Desconecta o usuário do Firebase
-               signOut(auth).then(() => {
-
-                   // Limpar dados do localStorage se necessário
-                   localStorage.removeItem("usuarioLogado");
-                   localStorage.removeItem("dadosUsuario");
-                   localStorage.removeItem("qt_e");
-                   localStorage.removeItem("qt_p");
-
-                   console.log("Usuário deslogado com sucesso!"); // Verificar se o deslogamento ocorreu
-
-                   // Redireciona para a tela home
-                   window.location.href = "../cadastro/login.html"; //alterar para index
-               }).catch((error) => {
-                   console.error("Erro ao deslogar: ", error);
-                   alert("Erro ao deslogar: " + error.message);
-               });
-             });
-    
-               //Confirmação que o usuário realmente será redirecionado para home, após se deslogar
-               onAuthStateChanged(auth, (user) => {
-                   if (!user) {
-                       // Usuário não está logado, redireciona para a home
-                       window.location.href = "../cadastro/login.html";
-                   }
-               });
-            
-        </script>        
     </body>
 </html>
