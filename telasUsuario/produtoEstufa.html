@@ -166,38 +166,9 @@
                         
 
                         <div>
+                            
                             <p class="tituloPequeno" style="text-align: center;">COMENTÁRIOS:</p>
-                            <!-- Avaliação 1 -->
-                            <div id="avaliacao1-">
-                                <div id="" class="" style="display: grid; grid-template-columns: 2fr 1fr; margin: 5%;">
-                                    <p class="tituloPequeno">João da Silva Pereira</p>
-                                    <span class="material-symbols-outlined" style="text-align: right; margin: 5%; color: #0352A8;"> gradegradegradegradegrade</span>
-                                </div>
-
-                                <p id="" class="textoPadrao" style="margin: 5%;">Estou muito satisfeito com o produto. Impecável! Comprei para a minha sobrinha e ela amou!</p>
-                            </div>
-
-                            <hr>
-                            <!-- Avaliação 2 -->
-                            <div id="avaliacao2-">
-                                <div id="" class="" style="display: grid; grid-template-columns: 2fr 1fr; margin: 5%;">
-                                    <p class="tituloPequeno">Paula Ramos</p>
-                                    <span class="material-symbols-outlined" style="text-align: right; color: #0352A8;"> gradegradegradegradestar_half</span>
-                                </div>
-
-                                <p id="" class="textoPadrao" style="margin: 5%;">Chegou um dia depois do prazo, porém o produto veio perfeito de acordo com o anúncio!</p>
-                            </div>
-
-                            <hr>
-                            <!-- Avaliação 3 -->
-                            <div id="avaliacao3-">
-                                <div id="" class="" style="display: grid; grid-template-columns: 2fr 1fr; margin: 5%;">
-                                    <p class="tituloPequeno">Victor Gabriel</p>
-                                    <span class="material-symbols-outlined" style="text-align: right; color: #0352A8;"> gradegradegradegradegrade</span>
-                                </div>
-
-                                <p id="" class="textoPadrao" style="margin: 5%;">Adorei, muito linda, atendeu minhas necessidades!</p>
-                            </div>
+                           
                         </div>
                     </fieldset>
                 </div>
@@ -251,7 +222,7 @@
         <script type="module">
             // Configuração do Firebase
             import { initializeApp } from "https://www.gstatic.com/firebasejs/11.0.1/firebase-app.js";
-            import { getFirestore, doc, getDoc } from "https://www.gstatic.com/firebasejs/11.0.1/firebase-firestore.js";
+            import { getFirestore, doc, getDocs, collection } from "https://www.gstatic.com/firebasejs/11.0.1/firebase-firestore.js";
     
             const firebaseConfig = {
                 apiKey: "AIzaSyBVMWxw3ubEE6HWWxzu1H_BhnWzRXQwd2g",
@@ -269,7 +240,7 @@
                 try {
                     // Consultando o estoque da estufa
                     const estufaRef = doc(db, "estoque", "Estufa");
-                    const estufaDoc = await getDoc(estufaRef);
+                    const estufaDoc = await getDocs(estufaRef);
                     if (estufaDoc.exists()) {
                         const qt_e = estufaDoc.data().QT_E; // Quantidade da estufa
                         localStorage.setItem("qt_e", qt_e); // Armazenando no localStorage
@@ -305,19 +276,71 @@
                 }
             }
     
-            // Chamando a função para atualizar o estoque ao carregar a página
-            atualizarEstoque();
-    
-            // Exibindo informações do usuário
-            const dadosUsuario = JSON.parse(localStorage.getItem("dadosUsuario"));
-            if (dadosUsuario) {
-                const enderecoDiv = document.getElementById("Endereço");
-                enderecoDiv.innerHTML = `
-                    <p>Endereço: ${dadosUsuario.endereco || "N/A"}</p>
-                `;
-            } else {
-                console.log("Nenhuma informação do usuário encontrada.");
-            }
+                // Chamando a função para atualizar o estoque ao carregar a página
+                atualizarEstoque();
+        
+                // Exibindo informações do usuário
+                const dadosUsuario = JSON.parse(localStorage.getItem("dadosUsuario"));
+                if (dadosUsuario) {
+                    const enderecoDiv = document.getElementById("Endereço");
+                    enderecoDiv.innerHTML = `
+                        <p>Endereço: ${dadosUsuario.endereco || "N/A"}</p>
+                    `;
+                } else {
+                    console.log("Nenhuma informação do usuário encontrada.");
+                }
+
+// Função para carregar os comentários
+async function carregarComentarios() {
+    try {
+        // Seleciona o local onde os comentários serão inseridos
+        const comentariosDiv = document.getElementById("divBarrasAvaliacao-divAvaliacaoProduto-divDadosProduto-secaoDescricaoProduto");
+
+        if (!comentariosDiv) {
+            console.error("Div de comentários não encontrada no DOM.");
+            return;
+        }
+
+        // Localiza o título "Comentários"
+        const tituloComentarios = document.querySelector("#divAvaliacaoProduto-divGrid-secaoDescricaoProduto .tituloPequeno");
+
+        // Recupera os documentos da coleção "comentario" no Firebase
+        const comentariosSnapshot = await getDocs(collection(db, "comentario"));
+        const comentarios = comentariosSnapshot.docs.map(doc => doc.data());
+
+        // Insere os comentários na ordem correta após o título
+        comentarios.forEach((comentario) => {
+            // Cria um novo container para cada comentário
+            const divComentario = document.createElement("div");
+            divComentario.style.marginBottom = "20px";
+
+            // Gerando as estrelas com base na nota do usuário
+            const estrelas = Array.from({ length: 5 }, (_, i) => {
+                return i < (comentario.nota || 0)
+                    ? `<span class="material-symbols-outlined" style="color: #0352A8; font-size: 20px;">grade</span>`
+                    : `<span class="material-symbols-outlined vazado" style="color: #0352A8; font-size: 20px;">grade</span>`;
+            }).join("");
+
+            // Configurando o HTML do comentário
+            divComentario.innerHTML = `
+                <div style="display: grid; grid-template-columns: 2fr 1fr; margin: 5%; align-items: center;">
+                    <p class="tituloPequeno" style="color: #0352A8; font-weight: bold;">${comentario.nomeUsuario || "Usuário desconhecido"}</p>
+                    <div style="text-align: right;">${estrelas}</div>
+                </div>
+                <p class="textoPadrao" style="margin: 5%; color: #011428;">${comentario.comentario || "Sem comentário disponível."}</p>
+                <hr style="border: 0.5px solid #0352A8; margin: 10px 0;">
+            `;
+
+            // Insere o comentário logo após o título "Comentários"
+            tituloComentarios.insertAdjacentElement("afterend", divComentario);
+        });
+    } catch (error) {
+        console.error("Erro ao carregar os comentários:", error);
+    }
+}
+
+// Carregar os comentários assim que a página carregar
+document.addEventListener("DOMContentLoaded", carregarComentarios);
         </script>
     </body>
 </html>
