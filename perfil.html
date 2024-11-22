@@ -191,7 +191,7 @@
             // Importações Firebase
             import { initializeApp } from "https://www.gstatic.com/firebasejs/11.0.1/firebase-app.js";
             import { getFirestore, doc, updateDoc } from "https://www.gstatic.com/firebasejs/11.0.1/firebase-firestore.js";
-            import { getAuth, signOut } from "https://www.gstatic.com/firebasejs/11.0.1/firebase-auth.js";
+            import { getAuth, signOut, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/11.0.1/firebase-auth.js";
 
             // Firebase configuration
              const firebaseConfig = {
@@ -231,38 +231,6 @@
                 document.getElementById("informacoes").innerText = "Nenhuma informação do usuário foi encontrada.";
             }
 
-            // Deslogando o usuário
-
-            document.getElementById('btnDeslogar').addEventListener('click', function() {
-               
-               // Desconecta o usuário do Firebase
-               signOut(auth).then(() => {
-
-                   // Limpar dados do localStorage se necessário
-                   localStorage.removeItem("usuarioLogado");
-                   localStorage.removeItem("dadosUsuario");
-                   localStorage.removeItem("qt_e");
-                   localStorage.removeItem("qt_p");
-
-                   console.log("Usuário deslogado com sucesso!"); // Verificar se o deslogamento ocorreu
-
-                   // Redireciona para a tela home
-                   window.location.href = "../telasUsuario/home.html"; //alterar para index
-               }).catch((error) => {
-                   console.error("Erro ao deslogar: ", error);
-                   alert("Erro ao deslogar: " + error.message);
-               });
-           });
-
-           //Confirmação que o usuário realmente será redirecionado para home, após se deslogar
-           onAuthStateChanged(auth, (user) => {
-           if (!user) {
-               // Usuário não está logado, redireciona para a home
-               window.location.href = "../telasUsuario/home.html";
-           }
-       });
-
-        
             // Adiciona evento de envio ao formulário
             document.getElementById('additionalInfoForm').addEventListener('submit', async function(e) {
                 e.preventDefault();
@@ -298,6 +266,28 @@
                 } catch (error) {
                     console.error("Erro ao atualizar as informações do usuário: ", error);
                     alert("Falha ao atualizar as informações do usuário.");
+                }
+            });
+
+             // Função de logout
+            document.getElementById("btnDeslogar").addEventListener("click", () => {
+                signOut(auth)
+                    .then(() => {
+                        console.log("Usuário deslogado com sucesso!");
+                        localStorage.clear(); // Limpa todos os dados no localStorage
+                        window.location.href = "../telasUsuario/home.html"; // Redireciona após logout
+                    })
+                    .catch((error) => {
+                        console.error("Erro ao deslogar:", error);
+                        alert("Erro ao deslogar: " + error.message);
+                    });
+            });
+        
+            // Verifica status de autenticação ao carregar a página
+            onAuthStateChanged(auth, (user) => {
+                if (!user) {
+                    console.log("Usuário não autenticado. Redirecionando para a home.");
+                    window.location.href = "../telasUsuario/home.html";
                 }
             });
 
