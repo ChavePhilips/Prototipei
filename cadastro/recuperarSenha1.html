@@ -1,42 +1,95 @@
 <!DOCTYPE html>
 <html lang="en">
-    <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Recuperar senha</title>
-        <link href="../src/css/estilizacaoPadrao.css" rel="stylesheet" type="text/css">
-        <link href="../src/css/cssLoginCadastro.css" rel="stylesheet" type="text/css">
-    </head>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Recuperar senha</title>
+    <link href="../src/css/estilizacaoPadrao.css" rel="stylesheet" type="text/css">
+    <link href="../src/css/cssLoginCadastro.css" rel="stylesheet" type="text/css">
+</head>
+<body>
+    <section class="secaoPrincipal">
+        <div class="container">
 
-    <body>
-        <section class="secaoPrincipal">
-            <div class="container">
-
-                <!-- IMAGEM NA LATERAL ESQUERDA -->
-                <div class="divImagem">
-                    <img id="idArduino" src="../src/Imagens/imagemArduinoLoginCadastro.png" alt="Imagem de recuperação de senha">
-                </div>
-
-                <!-- RECUPERAR SENHA 1 NA LATERAL DIREITA -->
-                <div class="divLoginCadastroDireita">
-                    <p class="tituloPadraoBranco">ESQUECEU A SENHA?</p>
-
-                    <br> <br>
-                    
-                    <form id="pfForm" class="formInputs">
-                        <label for="email">E-MAIL:</label>
-                        <input class="inputLoginCadastro" type="email" id="email" name="email" required>
-            
-                        <div style="place-items: center;">
-                            <button class="botaoBranco" type="submit">ENVIAR</button>
-                        </div>
-                    </form>
-                    <br><br>
-
-                    <p class="textoPadraoBranco">Será enviado para seu e-mail um código para redefinir a senha!</p><br>
-                    <p class="textoPadraoBranco">Abra e confirme a solicitação.</p>
-                </div>
+            <!-- IMAGEM NA LATERAL ESQUERDA -->
+            <div class="divImagem">
+                <img id="idArduino" src="../src/Imagens/imagemArduinoLoginCadastro.png" alt="Imagem de recuperação de senha">
             </div>
-        </section>
-    </body>
+
+            <!-- RECUPERAR SENHA 1 NA LATERAL DIREITA -->
+            <div class="divLoginCadastroDireita">
+                <p class="tituloPadraoBranco">ESQUECEU A SENHA?</p>
+
+                <br> <br>
+                
+                <form id="pfForm" class="formInputs">
+                    <label for="email">E-MAIL:</label>
+                    <input class="inputLoginCadastro" type="email" id="email" name="email" required>
+        
+                    <div style="place-items: center;">
+                        <button class="botaoBranco" type="submit">ENVIAR</button>
+                    </div>
+                </form>
+                <br><br>
+
+                <p class="textoPadraoBranco">Será enviado para seu e-mail um código para redefinir a senha!</p><br>
+                <p class="textoPadraoBranco">Abra e confirme a solicitação.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Script Firebase -->
+    <script type="module">
+        // Importação das bibliotecas do Firebase
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/11.0.1/firebase-app.js";
+        import { getAuth, sendPasswordResetEmail } from "https://www.gstatic.com/firebasejs/11.0.1/firebase-auth.js";
+
+        // Configuração do Firebase
+        const firebaseConfig = {
+            apiKey: "AIzaSyBVMWxw3ubEE6HWWxzu1H_BhnWzRXQwd2g",
+            authDomain: "prototipei.firebaseapp.com",
+            projectId: "prototipei",
+            storageBucket: "prototipei.firebasestorage.app",
+            messagingSenderId: "507053339898",
+            appId: "1:507053339898:web:efac2b22db7bde679d4543"
+        };
+
+        // Inicializa o Firebase
+        const app = initializeApp(firebaseConfig);
+        const auth = getAuth(app);
+
+        // Manipulador do envio do formulário
+        document.getElementById('pfForm').addEventListener('submit', async (event) => {
+            event.preventDefault(); // Impede o envio padrão do formulário
+
+            // Captura o email digitado no campo
+            const email = document.getElementById('email').value.trim();
+
+            if (!email) {
+                alert("Por favor, insira um email válido.");
+                return;
+            }
+
+            try {
+                // Envia o email de redefinição de senha
+                await sendPasswordResetEmail(auth, email);
+                alert("Email de redefinição de senha enviado com sucesso! Verifique sua caixa de entrada.");
+            } catch (error) {
+                console.error("Erro ao enviar o email de redefinição de senha:", error);
+
+                // Tratamento de erros mais comuns
+                switch (error.code) {
+                    case "auth/user-not-found":
+                        alert("Não foi encontrado nenhum usuário com esse email.");
+                        break;
+                    case "auth/invalid-email":
+                        alert("O email inserido é inválido.");
+                        break;
+                    default:
+                        alert("Erro ao enviar o email. Tente novamente mais tarde.");
+                }
+            }
+        });
+    </script>
+</body>
 </html>
