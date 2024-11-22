@@ -244,36 +244,34 @@
                 }
             }
 
-            document.addEventListener("DOMContentLoaded", function() {
-
+          document.addEventListener("DOMContentLoaded", function() {
             // Obtém as informações do usuário armazenadas no localStorage
             const usuarioLogado = localStorage.getItem("dadosUsuario");
 
-            // Seleciona o ícone de perfil
+            // Seleciona os elementos do DOM
             const linkPerfil = document.getElementById("linkPerfil");
             const linkCompra = document.getElementById("linkCompra");
 
-            // Verifica se o usuário está logado. Se estiver logado, é direcionado à tela de perfil. Senão, é direcionado à tela de login.
             if (usuarioLogado) {
+                // Usuário está logado
                 linkPerfil.addEventListener("click", function() {
-                    window.location.href = "perfil.html"; // Página de perfil
+                    window.location.href = "perfil.html"; // Redireciona para o perfil
                 });
-            } else {
-                linkPerfil.addEventListener("click", function() {
-                    window.location.href = "../cadastro/login.html"; // Página de login
-                });
-            }
-                
-            if (usuarioLogado) {
+
                 linkCompra.addEventListener("click", function() {
-                    window.location.href = "finalizarCompra1.html"; // Página de finalzar compra
+                    window.location.href = "../telasUsuario/finalizarCompra1.html"; // Redireciona para finalizar compra
                 });
             } else {
+                // Usuário não está logado
                 linkPerfil.addEventListener("click", function() {
-                    window.location.href = "../cadastro/login.html"; // Página de login
+                    window.location.href = "login.html"; // Redireciona para login
+                });
+
+                linkCompra.addEventListener("click", function() {
+                    window.location.href = "login.html"; // Redireciona para login
                 });
             }
-            });
+        });
         </script>
     </body>
 </html>
