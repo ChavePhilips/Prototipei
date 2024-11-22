@@ -85,7 +85,7 @@
             </div>
 
             <div style="align-content: center; padding-left: 1.5vw;">
-                <p class="tituloPadrao" id="nome">OLÁ, BEM VINDO!</p> <!-- Lembrar de puxar o nome do cliente do banco de dados aqui -->
+                <p class="tituloPadrao" id="nome">OLÁ, BEM VINDO!</p>
             </div>
 
             <div style="place-content: center; width: 40%; text-align: right;">
@@ -99,7 +99,11 @@
         
         <section class="margemPadrao" style="padding-top: 0%;">
             <button class="botaoBranco" style="width: 100%; border: 2px solid;" onclick="window.location.href = 'minhasComprasRota.html'">MINHAS COMPRAS</button>
-
+            
+            <div class="margemPadrao" style="text-align: center; padding-top: 3%;">
+                <button id="btnDeslogar" class="botaoAzul" style="width: 25%;">DESLOGAR</button>
+            </div>
+            
             <p class="tituloPadrao" style="margin-top: 10%;">MEUS DADOS</p>
         </section>
 
@@ -183,8 +187,14 @@
             </div>
         </footer>
         <script type="module">
+        
+            // Importações Firebase
+            import { initializeApp } from "https://www.gstatic.com/firebasejs/11.0.1/firebase-app.js";
+            import { getFirestore, doc, updateDoc } from "https://www.gstatic.com/firebasejs/11.0.1/firebase-firestore.js";
+            import { getAuth, signOut, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/11.0.1/firebase-auth.js";
+
             // Firebase configuration
-            const firebaseConfig = {
+             const firebaseConfig = {
                 apiKey: "AIzaSyBVMWxw3ubEE6HWWxzu1H_BhnWzRXQwd2g",
                 authDomain: "prototipei.firebaseapp.com",
                 projectId: "prototipei",
@@ -192,11 +202,7 @@
                 messagingSenderId: "507053339898",
                 appId: "1:507053339898:web:efac2b22db7bde679d4543"
             };
-        
-            // Importações Firebase
-            import { initializeApp } from "https://www.gstatic.com/firebasejs/11.0.1/firebase-app.js";
-            import { getFirestore, doc, updateDoc } from "https://www.gstatic.com/firebasejs/11.0.1/firebase-firestore.js";
-        
+            
             // Inicializa o Firebase
             const app = initializeApp(firebaseConfig);
             const db = getFirestore(app);
@@ -220,13 +226,11 @@
                 // Exibe a data de nascimento
                 const dataNascimentoInput = document.getElementById("dataNascimento");
                 dataNascimentoInput.value = dadosUsuario.dataNascimento || ""; // Define o valor do input como o telefone do usuário ou uma string vazia caso não exista
-                
-                
             
             } else {
                 document.getElementById("informacoes").innerText = "Nenhuma informação do usuário foi encontrada.";
             }
-        
+
             // Adiciona evento de envio ao formulário
             document.getElementById('additionalInfoForm').addEventListener('submit', async function(e) {
                 e.preventDefault();
@@ -264,6 +268,30 @@
                     alert("Falha ao atualizar as informações do usuário.");
                 }
             });
-        </script>        
+
+             // Função de logout
+            document.getElementById("btnDeslogar").addEventListener("click", () => {
+                signOut(auth)
+                    .then(() => {
+                        console.log("Usuário deslogado com sucesso!");
+                        localStorage.clear(); // Limpa todos os dados no localStorage
+                        window.location.href = "../telasUsuario/home.html"; // Redireciona após logout
+                    })
+                    .catch((error) => {
+                        console.error("Erro ao deslogar:", error);
+                        alert("Erro ao deslogar: " + error.message);
+                    });
+            });
+        
+            // Verifica status de autenticação ao carregar a página
+            onAuthStateChanged(auth, (user) => {
+                if (!user) {
+                    console.log("Usuário não autenticado. Redirecionando para a home.");
+                    window.location.href = "../telasUsuario/home.html";
+                }
+            });
+
+        </script>
+
     </body>
 </html>
