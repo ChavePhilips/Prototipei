@@ -107,8 +107,8 @@
                     authUserId: authUserId
                 });
 
-                // Opcional: Remove o userId do localStorage após o cadastro
-                localStorage.removeItem('userId');
+                // Salva o userId no localStorage para uso posterior
+                localStorage.setItem('userId', userId);
 
                 // Redireciona para a página de login ou dashboard
                 window.location.href = "login.html";
