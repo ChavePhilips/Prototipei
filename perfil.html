@@ -199,8 +199,17 @@
         
             // Importações Firebase
             import { initializeApp } from "https://www.gstatic.com/firebasejs/11.0.1/firebase-app.js";
-            import { getFirestore, doc, updateDoc } from "https://www.gstatic.com/firebasejs/11.0.1/firebase-firestore.js";
-        
+            import { getFirestore, doc, updateDoc, getAuth, signOut } from "https://www.gstatic.com/firebasejs/11.0.1/firebase-firestore.js";
+
+             const firebaseConfig = {
+                apiKey: "AIzaSyBVMWxw3ubEE6HWWxzu1H_BhnWzRXQwd2g",
+                authDomain: "prototipei.firebaseapp.com",
+                projectId: "prototipei",
+                storageBucket: "prototipei.firebasestorage.app",
+                messagingSenderId: "507053339898",
+                appId: "1:507053339898:web:efac2b22db7bde679d4543"
+            };
+            
             // Inicializa o Firebase
             const app = initializeApp(firebaseConfig);
             const db = getFirestore(app);
