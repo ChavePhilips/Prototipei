@@ -80,9 +80,8 @@
                 <div>
                     <button class="botaoAzul" id="linkCompra">COMPRAR</button>   
                 </div>
-
             </div>
-
+                
             <!-- QUADRADO COM O PRODUTO -->
             <div class="padroesSecaoFlexDirectionRow divBordaEscura" style="align-items: center; padding: 2%;">
                 <div style="align-items: center;">
@@ -140,7 +139,7 @@
                         <div class="secaoRotasFlexDirectionRow" style="align-items: center;">
                             <p class="textoPadrao">R$500,00</p>
 
-                            <p class="textoPadrao">QT: 1</p> <!-- LIGAR COM O BANCO DE DADOS - ESTOQUE -->
+                            <p class="textoPadrao">QT: 1</p>
                         </div>
 
                         <div class="secaoRotasFlexDirectionRow">
@@ -183,11 +182,56 @@
 
         <script src="../src/js/javascriptPadrao.js"></script>
 
-        <script>
+        <script type="module">
+            // Configuração do Firebase
+            import { initializeApp } from "https://www.gstatic.com/firebasejs/11.0.1/firebase-app.js";
+            import { getFirestore, doc, getDoc } from "https://www.gstatic.com/firebasejs/11.0.1/firebase-firestore.js";
+
+            const firebaseConfig = {
+                apiKey: "AIzaSyBVMWxw3ubEE6HWWxzu1H_BhnWzRXQwd2g",
+                authDomain: "prototipei.firebaseapp.com",
+                projectId: "prototipei",
+                storageBucket: "prototipei.firebasestorage.app",
+                messagingSenderId: "507053339898",
+                appId: "1:507053339898:web:efac2b22db7bde679d4543"
+            };
+
+            const app = initializeApp(firebaseConfig);
+            const db = getFirestore(app);
+
+            async function atualizarEstoque() {
+                try {
+                    // Consultando o estoque da estufa
+                    const estufaRef = doc(db, "estoque", "Estufa");
+                    const estufaDoc = await getDoc(estufaRef);
+                    if (estufaDoc.exists()) {
+                        const qt_e = estufaDoc.data().QT_E; // Quantidade da estufa
+                        localStorage.setItem("qt_e", qt_e); // Armazenando no localStorage
+                    } else {
+                        console.log("Documento 'Estufa' não encontrado!");
+                    }
+
+                    // Consultando o estoque da porta
+                    const portaRef = doc(db, "estoque", "Porta");
+                    const portaDoc = await getDoc(portaRef);
+                    if (portaDoc.exists()) {
+                        const qt_p = portaDoc.data().QT_P; // Quantidade da porta
+                        localStorage.setItem("qt_p", qt_p); // Armazenando no localStorage
+                    } else {
+                        console.log("Documento 'Porta' não encontrado!");
+                    }
+                } catch (error) {
+                    console.error("Erro ao atualizar estoque:", error);
+                }
+            }
+
+            // Chamando a função para atualizar o estoque ao carregar a página
+            atualizarEstoque();
+
             function todosOsItens() {
-                //CHECHBOX TODOS OS ITENS
-                var checkboxes = document.querySelectorAll('input[type="checkbox"]');
-                var idTodosOsItens = document.getElementById('todosOsItens');
+                // CHECKBOX TODOS OS ITENS
+                const checkboxes = document.querySelectorAll('input[type="checkbox"]');
+                const idTodosOsItens = document.getElementById('todosOsItens');
 
                 if (idTodosOsItens.checked) {
                     checkboxes.forEach(function(checkbox) {
@@ -200,34 +244,44 @@
                 }
             }
 
+            // Aguarda o carregamento do DOM
             document.addEventListener("DOMContentLoaded", function() {
-            // Obtém as informações do usuário armazenadas no localStorage
-            const usuarioLogado = localStorage.getItem("dadosUsuario");
+                // Obtém as informações do usuário armazenadas no localStorage
+                const usuarioLogado = localStorage.getItem("dadosUsuario");
 
-            // Seleciona os elementos do DOM
-            const linkPerfil = document.getElementById("linkPerfil");
-            const linkCompra = document.getElementById("linkCompra");
+                // Seleciona os elementos do DOM
+                const linkPerfil = document.getElementById("linkPerfil");
+                const linkCompra = document.getElementById("linkCompra");
 
-            if (usuarioLogado) {
-                // Usuário está logado
-                linkPerfil.addEventListener("click", function() {
-                    window.location.href = "perfil.html"; // Redireciona para o perfil
-                });
+                // Garante que os elementos existem antes de adicionar os eventListeners
+                if (linkPerfil && linkCompra) {
+                    if (usuarioLogado) {
+                        // Usuário está logado
+                        linkPerfil.addEventListener("click", function(event) {
+                            event.preventDefault(); // Evita comportamento padrão
+                            window.location.href = "../telasUsuario/perfil.html"; // Redireciona para o perfil
+                        });
 
-                linkCompra.addEventListener("click", function() {
-                    window.location.href = "../telasUsuario/finalizarCompra1.html"; // Redireciona para finalizar compra
-                });
-            } else {
-                // Usuário não está logado
-                linkPerfil.addEventListener("click", function() {
-                    window.location.href = "login.html"; // Redireciona para login
-                });
+                        linkCompra.addEventListener("click", function(event) {
+                            event.preventDefault(); // Evita comportamento padrão
+                            window.location.href = "../telasUsuario/finalizarCompra1.html"; // Redireciona para finalizar compra
+                        });
+                    } else {
+                        // Usuário não está logado
+                        linkPerfil.addEventListener("click", function(event) {
+                            event.preventDefault(); // Evita comportamento padrão
+                            window.location.href = "../cadastro/login.html"; // Redireciona para login
+                        });
 
-                linkCompra.addEventListener("click", function() {
-                    window.location.href = "login.html"; // Redireciona para login
-                });
-            }
-        });
+                        linkCompra.addEventListener("click", function(event) {
+                            event.preventDefault(); // Evita comportamento padrão
+                            window.location.href = "../cadastro/login.html"; // Redireciona para login
+                        });
+                    }
+                } else {
+                    console.error("Erro: Elementos de link 'Perfil' ou 'Comprar' não encontrados no DOM.");
+                }
+            });
         </script>
     </body>
 </html>

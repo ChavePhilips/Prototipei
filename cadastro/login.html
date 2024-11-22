@@ -17,201 +17,201 @@
 
             <!-- LOGIN NA LATERAL DIREITA -->
             <div class="divLoginCadastroDireita">
-                    <h1 class="tituloPadraoBranco">FAÇA LOGIN PARA CONTINUAR!</h1>
-                    <br> <br>
+                <h1 class="tituloPadraoBranco">FAÇA LOGIN PARA CONTINUAR!</h1>
+                <br> <br>
 
-                    <!-- FORMULÁRIO DE LOGIN -->
-                    <form class="formInputs" id="loginForm">
-                        <label class="textoPadraoBranco" for="email">LOGIN:</label>
-                        <input class="inputLoginCadastro" type="email" id="email" name="email" required autocomplete="email">
-        
-                        <label class="textoPadraoBranco" for="password">SENHA:</label>
-                        <input class="inputLoginCadastro" type="password" id="password" name="password" required>
-        
-                        <br>
-                        
-                        <div style="place-content: center;">
-                            <button class="botaoBranco" type="submit">CONFIRMAR</button>
-                        </div>
-        
-                        <br>
-
-                        <p class="textoPequeno" style="text-align: center;">OU:</p>
-                    </form>
+                <!-- FORMULÁRIO DE LOGIN -->
+                <form class="formInputs" id="loginForm">
+                    <label class="textoPadraoBranco" for="email">LOGIN:</label>
+                    <input class="inputLoginCadastro" type="email" id="email" name="email" required autocomplete="email">
+    
+                    <label class="textoPadraoBranco" for="password">SENHA:</label>
+                    <input class="inputLoginCadastro" type="password" id="password" name="password" required>
+    
+                    <br>
                     
-                    <!-- ÍCONES DAS APIS DE LOGIN -->
-                    <div class="divIcones">
-                        <img class="imagensComHover icone" src="../src/Imagens/iconeApple.png" alt="Ícone para realizar o login pela conta da Apple.">
-                        <button id="google-login"> <img  class="icone imagensComHover" src="../src/Imagens/iconeGoogle.png" alt="Ícone para realizar o login pela conta da Google."></button> 
-                        <img class="icone imagensComHover" src="../src/Imagens/iconeFacebook.png" alt="Ícone para realizar o login pela conta do Facebook.">
+                    <div style="place-content: center;">
+                        <button class="botaoBranco" type="submit">CONFIRMAR</button>
                     </div>
     
-                    <!-- LINK PARA O CADASTRO -->
-                    <p class="textoPadraoBranco">NÃO TEM UMA CONTA? 
-                        <a class="textoPadraoBranco" href="cadastroP1.html">CADASTRE-SE!</a>
-                    </p>
+                    <br>
 
-                    <br> 
-                    <!-- LINK PARA O "ESQUECI A SENHA" -->
-                    <a class="textoPequeno" href="recuperarSenha1.html" class="forgot-password">ESQUECI A SENHA</a>
+                    <p class="textoPequeno" style="text-align: center;">OU:</p>
+                </form>
+                
+                <!-- ÍCONES DAS APIS DE LOGIN -->
+                <div class="divIcones">
+                    <img class="imagensComHover icone" src="../src/Imagens/iconeApple.png" alt="Ícone para realizar o login pela conta da Apple.">
+                    <button id="google-login"> <img  class="icone imagensComHover" src="../src/Imagens/iconeGoogle.png" alt="Ícone para realizar o login pela conta do Google."></button> 
+                    <img class="icone imagensComHover" src="../src/Imagens/iconeFacebook.png" alt="Ícone para realizar o login pela conta do Facebook.">
+                </div>
+
+                <!-- LINK PARA O CADASTRO -->
+                <p class="textoPadraoBranco">NÃO TEM UMA CONTA? 
+                    <a class="textoPadraoBranco" href="cadastroP1.html">CADASTRE-SE!</a>
+                </p>
+
+                <br> 
+                <!-- LINK PARA O "ESQUECI A SENHA" -->
+                <a class="textoPequeno" href="recuperarSenha1.html" class="forgot-password">ESQUECI A SENHA</a>
             </div>
         </div>
     </section>
 
-        <!-- Inclusão do script -->
-        <script type="module">
-            // Configuração do Firebase
-            const firebaseConfig = {
-                apiKey: "AIzaSyBVMWxw3ubEE6HWWxzu1H_BhnWzRXQwd2g",
-                authDomain: "prototipei.firebaseapp.com",
-                projectId: "prototipei",
-                storageBucket: "prototipei.firebasestorage.app",
-                messagingSenderId: "507053339898",
-                appId: "1:507053339898:web:efac2b22db7bde679d4543"
-            };
-    
-            // Inicializa o Firebase
-            import { initializeApp } from "https://www.gstatic.com/firebasejs/11.0.1/firebase-app.js";
-            import { getAuth, signInWithEmailAndPassword, GoogleAuthProvider, signInWithPopup } from "https://www.gstatic.com/firebasejs/11.0.1/firebase-auth.js";
-            import { getFirestore, collection, query, where, getDocs, doc, getDoc } from "https://www.gstatic.com/firebasejs/11.0.1/firebase-firestore.js";
-    
-            const app = initializeApp(firebaseConfig);
-            const auth = getAuth(app);
-            const db = getFirestore(app);
-    
-            // Coleções que desejamos verificar se o usuário está cadastrado, para que o login com provedores externos possa ocorrer.
-            const collections = ["usuarios_PF", "usuarios_PJ", "consultor", "administrador"];
-    
-            document.getElementById('loginForm').addEventListener('submit', async function(e) {
-                e.preventDefault();
-    
-                const email = document.getElementById('email').value;
-                const password = document.getElementById('password').value;
-    
-                try {
-                    const userCredential = await signInWithEmailAndPassword(auth, email, password);
-    
-                    // Consultas nas coleções para verificar onde o usuário está
-                    const colecoes = [
-                        { nome: "usuarios_PF", pagina: "../telasUsuario/home.html" },
-                        { nome: "usuarios_PJ", pagina: "../telasUsuario/home.html" },
-                        { nome: "consultor", pagina: "../telasConsultor/homeConsultor.html" },
-                        { nome: "administrador", pagina: "../telasADM/homeAdm.html" }
-                    ];
-    
-                    for (let colecao of colecoes) {
-                        const q = query(collection(db, colecao.nome), where("email", "==", email));
-                        const querySnapshot = await getDocs(q);
-                        
-                        if (!querySnapshot.empty) {
-                            // Obtém dados do usuário
-                            const userData = querySnapshot.docs[0].data();
-                            const dadosUsuario = colecao.nome === "usuarios_PF" ? {
-                                cep: userData.cep,
-                                cidade: userData.cidade,
-                                complemento: userData.complemento,
-                                cpf: userData.cpf,
-                                dataNascimento: userData.dataNascimento,
-                                email: userData.email,
-                                endereco: userData.endereco,
-                                numero: userData.numero,
-                                telefone: userData.telefone,
-                                uf: userData.uf,
-                                nome: userData.nome
-                            } : {
-                                cep: userData.cep,
-                                cnpj: userData.cnpj,
-                                email: userData.email,
-                                nome: userData.nome,
-                                telefone: userData.telefone
-                            };
-    
-                            // Salva os dados no arquivo de dados
-                            localStorage.setItem("dadosUsuario", JSON.stringify(dadosUsuario));
-    
-                            // Agora, fazemos as consultas para pegar os dados de estoque
-                            // Consultando o estoque para Estufa
-                            const estufaRef = doc(db, "estoque", "Estufa");
-                            const estufaDoc = await getDoc(estufaRef);
-                            if (estufaDoc.exists()) {
-                                const estufaData = estufaDoc.data();
-                                const qt_e = estufaData.QT_E; // Quantidade de Estufa
-                                localStorage.setItem("qt_e", qt_e); // Salva no localStorage
-                            } else {
-                                console.log("Documento 'Estufa' não encontrado!");
-                            }
-    
-                            // Consultando o estoque para Porta
-                            const portaRef = doc(db, "estoque", "Porta");
-                            const portaDoc = await getDoc(portaRef);
-                            if (portaDoc.exists()) {
-                                const portaData = portaDoc.data();
-                                const qt_p = portaData.QT_P; // Quantidade de Porta
-                                localStorage.setItem("qt_p", qt_p); // Salva no localStorage
-                            } else {
-                                console.log("Documento 'Porta' não encontrado!");
-                            }
-    
-                            // Redireciona para a nova página
-                            window.location.href = colecao.pagina;
-                            return;
-                        }
-                    }
-    
-                    // Caso o usuário não seja encontrado em nenhuma coleção
-                    alert("Usuário não encontrado em nenhuma coleção.");
-                } catch (error) {
-                    alert("Erro ao fazer login: " + error.message);
-                }
-            });
-    
-            document.getElementById('google-login').addEventListener('click', async () => { 
-                
-                const provider = new GoogleAuthProvider();
-    
-                provider.addScope('https://www.googleapis.com/auth/userinfo.profile');
-                provider.addScope('https://www.googleapis.com/auth/user.addresses.read');
-                provider.addScope('https://www.googleapis.com/auth/user.birthday.read');
-                
+    <!-- Inclusão do script -->
+    <script type="module">
+        // Configuração do Firebase
+        const firebaseConfig = {
+            apiKey: "AIzaSyBVMWxw3ubEE6HWWxzu1H_BhnWzRXQwd2g",
+            authDomain: "prototipei.firebaseapp.com",
+            projectId: "prototipei",
+            storageBucket: "prototipei.firebasestorage.app",
+            messagingSenderId: "507053339898",
+            appId: "1:507053339898:web:efac2b22db7bde679d4543"
+        };
+
+        // Inicializa o Firebase
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/11.0.1/firebase-app.js";
+        import { getAuth, signInWithEmailAndPassword, GoogleAuthProvider, signInWithPopup } from "https://www.gstatic.com/firebasejs/11.0.1/firebase-auth.js";
+        import { getFirestore, collection, query, where, getDocs, doc, getDoc } from "https://www.gstatic.com/firebasejs/11.0.1/firebase-firestore.js";
+
+        const app = initializeApp(firebaseConfig);
+        const auth = getAuth(app);
+        const db = getFirestore(app);
+
+        // Coleções que desejamos verificar se o usuário está cadastrado, para que o login com provedores externos possa ocorrer.
+        const collections = ["usuarios_PF", "usuarios_PJ", "consultor", "administrador"];
+
+        document.getElementById('loginForm').addEventListener('submit', async function(e) {
+            e.preventDefault();
+
+            const email = document.getElementById('email').value;
+            const password = document.getElementById('password').value;
+
             try {
-                    const result = await signInWithPopup(auth, provider);
-                    const user = result.user;
-                    const userEmail = user.email; // Pega o email do usuário autenticado
-    
-                    // Função para verificar se o authUserId está em alguma das coleções
-                    const isUserRegistered = await checkEmailInCollections(userEmail, collections);
-    
-                    if (isUserRegistered) {
-                        console.log("Usuário autenticado e encontrado em uma das coleções.");
-                        alert("Usuário autenticado.")
-                        window.location.href = "../telasUsuario/home.html"; // Redirecionamento
-                    } else {
-                        console.error("Usuário não registrado.");
-                        alert("Usuário não registrado. Faça o cadastro antes de fazer login.");
-                        auth.signOut(); // Desloga o usuário
+                const userCredential = await signInWithEmailAndPassword(auth, email, password);
+
+                // Consultas nas coleções para verificar onde o usuário está
+                const colecoes = [
+                    { nome: "usuarios_PF", pagina: "../telasUsuario/home.html" },
+                    { nome: "usuarios_PJ", pagina: "../telasUsuario/home.html" },
+                    { nome: "consultor", pagina: "../telasConsultor/homeConsultor.html" },
+                    { nome: "administrador", pagina: "../telasADM/homeAdm.html" }
+                ];
+
+                for (let colecao of colecoes) {
+                    const q = query(collection(db, colecao.nome), where("email", "==", email));
+                    const querySnapshot = await getDocs(q);
+                    
+                    if (!querySnapshot.empty) {
+                        // Obtém dados do usuário
+                        const userData = querySnapshot.docs[0].data();
+                        const dadosUsuario = colecao.nome === "usuarios_PF" ? {
+                            cep: userData.cep,
+                            cidade: userData.cidade,
+                            complemento: userData.complemento,
+                            cpf: userData.cpf,
+                            dataNascimento: userData.dataNascimento,
+                            email: userData.email,
+                            endereco: userData.endereco,
+                            numero: userData.numero,
+                            telefone: userData.telefone,
+                            uf: userData.uf,
+                            nome: userData.nome
+                        } : {
+                            cep: userData.cep,
+                            cnpj: userData.cnpj,
+                            email: userData.email,
+                            nome: userData.nome,
+                            telefone: userData.telefone
+                        };
+
+                        // Salva os dados no arquivo de dados
+                        localStorage.setItem("dadosUsuario", JSON.stringify(dadosUsuario));
+
+                        // Agora, fazemos as consultas para pegar os dados de estoque
+                        // Consultando o estoque para Estufa
+                        const estufaRef = doc(db, "estoque", "Estufa");
+                        const estufaDoc = await getDoc(estufaRef);
+                        if (estufaDoc.exists()) {
+                            const estufaData = estufaDoc.data();
+                            const qt_e = estufaData.QT_E; // Quantidade de Estufa
+                            localStorage.setItem("qt_e", qt_e); // Salva no localStorage
+                        } else {
+                            console.log("Documento 'Estufa' não encontrado!");
+                        }
+
+                        // Consultando o estoque para Porta
+                        const portaRef = doc(db, "estoque", "Porta");
+                        const portaDoc = await getDoc(portaRef);
+                        if (portaDoc.exists()) {
+                            const portaData = portaDoc.data();
+                            const qt_p = portaData.QT_P; // Quantidade de Porta
+                            localStorage.setItem("qt_p", qt_p); // Salva no localStorage
+                        } else {
+                            console.log("Documento 'Porta' não encontrado!");
+                        }
+
+                        // Redireciona para a nova página
+                        window.location.href = colecao.pagina;
+                        return;
                     }
-                } catch (error) {
-                    console.error("Erro ao fazer login: ", error);
                 }
-            });
-    
-        async function checkEmailInCollections(email, collections) {
-            for (const collectionName of collections) {
-                // Cria uma consulta para procurar o documento pelo email
-                const collectionRef = collection(db, collectionName);
-                const emailQuery = query(collectionRef, where("email", "==", email));
-                const querySnapshot = await getDocs(emailQuery);
-    
-                // Verifica se encontrou algum documento com o email
-                if (!querySnapshot.empty) {
-                    // Email encontrado na coleção atual
-                    return true;
-                }
+
+                // Caso o usuário não seja encontrado em nenhuma coleção
+                alert("Usuário não encontrado em nenhuma coleção.");
+            } catch (error) {
+                alert("Erro ao fazer login: " + error.message);
             }
-            // Email não encontrado em nenhuma das coleções
-            return false;
+        });
+
+        document.getElementById('google-login').addEventListener('click', async () => { 
+            
+            const provider = new GoogleAuthProvider();
+
+            provider.addScope('https://www.googleapis.com/auth/userinfo.profile');
+            provider.addScope('https://www.googleapis.com/auth/user.addresses.read');
+            provider.addScope('https://www.googleapis.com/auth/user.birthday.read');
+            
+        try {
+                const result = await signInWithPopup(auth, provider);
+                const user = result.user;
+                const userEmail = user.email; // Pega o email do usuário autenticado
+
+                // Função para verificar se o authUserId está em alguma das coleções
+                const isUserRegistered = await checkEmailInCollections(userEmail, collections);
+
+                if (isUserRegistered) {
+                    console.log("Usuário autenticado e encontrado em uma das coleções.");
+                    alert("Usuário autenticado.")
+                    window.location.href = "../telasUsuario/home.html"; // Redirecionamento
+                } else {
+                    console.error("Usuário não registrado.");
+                    alert("Usuário não registrado. Faça o cadastro antes de fazer login.");
+                    auth.signOut(); // Desloga o usuário
+                }
+            } catch (error) {
+                console.error("Erro ao fazer login: ", error);
+            }
+        });
+
+    async function checkEmailInCollections(email, collections) {
+        for (const collectionName of collections) {
+            // Cria uma consulta para procurar o documento pelo email
+            const collectionRef = collection(db, collectionName);
+            const emailQuery = query(collectionRef, where("email", "==", email));
+            const querySnapshot = await getDocs(emailQuery);
+
+            // Verifica se encontrou algum documento com o email
+            if (!querySnapshot.empty) {
+                // Email encontrado na coleção atual
+                return true;
+            }
         }
-           
-        </script>
-    </body>
-    </html>
+        // Email não encontrado em nenhuma das coleções
+        return false;
+    }
+       
+    </script>
+</body>
+</html>

@@ -73,7 +73,6 @@
         <section>
             <div class="divBordaEscura">
                 <div class="padroesSecaoFlexDirectionRow" style="padding: 3%;">
-
                     <div class="padroesSecaoFlexDirectionColumn">
 
                         <!-- Mostra o nome do usuário, caso este esteja logado --> 
@@ -172,7 +171,6 @@
         </footer>
 
         <script src="../src/js/javascriptPadrao.js"></script>
-        <script src="../src/js/tabs.js"></script>
 
         <script>
             function verificarERedirecionar() {
@@ -198,7 +196,7 @@
                     window.location.href = 'finalizarCompraCartao.html';
                 }
             }
-            
+
             //Mostra o endereço correto do usuário
 
             const dadosUsuario = JSON.parse(localStorage.getItem("dadosUsuario"));
@@ -212,6 +210,8 @@
                 document.getElementById("informacoes").innerText = "Nenhuma informação do usuário foi encontrada.";
             }
 
+            //Mostra o nome correto do usuário
+            
             if (dadosUsuario) {
                 const nomeDiv = document.getElementById("Nome");
                 nomeDiv.innerHTML = `

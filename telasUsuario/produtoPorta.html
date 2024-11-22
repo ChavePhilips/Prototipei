@@ -82,13 +82,13 @@
                                 <br> <br>
 
                                 <p class="textoPadraoBranco">Frete: <br><p class="tituloPadraoBranco" style="text-align: left;">R$12,00</p></p>
-                                <p class="textoPadraoBranco">Endereço: Rua Joaquim de Sales...</p>
+                                <p class="textoPadraoBranco" id="Endereço"></p>
 
                                 <br><br>
 
                                 <div class="secaoRotasFlexDirectionRow">
                                     <p class="tituloPadraoBranco" style="text-align: left;">R$500,00</p>
-                                    <p class="textoPadraoBranco" style="align-self: center;">Estoque: 125</p>
+                                    <p class="textoPadraoBranco" style="align-self: center;" id="estoque"></p>
                                 </div>
 
                                 <br> <br>
@@ -244,5 +244,76 @@
         
         <script src="../src/js/avaliacoes.js"></script>
         <script src="../src/js/tabs.js"></script>
+        <script type="module">
+            // Configuração do Firebase
+            import { initializeApp } from "https://www.gstatic.com/firebasejs/11.0.1/firebase-app.js";
+            import { getFirestore, doc, getDoc } from "https://www.gstatic.com/firebasejs/11.0.1/firebase-firestore.js";
+    
+            const firebaseConfig = {
+                apiKey: "AIzaSyBVMWxw3ubEE6HWWxzu1H_BhnWzRXQwd2g",
+                authDomain: "prototipei.firebaseapp.com",
+                projectId: "prototipei",
+                storageBucket: "prototipei.firebasestorage.app",
+                messagingSenderId: "507053339898",
+                appId: "1:507053339898:web:efac2b22db7bde679d4543"
+            };
+    
+            const app = initializeApp(firebaseConfig);
+            const db = getFirestore(app);
+    
+            async function atualizarEstoque() {
+                try {
+                    // Consultando o estoque da estufa
+                    const estufaRef = doc(db, "estoque", "Estufa");
+                    const estufaDoc = await getDoc(estufaRef);
+                    if (estufaDoc.exists()) {
+                        const qt_e = estufaDoc.data().QT_E; // Quantidade da estufa
+                        localStorage.setItem("qt_e", qt_e); // Armazenando no localStorage
+                    } else {
+                        console.log("Documento 'Estufa' não encontrado!");
+                    }
+    
+                    // Consultando o estoque da porta
+                    const portaRef = doc(db, "estoque", "Porta");
+                    const portaDoc = await getDoc(portaRef);
+                    if (portaDoc.exists()) {
+                        const qt_p = portaDoc.data().QT_P; // Quantidade da porta
+                        localStorage.setItem("qt_p", qt_p); // Armazenando no localStorage
+                    } else {
+                        console.log("Documento 'Porta' não encontrado!");
+                    }
+    
+                    // Atualizando as informações na página
+                    const qt_e = localStorage.getItem("qt_e");
+                    const qt_p = localStorage.getItem("qt_p");
+    
+                    const estoqueDiv = document.getElementById("estoque");
+                    if (qt_e || qt_p) {
+                        estoqueDiv.innerHTML = `
+                            <p>Estoque: ${qt_p || "N/A"}</p>
+                        `;
+                    } else {
+                        estoqueDiv.innerText = "Nenhuma informação do estoque foi encontrada.";
+                    }
+    
+                } catch (error) {
+                    console.error("Erro ao atualizar estoque:", error);
+                }
+            }
+    
+            // Chamando a função para atualizar o estoque ao carregar a página
+            atualizarEstoque();
+    
+            // Exibindo informações do usuário
+            const dadosUsuario = JSON.parse(localStorage.getItem("dadosUsuario"));
+            if (dadosUsuario) {
+                const enderecoDiv = document.getElementById("Endereço");
+                enderecoDiv.innerHTML = `
+                    <p>Endereço: ${dadosUsuario.endereco || "N/A"}</p>
+                `;
+            } else {
+                console.log("Nenhuma informação do usuário encontrada.");
+            }
+        </script>
     </body>
 </html>

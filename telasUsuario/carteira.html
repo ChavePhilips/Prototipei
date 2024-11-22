@@ -84,7 +84,7 @@
             </div>
 
             <div style="align-content: center; padding-left: 1.5vw;">
-                <p class="tituloPadrao">OLÁ, BEM VINDO!</p> <!-- Lembrar de puxar o nome do cliente do banco de dados aqui -->
+                <p class="tituloPadrao" id="nome">OLÁ, BEM VINDO!</p> <!-- Lembrar de puxar o nome do cliente do banco de dados aqui -->
                 <p class="textoPadrao">ESSES SÃO SEUS CARTÕES CADASTRADOS</p>
             </div>
         </section>
@@ -97,7 +97,7 @@
 
             <div>
                 <p class="tituloPadrao" style="color: #0352A8;">CARTÃO TERMINADO COM 5874</p>
-                <p class="textoPadrao">Email: marianabatista@gmail.com</p>
+                <p class="textoPadrao" id="email1">Email: marianabatista@gmail.com</p>
             </div>
             
             <div>
@@ -113,7 +113,7 @@
 
             <div>
                 <p class="tituloPadrao" style="color: #0352A8;">CARTÃO TERMINADO COM 5874</p>
-                <p class="textoPadrao">Email: marianabatista@gmail.com</p>
+                <p class="textoPadrao" id="email2">Email: marianabatista@gmail.com</p>
             </div>
             
             <div>
@@ -129,7 +129,7 @@
 
             <div>
                 <p class="tituloPadrao" style="color: #0352A8;">CARTÃO TERMINADO COM 5874</p>
-                <p class="textoPadrao">Email: marianabatista@gmail.com</p>
+                <p class="textoPadrao" id="email3">Email: marianabatista@gmail.com</p>
             </div>
             
             <div>
@@ -168,5 +168,44 @@
                 </div>
             </div>
         </footer>
+        <script>
+            const dadosUsuario = JSON.parse(localStorage.getItem("dadosUsuario"));
+    
+            if (dadosUsuario) {
+                const Nome = document.getElementById("nome");
+                Nome.innerHTML = `
+                    <p>Olá, ${dadosUsuario.nome || "N/A"}</p>
+                `;
+            } else {
+                document.getElementById("informacoes").innerText = "Nenhuma informação do usuário foi encontrada.";
+            }
+
+            if (dadosUsuario) {
+                const Email = document.getElementById("email1");
+                Email.innerHTML = `
+                    <p>Email: ${dadosUsuario.email || "N/A"}</p>
+                `;
+            } else {
+                document.getElementById("informacoes").innerText = "Nenhuma informação do usuário foi encontrada.";
+            }
+
+            if (dadosUsuario) {
+                const Email = document.getElementById("email2");
+                Email.innerHTML = `
+                    <p>Email: ${dadosUsuario.email || "N/A"}</p>
+                `;
+            } else {
+                document.getElementById("informacoes").innerText = "Nenhuma informação do usuário foi encontrada.";
+            }
+
+            if (dadosUsuario) {
+                const Email = document.getElementById("email3");
+                Email.innerHTML = `
+                    <p>Email: ${dadosUsuario.email || "N/A"}</p>
+                `;
+            } else {
+                document.getElementById("informacoes").innerText = "Nenhuma informação do usuário foi encontrada.";
+            }
+        </script>
     </body>
 </html>

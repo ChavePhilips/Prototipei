@@ -79,13 +79,11 @@
             <div class="padroesSecaoFlexDirectionRow" style="padding: 6% 0%; align-items: center;">
                 <img src="../src/Imagens/iconePerfil.png" alt="Sua foto de perfil."/>
 
-                <div style="align-content: center; padding-left: 1.5vw;">
-                   <div style="align-content: center; padding-left: 1.5vw;">
+               <div style="align-content: center; padding-left: 1.5vw;">
                     <p class="tituloPadrao">
                         <!-- Mostra o nome do usuário, caso este esteja logado --> 
                          <p class="tituloPadrao" id="Nome"> Olá, bem vindo!</p>
                     </p>
-                   </div>
                 </div>
 
             </div>
@@ -113,13 +111,14 @@
                 </div>
                 <div class="divBordaEscura padroesSecaoFlexDirectionRow" style="border-color: #0352A8; 
                 align-items: center; padding: 2%;">
-                    <img src="https://via.placeholder.com/20" alt="WhatsApp Icon"> <!-- PEGAR OS ÍCONES DAQUI DPS -->
-                    <p class="textoPadrao">11 98412-2005</p>
+                    <span class="material-symbols-outlined" style="color: #0352A8; font-size: 20pt;">mail</span>
+                    <!-- <img src="https://via.placeholder.com/20" alt="WhatsApp Icon"> PEGAR OS ÍCONES DAQUI DPS -->
                     <p class="textoPadrao">11 98412-2005</p>
                 </div>
                 <div class="divBordaEscura padroesSecaoFlexDirectionRow" style="border-color: #0352A8; 
                 align-items: center; padding: 2%;">
-                    <img src="https://via.placeholder.com/20" alt="WhatsApp Icon"> <!-- PEGAR OS ÍCONES DAQUI DPS -->
+                    <span class="material-symbols-outlined" style="color: #0352A8; font-size: 20pt;">mail</span>
+                    <!-- <img src="https://via.placeholder.com/20" alt="WhatsApp Icon"> PEGAR OS ÍCONES DAQUI DPS -->
                     <span class="textoPadrao">@Prototipei</span>
                 </div>
             </div>
@@ -145,6 +144,7 @@
                 </div>
             </div>
         </footer>
+        
         <script> 
         const dadosUsuario = JSON.parse(localStorage.getItem("dadosUsuario"));
     
@@ -160,5 +160,6 @@
                 document.getElementById("informacoes").innerText = "Nenhuma informação do usuário foi encontrada.";
             }
         </script>
+        
     </body>
 </html>
