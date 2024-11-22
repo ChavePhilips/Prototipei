@@ -85,7 +85,7 @@
             <!-- QUADRADO COM O PRODUTO -->
             <div class="padroesSecaoFlexDirectionRow divBordaEscura" style="align-items: center; padding: 2%;">
                 <div style="align-items: center;">
-                    <input id="produto1" style="width: 1vw; height: 1vw;" type="checkbox">
+                    <input id="produto1" class="checkbox" style="width: 1vw; height: 1vw;" type="checkbox">
                 </div>
 
                 <img src="../src/Imagens/imagemEstufa.png" class="imagensPadrao"/>
@@ -107,9 +107,9 @@
                         <div class="secaoRotasFlexDirectionRow">
                             <div>            
                                 <p class="textoPadrao">Quantidade:</p>
-                                <button id="decrease" class="botaoMaisMenos">-</button>
-                                <input class="inputBotaoMaisMenos" type="number" id="quantity" value="1" min="1" readonly>
-                                <button id="increase" class="botaoMaisMenos">+</button>
+                                <button data-mais-menos="0" class="botaoMaisMenos" onclick="mudarQuantidade(this, 'quantity2')">-</button>
+                                <input class="inputBotaoMaisMenos" type="number" id="quantity1" value="1" min="1" readonly>
+                                <button data-mais-menos="1" class="botaoMaisMenos" onclick="mudarQuantidade(this, 'quantity2')">+</button>
                             </div>
     
                             <div style="place-content: center;">
@@ -123,7 +123,7 @@
             <!-- QUADRADO COM O PRODUTO -->
             <div class="padroesSecaoFlexDirectionRow divBordaEscura" style="align-items: center; padding: 2%; margin-top: 1%;">
                 <div style="align-items: center;">
-                    <input style="width: 1vw; height: 1vw;" type="checkbox">
+                    <input id="produto2" class="checkbox" style="width: 1vw; height: 1vw;" type="checkbox">
                 </div>
 
                 <img src="../src/Imagens/imagemEstufa.png" class="imagensPadrao"/>
@@ -145,9 +145,9 @@
                         <div class="secaoRotasFlexDirectionRow">
                             <div>            
                                 <p class="textoPadrao">Quantidade:</p>
-                                <button id="decrease" class="botaoMaisMenos">-</button>
-                                <input class="inputBotaoMaisMenos" type="number" id="quantity" value="1" min="1" readonly>
-                                <button id="increase" class="botaoMaisMenos">+</button>
+                                <button  data-mais-menos="0" class="botaoMaisMenos" onclick="mudarQuantidade(this, 'quantity2')">-</button>
+                                <input class="inputBotaoMaisMenos" type="number" id="quantity2" value="1" min="1" readonly>
+                                <button  data-mais-menos="1" class="botaoMaisMenos" onclick="mudarQuantidade(this, 'quantity2')">+</button>
                             </div>
     
                             <div style="place-content: center;">
@@ -228,21 +228,7 @@
                 atualizarEstoque();
     
             
-            function todosOsItens() {
-                //CHECHBOX TODOS OS ITENS
-                var checkboxes = document.querySelectorAll('input[type="checkbox"]');
-                var idTodosOsItens = document.getElementById('todosOsItens');
-
-                if (idTodosOsItens.checked) {
-                    checkboxes.forEach(function(checkbox) {
-                        checkbox.checked = true;
-                    });
-                } else {
-                    checkboxes.forEach(function(checkbox) {
-                        checkbox.checked = false;
-                    });
-                }
-            }
+            
 
           document.addEventListener("DOMContentLoaded", function() {
             // Obtém as informações do usuário armazenadas no localStorage
