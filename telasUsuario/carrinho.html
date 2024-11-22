@@ -18,7 +18,7 @@
                     <a href="home.html#secaoAgendeConsultoriaHome"><p class="textoPadrao">Consultoria</p></a>
                     <a href="home.html#secaoSobreNosHome"><p class="textoPadrao">Sobre nós</p></a>
 
-                    <a href="perfil.html">
+                    <a id = "linkPerfil">
                         <div class="divPerfil">
 
                             <!-- SVG do perfil -->
@@ -78,8 +78,9 @@
                 </div>
                 
                 <div>
-                    <button class="botaoAzul" onclick="window.location.href = 'finalizarCompra1.html'">COMPRAR</button>   
+                    <button class="botaoAzul" id="linkCompra">COMPRAR</button>   
                 </div>
+
             </div>
 
             <!-- QUADRADO COM O PRODUTO -->
@@ -101,7 +102,7 @@
                         <div class="secaoRotasFlexDirectionRow" style="align-items: center;">
                             <p class="textoPadrao">R$500,00</p>
 
-                            <p class="textoPadrao">QT: 1</p> <!-- LIGAR COM O BANCO DE DADOS - ESTOQUE -->
+                            <p class="textoPadrao">QT: 1</p>
                         </div>
 
                         <div class="secaoRotasFlexDirectionRow">
@@ -198,6 +199,35 @@
                     });
                 }
             }
+
+            document.addEventListener("DOMContentLoaded", function() {
+            // Obtém as informações do usuário armazenadas no localStorage
+            const usuarioLogado = localStorage.getItem("dadosUsuario");
+
+            // Seleciona os elementos do DOM
+            const linkPerfil = document.getElementById("linkPerfil");
+            const linkCompra = document.getElementById("linkCompra");
+
+            if (usuarioLogado) {
+                // Usuário está logado
+                linkPerfil.addEventListener("click", function() {
+                    window.location.href = "perfil.html"; // Redireciona para o perfil
+                });
+
+                linkCompra.addEventListener("click", function() {
+                    window.location.href = "../telasUsuario/finalizarCompra1.html"; // Redireciona para finalizar compra
+                });
+            } else {
+                // Usuário não está logado
+                linkPerfil.addEventListener("click", function() {
+                    window.location.href = "login.html"; // Redireciona para login
+                });
+
+                linkCompra.addEventListener("click", function() {
+                    window.location.href = "login.html"; // Redireciona para login
+                });
+            }
+        });
         </script>
     </body>
 </html>

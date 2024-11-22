@@ -78,7 +78,7 @@
             </div>
 
             <div style="align-content: center; padding-left: 1.5vw;">
-                <p class="tituloPadrao">OLÁ, NOME DO CLIENTE!</p> <!-- Lembrar de puxar o nome do cliente do banco de dados aqui -->
+                <p class="tituloPadrao" id="nome">OLÁ, BEM VINDO!</p> <!-- Lembrar de puxar o nome do cliente do banco de dados aqui -->
             </div>
         </section>
 
@@ -135,7 +135,7 @@
                 </fieldset>
 
                 <form style="text-align: center; padding: 2vh;">
-                    <button type="submit" class="botaoAzul">ENVIAR</button>
+                    <button id="btnEnviarDevolucao" type="submit" class="botaoAzul">ENVIAR</button>
                 </form>
             </div>
         </section>
@@ -178,7 +178,7 @@
                 </fieldset>
 
                 <form style="text-align: center; padding: 2vh;">
-                    <button type="submit" class="botaoAzul">ENVIAR</button>
+                    <button id="btnEnviarTroca" type="submit" class="botaoAzul">ENVIAR</button>
                 </form>
             </div>
         </section>
@@ -206,5 +206,125 @@
         </footer>
 
         <script src="../src/js/tabs.js"></script>
+
+        <script type="module">
+            const dadosUsuario = JSON.parse(localStorage.getItem("dadosUsuario"));
+    
+            if (dadosUsuario) {
+                const Nome = document.getElementById("nome");
+                Nome.innerHTML = `
+                    <p>Olá, ${dadosUsuario.nome || "N/A"}</p>
+                `;
+            } else {
+                document.getElementById("informacoes").innerText = "Nenhuma informação do usuário foi encontrada.";
+            }
+
+            // Importa as bibliotecas do Firebase
+            import { initializeApp } from "https://www.gstatic.com/firebasejs/11.0.1/firebase-app.js";
+            import { getFirestore, collection, addDoc } from "https://www.gstatic.com/firebasejs/11.0.1/firebase-firestore.js";
+
+            // Configuração do Firebase
+            const firebaseConfig = {
+                apiKey: "AIzaSyBVMWxw3ubEE6HWWxzu1H_BhnWzRXQwd2g",
+                authDomain: "prototipei.firebaseapp.com",
+                projectId: "prototipei",
+                storageBucket: "prototipei.firebasestorage.app",
+                messagingSenderId: "507053339898",
+                appId: "1:507053339898:web:efac2b22db7bde679d4543"
+            };
+
+            // Inicializa o Firebase
+            const app = initializeApp(firebaseConfig);
+            const db = getFirestore(app);
+
+            document.addEventListener("DOMContentLoaded", () => {
+            // Função para enviar a descrição de devolução para o Firebase
+            async function enviarDevolucao(event) {
+                event.preventDefault(); // Evita o reload da página
+
+                // Obtém os dados do usuário do localStorage
+                const dadosUsuario = JSON.parse(localStorage.getItem("dadosUsuario"));
+                const nomeUsuario = dadosUsuario?.nome || "Usuário Desconhecido";
+                const emailUsuario = dadosUsuario?.email || "email@desconhecido.com";
+
+                // Captura o valor do campo de descrição da devolução
+                const descricaoDevolucao = document.querySelector(
+                    '#devolucao textarea.textareaDevolucaoTroca'
+                )?.value.trim();
+
+                if (!descricaoDevolucao) {
+                    alert("Por favor, preencha a descrição da devolução antes de enviar.");
+                    return;
+                }
+
+                try {
+                    // Adiciona os dados no Firebase
+                    const docRef = await addDoc(collection(db, "devolucao"), {
+                        descricaoDevolucao: descricaoDevolucao, // Mensagem do usuário
+                        nomeUsuario: nomeUsuario, // Nome do usuário
+                        emailUsuario: emailUsuario // Email do usuário
+                    });
+
+                    console.log("Devolução enviada com sucesso! ID do documento:", docRef.id);
+                    alert("Solicitação de devolução enviada com sucesso!");
+                } catch (error) {
+                    console.error("Erro ao enviar a devolução:", error);
+                    alert("Erro ao enviar a devolução. Por favor, tente novamente.");
+                }
+            }
+
+            // Função para enviar a descrição de troca para o Firebase
+            async function enviarTroca(event) {
+                event.preventDefault(); // Evita o reload da página
+
+                // Obtém os dados do usuário do localStorage
+                const dadosUsuario = JSON.parse(localStorage.getItem("dadosUsuario"));
+                const nomeUsuario = dadosUsuario?.nome || "Usuário Desconhecido";
+                const emailUsuario = dadosUsuario?.email || "email@desconhecido.com";
+
+                // Captura o valor do campo de descrição da troca
+                const descricaoTroca = document.querySelector(
+                    '#troca textarea.textareaDevolucaoTroca'
+                )?.value.trim();
+
+                if (!descricaoTroca) {
+                    alert("Por favor, preencha a descrição da troca antes de enviar.");
+                    return;
+                }
+
+                try {
+                    // Adiciona os dados no Firebase
+                    const docRef = await addDoc(collection(db, "troca"), {
+                        descricaoTroca: descricaoTroca, // Mensagem do usuário
+                        nomeUsuario: nomeUsuario, // Nome do usuário
+                        emailUsuario: emailUsuario // Email do usuário
+                    });
+
+                    console.log("Troca enviada com sucesso! ID do documento:", docRef.id);
+                    alert("Solicitação de troca enviada com sucesso!");
+                } catch (error) {
+                    console.error("Erro ao enviar a troca:", error);
+                    alert("Erro ao enviar a troca. Por favor, tente novamente.");
+                }
+            }
+
+            // Adiciona os eventos de clique nos botões de envio
+            const botaoDevolucao = document.getElementById("btnEnviarDevolucao");
+            const botaoTroca = document.getElementById("btnEnviarTroca");
+
+            if (botaoDevolucao) {
+                botaoDevolucao.addEventListener("click", enviarDevolucao);
+            } else {
+                console.error("Botão de envio de devolução não encontrado.");
+            }
+
+            if (botaoTroca) {
+                botaoTroca.addEventListener("click", enviarTroca);
+            } else {
+                console.error("Botão de envio de troca não encontrado.");
+            }
+        });
+        </script>
+
     </body>
 </html>

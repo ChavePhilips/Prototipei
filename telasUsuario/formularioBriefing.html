@@ -90,7 +90,7 @@
         
     
             <!-- FORMULÁRIO -->
-            <form id="formularioBriefing margemPadrao " action="" method="">
+            <form id="formularioBriefing" action="" method="">
 
                 <section class="secaoFormulario">
     
@@ -162,7 +162,7 @@
         
                     <!-- Observações -->
                     <div id="ambientesUso-formulario-secaoFormulario">
-                        <label for="texareaObservacoes" class="tituloPadraoBranco">OBSERVAÇÕES</label> <br> <br>
+                        <label for="textareaObservacoes" class="tituloPadraoBranco">OBSERVAÇÕES</label> <br> <br>
                         <label class="textoPadraoBranco">
                             (ABAIXO DESCREVA ALGUMA OBSERVAÇÃO OU ESPECIFICIDADE DO SISTEMA PARA DESENVOLVIMENTO, ATÉ MESMO CARACTERÍSTICAS ESPECÍFICAS.
                         </label> <br> <br>
@@ -199,5 +199,79 @@
                 </div>
             </div>
         </footer>
+        <script type="module">
+            // Garante que o DOM esteja carregado antes de executar o código
+            document.addEventListener("DOMContentLoaded", async () => {
+                // Importação das bibliotecas Firebase
+                const { initializeApp } = await import("https://www.gstatic.com/firebasejs/11.0.1/firebase-app.js");
+                const { getFirestore, collection, addDoc } = await import("https://www.gstatic.com/firebasejs/11.0.1/firebase-firestore.js");
+        
+                // Configuração do Firebase
+                const firebaseConfig = {
+                    apiKey: "AIzaSyBVMWxw3ubEE6HWWxzu1H_BhnWzRXQwd2g",
+                    authDomain: "prototipei.firebaseapp.com",
+                    projectId: "prototipei",
+                    storageBucket: "prototipei.firebasestorage.app",
+                    messagingSenderId: "507053339898",
+                    appId: "1:507053339898:web:efac2b22db7bde679d4543"
+                };
+        
+                // Inicializa o Firebase
+                const app = initializeApp(firebaseConfig);
+                const db = getFirestore(app);
+                
+                //Pegar os dados do usuário do arquivo Json
+                const dadosUsuario = JSON.parse(localStorage.getItem("dadosUsuario"));
+        
+                // Função para enviar os dados do formulário
+                async function enviarFormulario(event) {
+                    event.preventDefault(); // Previne o reload da página
+        
+                    // Captura os valores do formulário
+                    const briefingData = {
+                        objetivos: document.getElementById("textareaObjetivos").value.trim(),
+                        funcionalidades: document.getElementById("textareaPrincipaisFuncionalidades").value.trim(),
+                        ambiente: document.getElementById("textareaAmbientesDeUso").value.trim(),
+                        interacao: document.getElementById("textareaInteracao").value.trim(),
+                        conectividade: document.getElementById("textareaConectividade").value.trim(),
+                        referencias: document.getElementById("textareaReferencias").value.trim(),
+                        observacoes: document.getElementById("texareaObservacoes").value.trim(),
+                        email: dadosUsuario?.email || "usuario@email.com", // Email real ou valor de fallback
+                        nome: dadosUsuario?.nome || "Usuário Exemplo"     // Nome real ou valor de fallback
+                    };
+        
+                    // Validação: verifica se os campos obrigatórios estão preenchidos
+                    if (!briefingData.objetivos || !briefingData.funcionalidades || !briefingData.ambiente) {
+                        alert("Por favor, preencha todos os campos obrigatórios!");
+                        return;
+                    }
+        
+                    try {
+                        // Adiciona um novo documento à coleção "briefing"
+                        const docRef = await addDoc(collection(db, "briefing"), briefingData);
+        
+                        // Exibe mensagem de sucesso
+                        console.log("Documento criado com sucesso! ID:", docRef.id);
+                        alert("Formulário enviado com sucesso!");
+        
+                        // Limpa o formulário após o envio
+                        document.getElementById("formularioBriefing").reset();
+                    } catch (error) {
+                        // Exibe mensagem de erro no console
+                        console.error("Erro ao enviar o formulário:", error);
+                        alert("Erro ao enviar o formulário. Por favor, tente novamente.");
+                    }
+                }
+        
+                // Adiciona o evento ao formulário
+                const formulario = document.getElementById("formularioBriefing");
+                if (formulario) {
+                    formulario.addEventListener("submit", enviarFormulario);
+                } else {
+                    console.error("Formulário não encontrado no DOM.");
+                }
+            });
+        </script>        
+        
     </body>
 </html>

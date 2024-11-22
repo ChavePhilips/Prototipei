@@ -73,9 +73,15 @@
         <section>
             <div class="divBordaEscura">
                 <div class="padroesSecaoFlexDirectionRow" style="padding: 3%;">
+
                     <div class="padroesSecaoFlexDirectionColumn">
-                        <p class="textoPadrao"> Olá, Mariana!</p>
-                        <p class="textoPadrao"> Endereço de entrega:<br>José Serafim de Castro, nº120, Taboão da Serra - São Paulo</p>
+
+                        <!-- Mostra o nome do usuário, caso este esteja logado --> 
+                        <p class="tituloPadrao" id="Nome"> Boa escolha! </p>
+
+                        <!-- Mostra endereço do usuário -->
+                        <p class="textoPadrao" id="Endereço"></p>
+
                     </div>
                      
                     <a href="alterarEndereço.html" class="textoPadrao">Alterar endereço de entrega</a>
@@ -166,6 +172,7 @@
         </footer>
 
         <script src="../src/js/javascriptPadrao.js"></script>
+        <script src="../src/js/tabs.js"></script>
 
         <script>
             function verificarERedirecionar() {
@@ -191,6 +198,29 @@
                     window.location.href = 'finalizarCompraCartao.html';
                 }
             }
+            
+            //Mostra o endereço correto do usuário
+
+            const dadosUsuario = JSON.parse(localStorage.getItem("dadosUsuario"));
+    
+            if (dadosUsuario) {
+                const enderecoDiv = document.getElementById("Endereço");
+                enderecoDiv.innerHTML = `
+                    <p>Endereço: ${dadosUsuario.endereco || "N/A"}</p>
+                `;
+            } else {
+                document.getElementById("informacoes").innerText = "Nenhuma informação do usuário foi encontrada.";
+            }
+
+            if (dadosUsuario) {
+                const nomeDiv = document.getElementById("Nome");
+                nomeDiv.innerHTML = `
+                    <p> Boa escolha, ${dadosUsuario.nome || "N/A"}!</p>
+                `;
+            } else {
+                document.getElementById("informacoes").innerText = "Nenhuma informação do usuário foi encontrada.";
+            }
+
         </script>
     </body>
 </html>
