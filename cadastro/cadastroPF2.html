@@ -27,8 +27,12 @@
                     <input class="inputLoginCadastro" type="email" id="email" name="email" required>
 
                     <label class="textoPadraoBranco" for="senha">SENHA:</label>
-                    <input class="inputLoginCadastro" type="password" id="senha" name="senha" required>
-
+                    <br>
+                    <p class="textoPadraoBranco" style="font-size: 11pt; margin-bottom: 60;">Requisitos: pelo menos seis dígitos com letra maiúscula, minúscula, caracter especial <br>
+                        e número.</p>
+                    <br>
+                    <input class="inputLoginCadastro" style="margin: 60" type="password" id="senha" name="senha" required>
+                   
                     <label class="textoPadraoBranco" for="confirmarSenha">CONFIRMAR SENHA:</label>
                     <input class="inputLoginCadastro" type="password" id="confirmarSenha" name="confirmarSenha" required>
 
@@ -39,7 +43,7 @@
                     </div>
 
                     <br> 
-                    
+
                 </form>
 
                 <!-- INDICADORES DE QUAL PÁGINA VC TÁ -->
@@ -104,10 +108,54 @@
 
             } catch (error) {
                 console.error("Erro ao cadastrar o usuário: ", error);
-                alert("Falha ao cadastrar o usuário.");
+
+                // Tratamento de erros específicos do Firebase
+                switch (error.code) {
+
+                    case 'auth/invalid-email':
+                        alert("Falha ao cadastrar usuário: e-mail inválido.");
+                        break;
+
+                    case 'auth/email-already-in-use':
+                        alert("Falha ao cadastrar usuário: e-mail já está em uso.");
+                        break;
+
+                    case 'auth/weak-password':
+                        alert("Falha ao cadastrar usuário: a senha deve conter pelo menos 6 caracteres.");
+                        break;
+
+                    case 'auth/password-does-not-meet-requirements':
+                    const message = error.message;
+
+                    // Verifica requisitos específicos na mensagem de erro
+                    if (message.includes("at least 6 characters")) {
+                        alert("Falha ao cadastrar usuário: a senha deve conter pelo menos 6 caracteres.");
+                    } else {
+                        let missingRequirements = [];
+                        if (message.includes("upper case character")) {
+                            missingRequirements.push("letra maiúscula");
+                        }
+                        if (message.includes("lower case character")) {
+                            missingRequirements.push("letra minúscula");
+                        }
+                        if (message.includes("a non-alphanumeric character")) {
+                            missingRequirements.push("caractere especial");
+                        }
+                        if (message.includes("a numeric character")) {
+                            missingRequirements.push("número");
+                        }
+
+                        alert(`A senha não atende aos seguintes requisitos: ${missingRequirements.join(', ')}.`);
+                    }
+                    break;
+
+                    default:
+                        alert("Falha ao cadastrar usuário: ocorreu um erro desconhecido.");
+              }
             }
 
             document.getElementById('userForm').reset();
+
         });
     </script>
 </body>
