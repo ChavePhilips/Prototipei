@@ -18,7 +18,7 @@
                     <a href="home.html#secaoAgendeConsultoriaHome"><p class="textoPadrao">Consultoria</p></a>
                     <a href="home.html#secaoSobreNosHome"><p class="textoPadrao">Sobre nós</p></a>
 
-                    <a href="perfil.html">
+                    <a id = "linkPerfil">
                         <div class="divPerfil">
 
                             <!-- SVG do perfil -->
@@ -95,7 +95,7 @@
                                 <br> <br>
                                 
                                 <div style="text-align: left;">
-                                    <button class="botaoBranco" onclick="window.location.href = 'finalizarCompra1.html'">COMPRAR</button>
+                                    <button class="botaoBranco" id="linkCompra">COMPRAR</button>
                                 </div>
                             </div>
                         </div>
@@ -315,6 +315,47 @@
             } else {
                 console.log("Nenhuma informação do usuário encontrada.");
             }
+
+             // Caso esteja deslogado, ao clicar no botão "comprar" ou no perfil, é redirecionado para a tela de login
+    
+            // Aguarda o carregamento do DOM
+            document.addEventListener("DOMContentLoaded", function() {
+                // Obtém as informações do usuário armazenadas no localStorage
+                const usuarioLogado = localStorage.getItem("dadosUsuario");
+
+                // Seleciona os elementos do DOM
+                const linkPerfil = document.getElementById("linkPerfil");
+                const linkCompra = document.getElementById("linkCompra");
+
+                // Garante que os elementos existem antes de adicionar os eventListeners
+                if (linkPerfil && linkCompra) {
+                    if (usuarioLogado) {
+                        // Usuário está logado
+                        linkPerfil.addEventListener("click", function(event) {
+                            event.preventDefault(); // Evita comportamento padrão
+                            window.location.href = "../telasUsuario/perfil.html"; // Redireciona para o perfil
+                        });
+
+                        linkCompra.addEventListener("click", function(event) {
+                            event.preventDefault(); // Evita comportamento padrão
+                            window.location.href = "../telasUsuario/finalizarCompra1.html"; // Redireciona para finalizar compra
+                        });
+                    } else {
+                        // Usuário não está logado
+                        linkPerfil.addEventListener("click", function(event) {
+                            event.preventDefault(); // Evita comportamento padrão
+                            window.location.href = "../cadastro/login.html"; // Redireciona para login
+                        });
+
+                        linkCompra.addEventListener("click", function(event) {
+                            event.preventDefault(); // Evita comportamento padrão
+                            window.location.href = "../cadastro/login.html"; // Redireciona para login
+                        });
+                    }
+                } else {
+                    console.error("Erro: Elementos de link 'Perfil' ou 'Comprar' não encontrados no DOM.");
+                }
+            });
         </script>
     </body>
 </html>

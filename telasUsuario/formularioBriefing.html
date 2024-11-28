@@ -19,7 +19,7 @@
                     <a href="home.html#secaoAgendeConsultoriaHome"><p class="textoPadrao">Consultoria</p></a>
                     <a href="home.html#secaoSobreNosHome"><p class="textoPadrao">Sobre nós</p></a>
 
-                    <a href="perfil.html">
+                    <a id = "linkPerfil">
                         <div class="divPerfil">
 
                             <!-- SVG do perfil -->
@@ -269,6 +269,34 @@
                     formulario.addEventListener("submit", enviarFormulario);
                 } else {
                     console.error("Formulário não encontrado no DOM.");
+                }
+            });
+
+            // Aguarda o carregamento do DOM
+            document.addEventListener("DOMContentLoaded", function() {
+                // Obtém as informações do usuário armazenadas no localStorage
+                const usuarioLogado = localStorage.getItem("dadosUsuario");
+
+                // Seleciona os elementos do DOM
+                const linkPerfil = document.getElementById("linkPerfil");
+
+                // Garante que os elementos existem antes de adicionar os eventListeners
+                if (linkPerfil) {
+                    if (usuarioLogado) {
+                        // Usuário está logado
+                        linkPerfil.addEventListener("click", function(event) {
+                            event.preventDefault(); // Evita comportamento padrão
+                            window.location.href = "../telasUsuario/perfil.html"; // Redireciona para o perfil
+                        });
+                    } else {
+                        // Usuário não está logado
+                        linkPerfil.addEventListener("click", function(event) {
+                            event.preventDefault(); // Evita comportamento padrão
+                            window.location.href = "../cadastro/login.html"; // Redireciona para login
+                        });
+                    }
+                } else {
+                    console.error("Erro: Elementos de link 'Perfil' não encontrados no DOM.");
                 }
             });
         </script>        

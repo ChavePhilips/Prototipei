@@ -17,7 +17,8 @@
                 <a href="home.html#secaoProdutosHome"><p class="textoPadrao">Produtos</p></a>
                 <a href="home.html#secaoAgendeConsultoriaHome"><p class="textoPadrao">Consultoria</p></a>
                 <a href="home.html#secaoSobreNosHome"><p class="textoPadrao">Sobre nós</p></a>
-                <a href="perfil.html">
+
+                <a id = "linkPerfil">
                     <div class="divPerfil">
 
                         <!-- SVG do perfil -->
@@ -94,7 +95,7 @@
                                 <br> <br>
                                 
                                 <div style="text-align: left;">
-                                    <button class="botaoBranco" onclick="window.location.href = 'finalizarCompra1.html'">COMPRAR</button>
+                                    <button class="botaoBranco" id="linkCompra">COMPRAR</button>
                                 </div>
                             </div>
                         </div>
@@ -290,57 +291,99 @@
                     console.log("Nenhuma informação do usuário encontrada.");
                 }
 
-// Função para carregar os comentários
-async function carregarComentarios() {
-    try {
-        // Seleciona o local onde os comentários serão inseridos
-        const comentariosDiv = document.getElementById("divBarrasAvaliacao-divAvaliacaoProduto-divDadosProduto-secaoDescricaoProduto");
+        // Função para carregar os comentários
+        async function carregarComentarios() {
+        try {
+            // Seleciona o local onde os comentários serão inseridos
+            const comentariosDiv = document.getElementById("divBarrasAvaliacao-divAvaliacaoProduto-divDadosProduto-secaoDescricaoProduto");
 
-        if (!comentariosDiv) {
-            console.error("Div de comentários não encontrada no DOM.");
-            return;
-        }
+            if (!comentariosDiv) {
+                console.error("Div de comentários não encontrada no DOM.");
+                return;
+            }
 
-        // Localiza o título "Comentários"
-        const tituloComentarios = document.querySelector("#divAvaliacaoProduto-divGrid-secaoDescricaoProduto .tituloPequeno");
+            // Localiza o título "Comentários"
+            const tituloComentarios = document.querySelector("#divAvaliacaoProduto-divGrid-secaoDescricaoProduto .tituloPequeno");
 
-        // Recupera os documentos da coleção "comentario" no Firebase
-        const comentariosSnapshot = await getDocs(collection(db, "comentario"));
-        const comentarios = comentariosSnapshot.docs.map(doc => doc.data());
+            // Recupera os documentos da coleção "comentario" no Firebase
+            const comentariosSnapshot = await getDocs(collection(db, "comentario"));
+            const comentarios = comentariosSnapshot.docs.map(doc => doc.data());
 
-        // Insere os comentários na ordem correta após o título
-        comentarios.forEach((comentario) => {
-            // Cria um novo container para cada comentário
-            const divComentario = document.createElement("div");
-            divComentario.style.marginBottom = "20px";
+            // Insere os comentários na ordem correta após o título
+            comentarios.forEach((comentario) => {
+                // Cria um novo container para cada comentário
+                const divComentario = document.createElement("div");
+                divComentario.style.marginBottom = "20px";
 
-            // Gerando as estrelas com base na nota do usuário
-            const estrelas = Array.from({ length: 5 }, (_, i) => {
-                return i < (comentario.nota || 0)
-                    ? `<span class="material-symbols-outlined" style="color: #0352A8; font-size: 20px;">grade</span>`
-                    : `<span class="material-symbols-outlined vazado" style="color: #0352A8; font-size: 20px;">grade</span>`;
-            }).join("");
+                // Gerando as estrelas com base na nota do usuário
+                const estrelas = Array.from({ length: 5 }, (_, i) => {
+                    return i < (comentario.nota || 0)
+                        ? `<span class="material-symbols-outlined" style="color: #0352A8; font-size: 20px;">grade</span>`
+                        : `<span class="material-symbols-outlined vazado" style="color: #0352A8; font-size: 20px;">grade</span>`;
+                }).join("");
 
-            // Configurando o HTML do comentário
-            divComentario.innerHTML = `
-                <div style="display: grid; grid-template-columns: 2fr 1fr; margin: 5%; align-items: center;">
-                    <p class="tituloPequeno" style="color: #0352A8; font-weight: bold;">${comentario.nomeUsuario || "Usuário desconhecido"}</p>
-                    <div style="text-align: right;">${estrelas}</div>
-                </div>
-                <p class="textoPadrao" style="margin: 5%; color: #011428;">${comentario.comentario || "Sem comentário disponível."}</p>
-                <hr style="border: 0.5px solid #0352A8; margin: 10px 0;">
-            `;
+                // Configurando o HTML do comentário
+                divComentario.innerHTML = `
+                    <div style="display: grid; grid-template-columns: 2fr 1fr; margin: 5%; align-items: center;">
+                        <p class="tituloPequeno" style="color: #0352A8; font-weight: bold;">${comentario.nomeUsuario || "Usuário desconhecido"}</p>
+                        <div style="text-align: right;">${estrelas}</div>
+                    </div>
+                    <p class="textoPadrao" style="margin: 5%; color: #011428;">${comentario.comentario || "Sem comentário disponível."}</p>
+                    <hr style="border: 0.5px solid #0352A8; margin: 10px 0;">
+                `;
 
-            // Insere o comentário logo após o título "Comentários"
-            tituloComentarios.insertAdjacentElement("afterend", divComentario);
-        });
-    } catch (error) {
-        console.error("Erro ao carregar os comentários:", error);
-    }
-}
+                // Insere o comentário logo após o título "Comentários"
+                tituloComentarios.insertAdjacentElement("afterend", divComentario);
+             });
+                } catch (error) {
+                    console.error("Erro ao carregar os comentários:", error);
+                }
+            }
 
-// Carregar os comentários assim que a página carregar
-document.addEventListener("DOMContentLoaded", carregarComentarios);
+            // Carregar os comentários assim que a página carregar
+            document.addEventListener("DOMContentLoaded", carregarComentarios);
+
+            // Caso esteja deslogado, ao clicar no botão "comprar" ou no perfil, é redirecionado para a tela de login
+    
+            // Aguarda o carregamento do DOM
+            document.addEventListener("DOMContentLoaded", function() {
+                // Obtém as informações do usuário armazenadas no localStorage
+                const usuarioLogado = localStorage.getItem("dadosUsuario");
+
+                // Seleciona os elementos do DOM
+                const linkPerfil = document.getElementById("linkPerfil");
+                const linkCompra = document.getElementById("linkCompra");
+
+                // Garante que os elementos existem antes de adicionar os eventListeners
+                if (linkPerfil && linkCompra) {
+                    if (usuarioLogado) {
+                        // Usuário está logado
+                        linkPerfil.addEventListener("click", function(event) {
+                            event.preventDefault(); // Evita comportamento padrão
+                            window.location.href = "../telasUsuario/perfil.html"; // Redireciona para o perfil
+                        });
+
+                        linkCompra.addEventListener("click", function(event) {
+                            event.preventDefault(); // Evita comportamento padrão
+                            window.location.href = "../telasUsuario/finalizarCompra1.html"; // Redireciona para finalizar compra
+                        });
+                    } else {
+                        // Usuário não está logado
+                        linkPerfil.addEventListener("click", function(event) {
+                            event.preventDefault(); // Evita comportamento padrão
+                            window.location.href = "../cadastro/login.html"; // Redireciona para login
+                        });
+
+                        linkCompra.addEventListener("click", function(event) {
+                            event.preventDefault(); // Evita comportamento padrão
+                            window.location.href = "../cadastro/login.html"; // Redireciona para login
+                        });
+                    }
+                } else {
+                    console.error("Erro: Elementos de link 'Perfil' ou 'Comprar' não encontrados no DOM.");
+                }
+            });
+
         </script>
     </body>
 </html>
