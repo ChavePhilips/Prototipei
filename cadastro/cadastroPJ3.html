@@ -42,14 +42,6 @@
 
                 <br> 
 
-                <!-- ÍCONES DAS APIS DE LOGIN -->
-                <p class="textoPequeno" style="text-align: center;">OU:</p>
-                <div class="divIcones">
-                    <img src="../src/Imagens/iconeApple.png" alt="Apple" class="icone imagensComHover">
-                    <img src="../src/Imagens/iconeGoogle.png" alt="Google" class="icone imagensComHover">
-                    <img src="../src/Imagens/iconeFacebook.png" alt="Facebook" class="icone imagensComHover">
-                </div>
-
                 <br>
     
                 <!-- INDICADORES DE QUAL PÁGINA VC TÁ -->
@@ -115,8 +107,8 @@
                     authUserId: authUserId
                 });
 
-                // Opcional: Remove o userId do localStorage após o cadastro
-                localStorage.removeItem('userId');
+                // Salva o userId no localStorage para uso posterior
+                localStorage.setItem('userId', userId);
 
                 // Redireciona para a página de login ou dashboard
                 window.location.href = "login.html";

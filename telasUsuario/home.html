@@ -19,7 +19,7 @@
                   <a href="#secaoAgendeConsultoriaHome"><p class="textoPadrao">Consultoria</p></a>
                   <a href="#secaoSobreNosHome"><p class="textoPadrao">Sobre nós</p></a>
 
-                    <a href="perfil.html">
+                    <a iv class="divPerfil" id="linkPerfil">
                         <div class="divPerfil">
 
                             <!-- SVG do perfil -->
@@ -239,7 +239,28 @@
             </div>
         </footer>
 
-
         <script src="../src/js/carrossel.js"></script>
+
+        <script>
+            document.addEventListener("DOMContentLoaded", function() {
+
+            // Obtém as informações do usuário armazenadas no localStorage
+            const usuarioLogado = localStorage.getItem("dadosUsuario");
+
+            // Seleciona o ícone de perfil
+            const linkPerfil = document.getElementById("linkPerfil");
+
+            // Verifica se o usuário está logado. Se estiver logado, é direcionado à tela de perfil. Senão, é direcionado à tela de login.
+            if (usuarioLogado) {
+                linkPerfil.addEventListener("click", function() {
+                    window.location.href = "perfil.html"; // Página de perfil
+                });
+            } else {
+                linkPerfil.addEventListener("click", function() {
+                    window.location.href = "../cadastro/login.html"; // Página de login
+                });
+            }
+        });
+        </script>
     </body>
 </html>

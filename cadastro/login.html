@@ -41,9 +41,7 @@
                 
                 <!-- ÍCONES DAS APIS DE LOGIN -->
                 <div class="divIcones">
-                    <img class="imagensComHover icone" src="../src/Imagens/iconeApple.png" alt="Ícone para realizar o login pela conta da Apple.">
                     <button id="google-login"> <img  class="icone imagensComHover" src="../src/Imagens/iconeGoogle.png" alt="Ícone para realizar o login pela conta do Google."></button> 
-                    <img class="icone imagensComHover" src="../src/Imagens/iconeFacebook.png" alt="Ícone para realizar o login pela conta do Facebook.">
                 </div>
 
                 <!-- LINK PARA O CADASTRO -->
@@ -93,8 +91,8 @@
 
                 // Consultas nas coleções para verificar onde o usuário está
                 const colecoes = [
-                    { nome: "usuarios_PF", pagina: "../telasUsuario/index.html" },
-                    { nome: "usuarios_PJ", pagina: "../telasUsuario/index.html" },
+                    { nome: "usuarios_PF", pagina: "../telasUsuario/home.html" },
+                    { nome: "usuarios_PJ", pagina: "../telasUsuario/home.html" },
                     { nome: "consultor", pagina: "../telasConsultor/homeConsultor.html" },
                     { nome: "administrador", pagina: "../telasADM/homeAdm.html" }
                 ];
@@ -161,8 +159,33 @@
                 // Caso o usuário não seja encontrado em nenhuma coleção
                 alert("Usuário não encontrado em nenhuma coleção.");
             } catch (error) {
-                alert("Erro ao fazer login: " + error.message);
+                console.error("Erro ao fazer login: ", error);
+
+                // Tratamento detalhado baseado na mensagem de erro
+                const errorMessage = error.message;
+
+                if (errorMessage.includes("auth/invalid-email")) {
+                    alert("Erro no login: e-mail inválido.");
+
+                } else if (errorMessage.includes("auth/user-not-found")) {
+                    alert("Erro no login: usuário não encontrado.");
+
+                } else if (errorMessage.includes("auth/wrong-password")) {
+                    alert("Erro no login: senha incorreta.");
+
+                } else if (errorMessage.includes("auth/too-many-requests")) {
+                    alert("Erro no login: muitas tentativas falhas. Por favor, tente novamente mais tarde.");
+
+                } else if (errorMessage.includes("auth/invalid-credential")) {
+                    alert("Erro no login: credenciais inválidas. Verifique suas informações.");
+                    
+                } else {
+                    alert("Erro no login: ocorreu um erro desconhecido.");
+                }
             }
+
+            document.getElementById('loginForm').reset();
+
         });
 
         document.getElementById('google-login').addEventListener('click', async () => { 

@@ -5,9 +5,19 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>Prototipei</title>
         <link href="../src/css/estilizacaoPadrao.css" rel="stylesheet" type="text/css">
-        <link href="../src/css/cssFormularios.css" rel="stylesheet" type="text/css">
+        <style>
+            [data-cartao] {
+                color: #0352A8;
+                transition: all 0.5s;
+            }
+
+            .selecionado2 [data-cartao] {
+                color: #F1F0EC;
+            }
+
+        </style>
     </head>
-    
+
     <body>
         <!-- NAVBAR -->
         <header>
@@ -18,6 +28,7 @@
                     <a href="home.html#secaoProdutosHome"><p class="textoPadrao">Produtos</p></a>
                     <a href="home.html#secaoAgendeConsultoriaHome"><p class="textoPadrao">Consultoria</p></a>
                     <a href="home.html#secaoSobreNosHome"><p class="textoPadrao">Sobre nós</p></a>
+
                     <a href="perfil.html">
                         <div class="divPerfil">
 
@@ -64,7 +75,7 @@
         <section id="primeiraSecao" style="margin-top: 11vh;">
             <div class="divBanner">
                 <div id="divTextoBanner">
-                    <p class="tituloPadraoBranco">EDITAR CARTÃO</p>
+                    <p class="tituloPadraoBranco">FINALIZAR COMPRA</p>
                     <img src="../src/Imagens/logoBranca.png" class="logoBranca" alt="Logo da Prototipei.">
                 </div>
             </div>
@@ -77,37 +88,51 @@
             </div>
         </section>
 
-        <section class="margemPadrao" style="margin-top: 0%;">
-            <fieldset class="divBordaAzul" style="margin: 0%; padding: 3%;">
-                <legend style="margin-left: 2%;">
-                    <span class="material-symbols-outlined" style="color: #0352A8; font-size: 50pt;">credit_card</span>
-                </legend>
+        <section class="divBordaEscura">
+            <div class="padroesSecaoFlexDirectionRow" style="justify-content: space-between; border-bottom: 2px solid;">
+                <p class="textoPadrao">Pagamento total:</p>
+                <p class="textoPadrao"><b>R$412,00</b></p>
+            </div>
 
-                <form>
-                    <label for="numeroCartao"><p class="textoPadrao" style="margin-bottom: 1%;">NÚMERO DO CARTÃO:</p></label>
-                    <input class="textareaBriefing" style="border: none; height: 4vh;" id="numeroCartao" name="numeroCartao" 
-                    type="number" required/>
+            <p class="textoPadrao" style="text-align: center; padding-top: 5%;"><b>ESCOLHA UM CARTÃO DE CRÉDITO OU DÉBITO JÁ 
+                CADASTRADO!</b></p>
 
-                    <div class="padroesSecaoFlexDirectionRow" style="padding: 3% 0%;">
-                        <div style="width: 80%;">
-                            <label for="vencimentoCartao"><p class="textoPadrao" style="margin-bottom: 1%;">VENCIMENTO:</p></label>
-                            <input class="textareaBriefing" style="border: none; height: 4vh;" id="vencimentoCartao" required/>
-                        </div>
+            <div id="cartao1" class="divBordaEscura padroesSecaoFlexDirectionRow cartaoSelecionado" onclick="selecionarPagamento('cartao1')" style="padding: 3%; justify-content: space-between; margin-top: 3%;">
+                <span data-cartao class="material-symbols-outlined" style="font-size: 35pt;">credit_card</span>
 
-                        <div>
-                            <label for="cvv"><p class="textoPadrao" style="margin-bottom: 1%;">CVV:</p></label>
-                            <input class="textareaBriefing" style="border: none; height: 4vh;" id="cvv" required/>
-                        </div>
-                    </div>
+                <div class="padroesSecaoFlexDirectionColumn-cartao">
+                    <p data-cartao class="textoPadrao">CARTÃO TERMINADO COM 0574 <br> 
+                        <!-- Mostra email do usuário -->
+                        <p class="textoPadrao Email"></p>
+                    </p>
+                </div>
+            </div>
 
-                    <label for="nomeCartao"><p class="textoPadrao" style="margin-bottom: 1%;">NOME NO CARTÃO:</p></label>
-                    <input class="textareaBriefing" style="border: none; height: 4vh;" id="nomeCartao" required/>
+            <div id="cartao2" class="divBordaEscura padroesSecaoFlexDirectionRow cartaoSelecionado" onclick="selecionarPagamento('cartao2')" style="padding: 3%; justify-content: space-between; margin-top: 3%;">
+                <span data-cartao class="material-symbols-outlined" style="font-size: 35pt;">credit_card</span>
 
-                    <div style="text-align: center; padding-top: 5%;">
-                        <button class="botaoAzul" type="submit" style="width: 15vw;">SALVAR ALTERAÇÕES</button>
-                    </div>
-                </form>
-            </fieldset>
+               <div class="padroesSecaoFlexDirectionColumn-cartao">
+                    <p data-cartao class="textoPadrao">CARTÃO TERMINADO COM 0574 <br> 
+                        <!-- Mostra email do usuário -->
+                        <p class="textoPadrao Email"></p>
+                    </p>
+                </div>
+            </div>
+
+            <div id="cartao3" class="divBordaEscura padroesSecaoFlexDirectionRow cartaoSelecionado" onclick="selecionarPagamento('cartao3')" style="padding: 3%; justify-content: space-between; margin-top: 3%; margin-bottom: 5%;">
+                <span data-cartao class="material-symbols-outlined" style="font-size: 35pt;">credit_card</span>
+                
+                <div class="padroesSecaoFlexDirectionColumn-cartao">
+                    <p data-cartao class="textoPadrao">CARTÃO TERMINADO COM 0574 <br> 
+                        <!-- Mostra email do usuário -->
+                        <p class="textoPadrao Email"></p>
+                    </p>
+                </div>
+            </div>
+
+            <div style="text-align: center; padding-bottom: 5%;">
+                <button class="botaoAzul">COMPRAR</button>
+            </div>
         </section>
 
         <!-- FOOTER -->
@@ -130,5 +155,34 @@
                 </div>
             </div>
         </footer>
+
+        <script>
+            function selecionarPagamento(id) {
+                // Remove a classe 'selecionado' de todos os botões
+                document.querySelectorAll('.cartaoSelecionado').forEach(function(botao) {
+                botao.classList.remove('selecionado2');
+                });
+
+                // Adiciona a classe 'selecionado' ao botão clicado
+                document.getElementById(id).classList.add('selecionado2');
+            }
+
+            const dadosUsuario = JSON.parse(localStorage.getItem("dadosUsuario"));
+    
+            if (dadosUsuario) {
+                // Usando querySelectorAll para buscar múltiplos elementos com a classe 'Email'
+                const emailDivs = document.querySelectorAll(".Email");
+
+                emailDivs.forEach((emailDiv) => {
+                    emailDiv.innerHTML = `
+                        <p>Email: ${dadosUsuario.email || "N/A"}</p>
+                    `;
+                });
+            } else {
+                // Caso o usuário não tenha dados, exibe uma mensagem alternativa
+                document.getElementById("informacoes").innerText = "Nenhuma informação do usuário foi encontrada.";
+            }
+            
+        </script>
     </body>
 </html>

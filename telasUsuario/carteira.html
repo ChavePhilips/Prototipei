@@ -5,7 +5,6 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>Prototipei</title>
         <link href="../src/css/estilizacaoPadrao.css" rel="stylesheet" type="text/css">
-        <link href="../src/css/cssFormularios.css" rel="stylesheet" type="text/css">
     </head>
 
     <body>
@@ -65,7 +64,7 @@
         <section id="primeiraSecao" style="margin-top: 11vh;">
             <div class="divBanner">
                 <div id="divTextoBanner">
-                    <p class="tituloPadraoBranco">AVALIAR PRODUTO</p>
+                    <p class="tituloPadraoBranco">MINHA CARTEIRA</p>
                     <img src="../src/Imagens/logoBranca.png" class="logoBranca" alt="Logo da Prototipei.">
                 </div>
             </div>
@@ -78,55 +77,74 @@
             </div>
         </section>
 
-        <section>
-            <div class="margemPadrao">
-                <p class="tituloPadrao" style="text-align: center;">O QUE VOCÊ ACHOU DO PRODUTO?</p>
+        <!-- INTRODUÇÃO -->
+        <section class="padroesSecaoFlexDirectionRow">
+            <div>
+                <img src="../src/Imagens/iconePerfil.png" alt="Sua foto de perfil."/>
+            </div>
 
-                <div class="divBordaEscura" style="text-align: center; border-color: #0352A8;">
-                    <div class="padroesSecaoFlexDirectionRow" style="align-items: center; gap: 1vh; justify-content: center;">
-                        <p class="textoPadrao">Ruim</p>
+            <div style="align-content: center; padding-left: 1.5vw;">
+                <p class="tituloPadrao" id="nome">OLÁ, BEM VINDO!</p> <!-- Lembrar de puxar o nome do cliente do banco de dados aqui -->
+                <p class="textoPadrao">ESSES SÃO SEUS CARTÕES CADASTRADOS</p>
+            </div>
+        </section>
 
-                        <button style="border: none; border-radius: 100%;">
-                            <span id="1" class="material-symbols-outlined vazado" style="font-size: 60pt; color: #0352A8;" 
-                            data-estrela="1">grade</span>
-                        </button>
-
-                        <button style="border: none; border-radius: 100%;">
-                            <span id="2" class="material-symbols-outlined vazado" style="font-size: 60pt; color: #0352A8;" 
-                            data-estrela="2">grade</span>
-                        </button>
-
-                        <button style="border: none; border-radius: 100%;">
-                            <span id="3" class="material-symbols-outlined vazado" style="font-size: 60pt; color: #0352A8;" 
-                            data-estrela="3">grade</span>
-                        </button>
-
-                        <button style="border: none; border-radius: 100%;">
-                            <span id="4" class="material-symbols-outlined vazado" style="font-size: 60pt; color: #0352A8;" 
-                            data-estrela="4">grade</span>
-                        </button>
-
-                        <button style="border: none; border-radius: 100%;">
-                            <span id="5" class="material-symbols-outlined vazado" style="font-size: 60pt; color: #0352A8;" 
-                            data-estrela="5">grade</span>
-                        </button>
-                        <p class="textoPadrao">Bom</p>
-                    </div>
-                </div>
+        <!-- CARTÃO 1 -->
+        <section class="padroesSecaoFlexDirectionRow" style="justify-content: space-between;">
+            <div>
+                <span class="material-symbols-outlined" style="color: #0352A8; font-size: 50pt;">credit_card</span>
             </div>
 
             <div>
-                <fieldset class="divBordaEscura" style="margin-top: 0%;">
-                    <legend class="tituloPequeno" style="color: #011428;">ADICIONE UM COMENTÁRIO (opcional):</legend>
-    
-                    <form style="place-items: center;">
-                        <textarea class="textareaDevolucaoTroca" style="border-radius: 10px;" placeholder="Eu achei que meu produto..."></textarea>
-                    </form>
-                </fieldset>
+                <p class="tituloPadrao" style="color: #0352A8;">CARTÃO TERMINADO COM 5874</p>
+                <p class="textoPadrao" id="email1">Email: marianabatista@gmail.com</p>
+            </div>
+            
+            <div>
+                <button class="botaoAzul" onclick="window.location.href = 'editarCartao.html'">EDITAR</button>
+            </div>
+        </section>
 
-                <div class="margemPadrao" style="text-align: center; padding-top: 3%;">
-                    <button class="botaoAzul" type="submit">ENVIAR</button>
-                </div>
+        <!-- CARTÃO 2 -->
+        <section class="padroesSecaoFlexDirectionRow" style="justify-content: space-between; padding-top: 0%;">
+            <div>
+                <span class="material-symbols-outlined" style="color: #0352A8; font-size: 50pt;">credit_card</span>
+            </div>
+
+            <div>
+                <p class="tituloPadrao" style="color: #0352A8;">CARTÃO TERMINADO COM 5874</p>
+                <p class="textoPadrao" id="email2">Email: marianabatista@gmail.com</p>
+            </div>
+            
+            <div>
+                <button class="botaoAzul" onclick="window.location.href = 'editarCartao.html'">EDITAR</button>
+            </div>
+        </section>
+
+        <!-- CARTÃO 3 -->
+        <section class="padroesSecaoFlexDirectionRow" style="justify-content: space-between; padding-top: 0%;">
+            <div>
+                <span class="material-symbols-outlined" style="color: #0352A8; font-size: 50pt;">credit_card</span>
+            </div>
+
+            <div>
+                <p class="tituloPadrao" style="color: #0352A8;">CARTÃO TERMINADO COM 5874</p>
+                <p class="textoPadrao" id="email3">Email: marianabatista@gmail.com</p>
+            </div>
+            
+            <div>
+                <button class="botaoAzul" onclick="window.location.href = 'editarCartao.html'">EDITAR</button>
+            </div>
+        </section>
+
+        <section class="margemPadrao" style="text-align: center; padding-top: 2%;">
+            <div>
+                <button class="botaoAzul" style="width: 32vw;" onclick="window.location.href = 'cadastrarCartao.html'">
+                    <div class="padroesSecaoFlexDirectionRow" style="padding: 1%; gap: 2%; align-items: center; justify-content: center;">
+                        <span class="material-symbols-outlined" style="font-size: 25pt; text-align: center; font-variation-settings: 'fill' 0;">add_circle</span>
+                        ADICIONAR NOVO MÉTODO DE PAGAMENTO
+                    </div>
+                </button>
             </div>
         </section>
 
@@ -150,32 +168,44 @@
                 </div>
             </div>
         </footer>
-
         <script>
-            var nota;
-            const numbers = document.querySelectorAll('[data-estrela]');
-                
-            numbers.forEach(function(number) {
-                number.addEventListener('click', function() {
-                    const valorClicado = parseInt(this.dataset.estrela); // Pega o valor da estrela clicada
+            const dadosUsuario = JSON.parse(localStorage.getItem("dadosUsuario"));
+    
+            if (dadosUsuario) {
+                const Nome = document.getElementById("nome");
+                Nome.innerHTML = `
+                    <p>Olá, ${dadosUsuario.nome || "N/A"}</p>
+                `;
+            } else {
+                document.getElementById("informacoes").innerText = "Nenhuma informação do usuário foi encontrada.";
+            }
 
-                    numbers.forEach(function(span) {
-                        const valorEstrela = parseInt(span.dataset.estrela); // Pega o valor da estrela no loop
-                        
-                        // Verifica se a estrela deve estar cheia ou vazada
-                        if (valorEstrela <= valorClicado) {
-                            span.classList.remove("vazado");
-                        } 
-                        
-                        else {
-                            span.classList.add("vazado");
-                        }
-                    });
+            if (dadosUsuario) {
+                const Email = document.getElementById("email1");
+                Email.innerHTML = `
+                    <p>Email: ${dadosUsuario.email || "N/A"}</p>
+                `;
+            } else {
+                document.getElementById("informacoes").innerText = "Nenhuma informação do usuário foi encontrada.";
+            }
 
-                    nota = valorClicado;
-                });
-            });
-            
+            if (dadosUsuario) {
+                const Email = document.getElementById("email2");
+                Email.innerHTML = `
+                    <p>Email: ${dadosUsuario.email || "N/A"}</p>
+                `;
+            } else {
+                document.getElementById("informacoes").innerText = "Nenhuma informação do usuário foi encontrada.";
+            }
+
+            if (dadosUsuario) {
+                const Email = document.getElementById("email3");
+                Email.innerHTML = `
+                    <p>Email: ${dadosUsuario.email || "N/A"}</p>
+                `;
+            } else {
+                document.getElementById("informacoes").innerText = "Nenhuma informação do usuário foi encontrada.";
+            }
         </script>
     </body>
 </html>

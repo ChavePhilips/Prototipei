@@ -85,7 +85,7 @@
             </div>
 
             <div style="align-content: center; padding-left: 1.5vw;">
-                <p class="tituloPadrao" id="nome">OLÁ, BEM VINDO!</p> <!-- Lembrar de puxar o nome do cliente do banco de dados aqui -->
+                <p class="tituloPadrao" id="nome">OLÁ, BEM VINDO!</p>
             </div>
 
             <div style="place-content: center; width: 40%; text-align: right;">
@@ -99,34 +99,48 @@
         
         <section class="margemPadrao" style="padding-top: 0%;">
             <button class="botaoBranco" style="width: 100%; border: 2px solid;" onclick="window.location.href = 'minhasComprasRota.html'">MINHAS COMPRAS</button>
-
+            
+            <div class="margemPadrao" style="text-align: center; padding-top: 3%;">
+                <button id="btnDeslogar" class="botaoAzul" style="width: 25%;">DESLOGAR</button>
+            </div>
+            
             <p class="tituloPadrao" style="margin-top: 10%;">MEUS DADOS</p>
         </section>
 
         <!-- DADOS DO CLIENTE (PUXAR DO BANCO DE DADOS) -->
         <section>
-            <form>
+            <form id="additionalInfoForm">
                 <fieldset class="divBordaEscura" style="margin-top: 0%;">
                     <legend class="tituloPequeno" style="color: #011428;">E-mail:</legend>
 
-                    <input id="email" class="textareaDevolucaoTroca" style="width: 98%; height: 5vh; margin: 1vh;" type="email" required></input>
+                    <!-- Mostra o email do usuário em um imput-->
+                    <input id="Email" class="textareaDevolucaoTroca" style="width: 98%; height: 5vh; margin: 1vh;" type="email" 
+                    placeholder="Digite o email para atualização" 
+                    required></input>
+                    
                 </fieldset>
 
                 <fieldset class="divBordaEscura" style="margin-top: 1%;">
-                    <legend class="tituloPequeno" style="color: #011428;">Senha:</legend>
+                    <legend class="tituloPequeno" style="color: #011428;">Data de nascimento:</legend>
 
-                    <input id="senha"class="textareaDevolucaoTroca" style="width: 98%; height: 5vh; margin: 1vh;" type="password" required></input>
+                    <!-- Mostra a data de nascimento do usuário em um imput-->
+                    <input id="dataNascimento" class="textareaDevolucaoTroca" style="width: 98%; height: 5vh; margin: 1vh;" required> </input>
+                    
                 </fieldset>
 
                 <fieldset class="divBordaEscura" style="margin-top: 1%;">
                     <legend class="tituloPequeno" style="color: #011428;">Telefone:</legend>
-
-                    <input id="telefone" class="textareaDevolucaoTroca" style="width: 98%; height: 5vh; margin: 1vh;" type="tel" required></input>
+                    
+                    <!-- Mostra o telefone do usuário em um imput-->
+                    <input id="Telefone" class="textareaDevolucaoTroca" style="width: 98%; height: 5vh; margin: 1vh;" type="tel"
+                    placeholder="Digite o telefone para atualização" 
+                    required></input>
+                    
                 </fieldset>
 
                 <div class="margemPadrao" style="text-align: center; padding-top: 3%;">
-                    <button class="botaoAzul" style="width: 25%;">SALVAR ALTERAÇÕES</button>
-                </div>
+                    <button class="botaoAzul" style="width: 25%;" type="submit" onclick="salvarAlteracoes()">SALVAR ALTERAÇÕES</button>
+                </div>                
             </form>
         </section>
 
@@ -152,6 +166,10 @@
             </fieldset>
         </section>
 
+        <section>
+            <div id="informacoes"></div>
+        </section>
+
         <!-- FOOTER -->
         <div class="margemSuperior" style="background-color: #047EFF; height: 8vh;"></div>
 
@@ -172,32 +190,114 @@
                 </div>
             </div>
         </footer>
-        <script>
+        <script type="module">
+        
+            // Importações Firebase
+            import { initializeApp } from "https://www.gstatic.com/firebasejs/11.0.1/firebase-app.js";
+            import { getFirestore, doc, updateDoc } from "https://www.gstatic.com/firebasejs/11.0.1/firebase-firestore.js";
+            import { getAuth, signOut, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/11.0.1/firebase-auth.js";
+
+            // Firebase configuration
+             const firebaseConfig = {
+                apiKey: "AIzaSyBVMWxw3ubEE6HWWxzu1H_BhnWzRXQwd2g",
+                authDomain: "prototipei.firebaseapp.com",
+                projectId: "prototipei",
+                storageBucket: "prototipei.firebasestorage.app",
+                messagingSenderId: "507053339898",
+                appId: "1:507053339898:web:efac2b22db7bde679d4543"
+            };
+            
+            // Inicializa o Firebase
+            const app = initializeApp(firebaseConfig);
+            const db = getFirestore(app);
+            const auth = getAuth(app);
             const dadosUsuario = JSON.parse(localStorage.getItem("dadosUsuario"));
-    
+            
             if (dadosUsuario) {
-                const Nome = document.getElementById("nome");
-                Nome.innerHTML = `
+                // Exibe o nome do usuário
+                const nome = document.getElementById("nome"); // ID com letra minúscula
+                nome.innerHTML = `
                     <p>Olá, ${dadosUsuario.nome || "N/A"}</p>
                 `;
+                
+                // Exibe o e-mail
+                const emailInput = document.getElementById("Email");
+                emailInput.value = dadosUsuario.email || ""; // Define o valor do input como o email do usuário ou uma string vazia caso não exista
+                
+                // Exibe o telefone
+                const telefoneInput = document.getElementById("Telefone");
+                telefoneInput.value = dadosUsuario.telefone || ""; // Define o valor do input como o telefone do usuário ou uma string vazia caso não exista
+                
+                // Exibe a data de nascimento
+                const dataNascimentoInput = document.getElementById("dataNascimento");
+                dataNascimentoInput.value = dadosUsuario.dataNascimento || ""; // Define o valor do input como o telefone do usuário ou uma string vazia caso não exista
+            
             } else {
                 document.getElementById("informacoes").innerText = "Nenhuma informação do usuário foi encontrada.";
             }
 
-            if (dadosUsuario) {
-            const emailInput = document.getElementById("email");
-            emailInput.value = dadosUsuario.email || ""; // Define o valor do input como o email do usuário ou uma string vazia caso não exista
-            } else {
-                document.getElementById("informacoes").innerText = "Nenhuma informação do usuário foi encontrada.";
-            }
+            // Adiciona evento de envio ao formulário
+            document.getElementById('additionalInfoForm').addEventListener('submit', async function(e) {
+                e.preventDefault();
+        
+                // Recupera o userId salvo no localStorage
+                const userId = localStorage.getItem('userId');
+                if (!userId) {
+                    alert("Erro: ID do usuário não encontrado. Retorne ao início do cadastro.");
+                    return;
+                }
+        
+                // Recupera os valores dos campos do formulário
+                const email = document.getElementById('Email').value;
+                const nascimento = document.getElementById('dataNascimento').value;
+                const telefone = document.getElementById('Telefone').value;
+        
+                // Atualiza os dados no objeto dadosUsuario
+                dadosUsuario.email = email;
+                dadosUsuario.telefone = telefone;
+                dadosUsuario.dataNascimento = nascimento;
+        
+                // Atualiza os dados no localStorage
+                localStorage.setItem("dadosUsuario", JSON.stringify(dadosUsuario));
+        
+                try {
+                    // Atualiza o documento do usuário no Firestore
+                    await updateDoc(doc(db, "usuarios_PF", userId), {
+                        email: email,
+                        dataNascimento: nascimento,
+                        telefone: telefone
+                    });
+                    alert("Atualização feita com sucesso!");
+        
+                } catch (error) {
+                    console.error("Erro ao atualizar as informações do usuário: ", error);
+                    alert("Falha ao atualizar as informações do usuário.");
+                }
+            });
 
-            if (dadosUsuario) {
-            const telefoneInput = document.getElementById("telefone");
-            telefoneInput.value = dadosUsuario.telefone || ""; // Define o valor do input como o telefone do usuário ou uma string vazia caso não exista
-            } else {
-                document.getElementById("informacoes").innerText = "Nenhuma informação do usuário foi encontrada.";
-            }
+             // Função de logout
+            document.getElementById("btnDeslogar").addEventListener("click", () => {
+                signOut(auth)
+                    .then(() => {
+                        console.log("Usuário deslogado com sucesso!");
+                        localStorage.clear(); // Limpa todos os dados no localStorage
+                        window.location.href = "../telasUsuario/home.html"; // Redireciona após logout
+                    })
+                    .catch((error) => {
+                        console.error("Erro ao deslogar:", error);
+                        alert("Erro ao deslogar: " + error.message);
+                    });
+            });
+        
+            // Verifica status de autenticação ao carregar a página
+            onAuthStateChanged(auth, (user) => {
+                if (!user) {
+                    console.log("Usuário não autenticado. Redirecionando para a home.");
+                    window.location.href = "../telasUsuario/home.html";
+                }
+            });
 
         </script>
+
     </body>
 </html>

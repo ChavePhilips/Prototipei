@@ -18,7 +18,7 @@
                     <a href="home.html#secaoAgendeConsultoriaHome"><p class="textoPadrao">Consultoria</p></a>
                     <a href="home.html#secaoSobreNosHome"><p class="textoPadrao">Sobre nós</p></a>
 
-                    <a href="perfil.html">
+                    <a id = "linkPerfil">
                         <div class="divPerfil">
 
                             <!-- SVG do perfil -->
@@ -78,14 +78,14 @@
                 </div>
                 
                 <div>
-                    <button class="botaoAzul" onclick="window.location.href = 'finalizarCompra1.html'">COMPRAR</button>   
+                    <button class="botaoAzul" id="linkCompra">COMPRAR</button>   
                 </div>
             </div>
                 
             <!-- QUADRADO COM O PRODUTO -->
             <div class="padroesSecaoFlexDirectionRow divBordaEscura" style="align-items: center; padding: 2%;">
                 <div style="align-items: center;">
-                    <input id="produto1" style="width: 1vw; height: 1vw;" type="checkbox">
+                    <input id="produto1" class="checkbox" style="width: 1vw; height: 1vw;" type="checkbox">
                 </div>
 
                 <img src="../src/Imagens/imagemEstufa.png" class="imagensPadrao"/>
@@ -93,23 +93,23 @@
                 <div class="padroesSecaoFlexDirectionColumn" style="width: 100%;">
                     
                     <div class="secaoRotasFlexDirectionRow">
-                        <p class="textoPadrao">Estufa portátil inteligente Pé de Feijão...</p>
-                        <p class="textoPadrao">10/07</p> <!-- LIGAR COM O BANCO DE DADOS -->
+                        <p class="textoPadrao">Estufa portátil inteligente Pé de Feijão</p>
+                        <p class="textoPadrao">10/07</p>
                     </div>
 
                     <div class="secaoRotasFlexDirectionRow">
                         <div class="secaoRotasFlexDirectionRow" style="align-items: center;">
-                            <p class="textoPadrao">R$500,00</p>
+                            <p class="textoPadrao">R$400,00</p>
 
-                            <p class="textoPadrao">QT: 1</p> <!-- LIGAR COM O BANCO DE DADOS - ESTOQUE -->
+                            <p class="textoPadrao">QT: 1</p>
                         </div>
 
                         <div class="secaoRotasFlexDirectionRow">
                             <div>            
                                 <p class="textoPadrao">Quantidade:</p>
-                                <button id="decrease" class="botaoMaisMenos">-</button>
-                                <input class="inputBotaoMaisMenos" type="number" id="quantity" value="1" min="1" readonly>
-                                <button id="increase" class="botaoMaisMenos">+</button>
+                                <button data-mais-menos="0" class="botaoMaisMenos" onclick="mudarQuantidade(this, 'quantity1')">-</button>
+                                <input class="inputBotaoMaisMenos" type="number" id="quantity1" value="1" min="1" readonly>
+                                <button data-mais-menos="1" class="botaoMaisMenos" onclick="mudarQuantidade(this, 'quantity1')">+</button>
                             </div>
     
                             <div style="place-content: center;">
@@ -123,31 +123,31 @@
             <!-- QUADRADO COM O PRODUTO -->
             <div class="padroesSecaoFlexDirectionRow divBordaEscura" style="align-items: center; padding: 2%; margin-top: 1%;">
                 <div style="align-items: center;">
-                    <input style="width: 1vw; height: 1vw;" type="checkbox">
+                    <input id="produto2" class="checkbox" style="width: 1vw; height: 1vw;" type="checkbox">
                 </div>
 
-                <img src="../src/Imagens/imagemEstufa.png" class="imagensPadrao"/>
+                <img src="../src/Imagens/imagemArduinoHome.png" style="width: 11.5vw; height: 11.5vw;" class="imagensPadrao"/>
                 
                 <div class="padroesSecaoFlexDirectionColumn" style="width: 100%;">
-
+                    
                     <div class="secaoRotasFlexDirectionRow">
-                        <p id="nomeProduto" class="textoPadrao"></p>
-                        <p class="textoPadrao">10/07</p> <!-- LIGAR COM O BANCO DE DADOS -->
+                        <p class="textoPadrao">Open: Sistema de abertura de portas para PCDs</p>
+                        <p class="textoPadrao">10/07</p> 
                     </div>
 
                     <div class="secaoRotasFlexDirectionRow">
                         <div class="secaoRotasFlexDirectionRow" style="align-items: center;">
-                            <p id="precoProduto" class="textoPadrao"></p>
+                            <p class="textoPadrao">R$500,00</p>
 
-                            <p class="textoPadrao">QT: 1</p> <!-- LIGAR COM O BANCO DE DADOS - ESTOQUE -->
+                            <p class="textoPadrao">QT: 1</p>
                         </div>
 
                         <div class="secaoRotasFlexDirectionRow">
                             <div>            
                                 <p class="textoPadrao">Quantidade:</p>
-                                <button id="decrease" class="botaoMaisMenos">-</button>
-                                <input class="inputBotaoMaisMenos" type="number" id="quantity" value="1" min="1" readonly>
-                                <button id="increase" class="botaoMaisMenos">+</button>
+                                <button  data-mais-menos="0" class="botaoMaisMenos" onclick="mudarQuantidade(this, 'quantity2')">-</button>
+                                <input class="inputBotaoMaisMenos" type="number" id="quantity2" value="1" min="1" readonly>
+                                <button  data-mais-menos="1" class="botaoMaisMenos" onclick="mudarQuantidade(this, 'quantity2')">+</button>
                             </div>
     
                             <div style="place-content: center;">
@@ -181,13 +181,12 @@
         </footer>
 
         <script src="../src/js/javascriptPadrao.js"></script>
-        <script src="../src/js/pegaDadosCarrinho.js"></script>
 
-        <script>
+        <script type="module">
             // Configuração do Firebase
             import { initializeApp } from "https://www.gstatic.com/firebasejs/11.0.1/firebase-app.js";
             import { getFirestore, doc, getDoc } from "https://www.gstatic.com/firebasejs/11.0.1/firebase-firestore.js";
-    
+
             const firebaseConfig = {
                 apiKey: "AIzaSyBVMWxw3ubEE6HWWxzu1H_BhnWzRXQwd2g",
                 authDomain: "prototipei.firebaseapp.com",
@@ -196,10 +195,10 @@
                 messagingSenderId: "507053339898",
                 appId: "1:507053339898:web:efac2b22db7bde679d4543"
             };
-    
+
             const app = initializeApp(firebaseConfig);
             const db = getFirestore(app);
-    
+
             async function atualizarEstoque() {
                 try {
                     // Consultando o estoque da estufa
@@ -211,7 +210,7 @@
                     } else {
                         console.log("Documento 'Estufa' não encontrado!");
                     }
-    
+
                     // Consultando o estoque da porta
                     const portaRef = doc(db, "estoque", "Porta");
                     const portaDoc = await getDoc(portaRef);
@@ -225,25 +224,48 @@
                     console.error("Erro ao atualizar estoque:", error);
                 }
             }
-                // Chamando a função para atualizar o estoque ao carregar a página
-                atualizarEstoque();
-    
             
-            function todosOsItens() {
-                //CHECHBOX TODOS OS ITENS
-                var checkboxes = document.querySelectorAll('input[type="checkbox"]');
-                var idTodosOsItens = document.getElementById('todosOsItens');
+            // Chamando a função para atualizar o estoque ao carregar a página
+            atualizarEstoque();
 
-                if (idTodosOsItens.checked) {
-                    checkboxes.forEach(function(checkbox) {
-                        checkbox.checked = true;
-                    });
+            // Aguarda o carregamento do DOM
+            document.addEventListener("DOMContentLoaded", function() {
+                // Obtém as informações do usuário armazenadas no localStorage
+                const usuarioLogado = localStorage.getItem("dadosUsuario");
+
+                // Seleciona os elementos do DOM
+                const linkPerfil = document.getElementById("linkPerfil");
+                const linkCompra = document.getElementById("linkCompra");
+
+                // Garante que os elementos existem antes de adicionar os eventListeners
+                if (linkPerfil && linkCompra) {
+                    if (usuarioLogado) {
+                        // Usuário está logado
+                        linkPerfil.addEventListener("click", function(event) {
+                            event.preventDefault(); // Evita comportamento padrão
+                            window.location.href = "../telasUsuario/perfil.html"; // Redireciona para o perfil
+                        });
+
+                        linkCompra.addEventListener("click", function(event) {
+                            event.preventDefault(); // Evita comportamento padrão
+                            window.location.href = "../telasUsuario/finalizarCompra1.html"; // Redireciona para finalizar compra
+                        });
+                    } else {
+                        // Usuário não está logado
+                        linkPerfil.addEventListener("click", function(event) {
+                            event.preventDefault(); // Evita comportamento padrão
+                            window.location.href = "../cadastro/login.html"; // Redireciona para login
+                        });
+
+                        linkCompra.addEventListener("click", function(event) {
+                            event.preventDefault(); // Evita comportamento padrão
+                            window.location.href = "../cadastro/login.html"; // Redireciona para login
+                        });
+                    }
                 } else {
-                    checkboxes.forEach(function(checkbox) {
-                        checkbox.checked = false;
-                    });
+                    console.error("Erro: Elementos de link 'Perfil' ou 'Comprar' não encontrados no DOM.");
                 }
-            }
+            });
         </script>
     </body>
 </html>
